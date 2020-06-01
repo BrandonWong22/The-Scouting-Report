@@ -1,0 +1,16 @@
+@import "./variables";
+
+@mixin margin-mobile {
+  margin-left: $margin-mobile;
+  margin-right: $margin-mobile;
+}
+
+@mixin margin-tablet {
+  margin-left: $margin-tablet;
+  margin-right: $margin-tablet;
+}
+
+@mixin margin-desktop {
+  margin-left: $margin-desktop;
+  margin-right: $margin-desktop;
+}

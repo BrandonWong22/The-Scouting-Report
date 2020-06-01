@@ -1,2 +1,17 @@
-.App {
+@import "./partials/variables";
+@import "./partials/breakpoints";
+@import "./partials/mixins";
+@import "./partials/fonts";
+
+//Resets
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+*,
+body {
+  margin: 0;
+  padding: 0;
 }
