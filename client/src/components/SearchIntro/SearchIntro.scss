@@ -1,0 +1,27 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/mixins";
+
+.search {
+  &__intro-text {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: $white;
+    height: 400px;
+  }
+
+  &__header {
+    text-align: center;
+    font-size: 40px;
+    font-family: "RobotoBold";
+  }
+
+  &__paragraph {
+    text-align: center;
+    font-size: 17px;
+    font-family: "RobotoBold";
+  }
+}
