@@ -1,0 +1,10 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/mixins";
+
+.search {
+  height: 100vh;
+  background-image: url("../../assets/images/wallstreet.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}

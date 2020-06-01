@@ -1,8 +1,21 @@
 import React, { Component } from "react";
+import "./Search.scss";
 
-class Search extends Component {
+interface IState {
+  searchValue: String;
+  validateSearch: Boolean;
+  reportIsReady: Boolean;
+}
+
+class Search extends Component<{}, IState> {
+  state: IState = {
+    searchValue: "",
+    validateSearch: false,
+    reportIsReady: false,
+  };
+
   render() {
-    return <div>search</div>;
+    return <div className="search">search</div>;
   }
 }
 

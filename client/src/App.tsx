@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Search from "./pages/Search/Search";
 
 //CHANGE ROUTES WHEN OTHER PAGES ARE READY
-function App() {
+const App: React.FC = () => {
   return (
     <>
       <BrowserRouter>
@@ -13,6 +13,6 @@ function App() {
       </BrowserRouter>
     </>
   );
-}
+};
 
 export default App;
