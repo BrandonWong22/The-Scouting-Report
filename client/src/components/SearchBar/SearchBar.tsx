@@ -33,7 +33,7 @@ class SearchBar extends Component<{}> {
                 onSearch={this.handleOnSearch}
                 onSelect={this.handleOnSelect}
                 onFocus={this.handleOnFocus}
-                maxResults={{ value: 7 }}
+                maxResults={5}
                 autoFocus
               />
               <button className="search__button" type="submit">
