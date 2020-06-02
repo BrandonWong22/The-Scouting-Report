@@ -13,8 +13,10 @@ class Search extends Component<{}, SearchState> {
   render() {
     return (
       <div className="search">
-        <SearchIntro />
-        <SearchBar />
+        <div className="search__component-container">
+          <SearchIntro />
+          <SearchBar />
+        </div>
       </div>
     );
   }

@@ -27,4 +27,27 @@
     padding-left: $margin-desktop;
     padding-right: $margin-desktop;
   }
+
+  &__component-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: grey;
+    opacity: 0.9;
+    border: 2px solid $black;
+    border-radius: 15px;
+    height: 65vh;
+    // width: 80vw;
+
+    @include tablet {
+      height: 55vh;
+      width: 550px;
+    }
+
+    @include desktop {
+      width: 650px;
+      height: 50vh;
+    }
+  }
 }
