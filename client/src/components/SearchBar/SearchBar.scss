@@ -1,0 +1,45 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/mixins";
+
+.search {
+  &__searchbar-contents {
+    text-align: center;
+
+    @include tablet {
+      width: 400px;
+    }
+  }
+
+  &__searchbar-div {
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: #282c34;
+  }
+
+  &__autocomplete-container {
+    width: 288px;
+    @include tablet {
+      width: 350px;
+    }
+  }
+
+  &__searchbar-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__button {
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    margin-top: 15px;
+    border-radius: 10px;
+    outline: none;
+  }
+}

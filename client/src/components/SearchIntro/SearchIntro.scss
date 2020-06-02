@@ -4,24 +4,30 @@
 
 .search {
   &__intro-text {
-    margin-top: 60px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     color: $white;
-    height: 400px;
+
+    @include tablet {
+      width: 500px;
+    }
+
+    @include desktop {
+      width: 600px;
+    }
   }
 
   &__header {
     text-align: center;
-    font-size: 40px;
+    font-size: 45px;
     font-family: "RobotoBold";
+    margin-bottom: 15px;
   }
 
   &__paragraph {
     text-align: center;
-    font-size: 17px;
+    font-size: 18px;
     font-family: "RobotoBold";
+    margin-bottom: 15px;
   }
 }

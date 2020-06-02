@@ -5,9 +5,6 @@
 .search {
   height: 100vh;
   background-image: url("../../assets/images/wallstreet.jpg");
-  // background-image: url("../../assets//images/stocks.jpg");
-  // background-image: url("../../assets/images/m-b-m-ZzOa5G8hSPI-unsplash.jpg");
-  // background-image: url("../../assets/images/neonbrand-8fDhgAN5zG0-unsplash.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -17,4 +14,16 @@
 
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @include tablet {
+    padding-left: $margin-tablet;
+    padding-right: $margin-tablet;
+  }
+
+  @include desktop {
+    padding-left: $margin-desktop;
+    padding-right: $margin-desktop;
+  }
 }

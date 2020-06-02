@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Search.scss";
 import SearchIntro from "../../components/SearchIntro/SearchIntro";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 class Search extends Component<{}, SearchState> {
   state: SearchState = {
@@ -13,6 +14,7 @@ class Search extends Component<{}, SearchState> {
     return (
       <div className="search">
         <SearchIntro />
+        <SearchBar />
       </div>
     );
   }
