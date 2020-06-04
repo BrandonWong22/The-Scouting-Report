@@ -3,17 +3,32 @@ import "./SearchBar.scss";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import data from "../../helpers/data.json";
 
-class SearchBar extends Component<{}> {
+interface ISearchBarProps {
+  handleSearchSubmit: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+interface ISearchBarState {
+  searchValue: string;
+}
+
+class SearchBar extends Component<ISearchBarProps, ISearchBarState> {
   state = {
     searchValue: "",
   };
 
-  handleOnSearch = (string, cached) => {
-    console.log(string, cached);
+  handleOnSearch = (company: string) => {
+    // console.log("search", company);
+    this.setState({
+      searchValue: company,
+    });
   };
 
-  handleOnSelect = (item) => {
-    console.log(item);
+  handleOnSelect = (company: any) => {
+    let companyArr: Array<string> = Object.values(company);
+
+    this.setState({
+      searchValue: companyArr[0],
+    });
   };
 
   handleOnFocus = () => {
@@ -21,7 +36,7 @@ class SearchBar extends Component<{}> {
   };
 
   render() {
-    console.log(data);
+    console.log("search value ->", this.state.searchValue);
 
     return (
       <div className="search__searchbar-contents">

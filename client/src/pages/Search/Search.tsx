@@ -10,12 +10,16 @@ class Search extends Component<{}, SearchState> {
     reportIsReady: false,
   };
 
+  handleSearchSubmit = (event: any) => {
+    event.preventDefault();
+  };
+
   render() {
     return (
       <div className="search">
         <div className="search__component-container">
           <SearchIntro />
-          <SearchBar />
+          <SearchBar handleSearchSubmit={this.handleSearchSubmit} />
         </div>
       </div>
     );
