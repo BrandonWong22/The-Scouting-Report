@@ -5,13 +5,16 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 
 class Search extends Component<{}, SearchState> {
   state: SearchState = {
-    searchValue: "",
     validateSearch: false,
     reportIsReady: false,
+    allCompanies: [],
   };
 
-  handleSearchSubmit = (event: any) => {
+  componentDidMount() {}
+
+  handleSearchSubmit = (search: string, event: any) => {
     event.preventDefault();
+    console.log(search);
   };
 
   render() {
