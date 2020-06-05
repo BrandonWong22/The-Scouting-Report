@@ -3,6 +3,10 @@ const app = express();
 const cors = require("cors");
 const getAllComapnies = require("./routes/getAllCompanies");
 
+require("dotenv").config();
+let API_KEY = process.env.API_KEY;
+let API_URL = process.env.API_URL;
+
 app.use(express.json());
 app.use(cors());
 app.use("/", getAllComapnies); //will store this in a database eventually
