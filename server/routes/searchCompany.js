@@ -1,5 +1,29 @@
 const express = require("express");
 const router = express.Router();
+const axios = require("axios");
+const companies = require("../data/companies.json");
 
-const API_URL = "https://financialmodelingprep.com/developer/docs/";
-const API_KEY = "d084cd25905084810ee3429ed54c83d9";
+require("dotenv").config();
+let API_KEY = process.env.API_KEY;
+let API_URL_PROFILE = process.env.API_URL_PROFILE;
+
+router.get("/", (req, res) => {
+  let url = API_URL_PROFILE + "aapl" + "?apikey=" + API_KEY;
+  axios.get(url).then((response) => {
+    console.log(response.status);
+    if (response.status === 200) {
+      res.status(200).send("this works");
+    }
+  });
+});
+
+router.get("/:symbol", (req, res) => {
+  let companySymbol = req.params.symbol;
+
+  let url = API_URL_PROFILE + companySymbol + "?apikey=" + API_KEY;
+  axios.get(url).then((response) => {
+    res.send(response);
+  });
+});
+
+module.exports = router;
