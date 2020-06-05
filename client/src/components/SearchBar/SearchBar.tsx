@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./SearchBar.scss";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
-import data from "../../helpers/data.json";
 
 class SearchBar extends Component<SearchBarProps, ISearchBarState> {
   state = {
@@ -34,13 +33,16 @@ class SearchBar extends Component<SearchBarProps, ISearchBarState> {
   };
 
   render() {
+    let allCompanies: any = Object.values(this.props);
+    console.log(allCompanies[1].companylist);
+
     return (
       <div className="search__searchbar-contents">
         <div className="search__searchbar-div">
           <div className="search__autocomplete-container">
             <form className="search__form" onSubmit={this.handleFormSubmit}>
               <ReactSearchAutocomplete
-                items={data.companylist}
+                items={allCompanies[1].companylist}
                 onSearch={this.handleOnSearch}
                 onSelect={this.handleOnSelect}
                 onFocus={this.handleOnFocus}

@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "./Search.scss";
 import SearchIntro from "../../components/SearchIntro/SearchIntro";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import axios from "axios";
+
+const API_URL: string = "http://localhost:8080/";
 
 class Search extends Component<{}, SearchState> {
   state: SearchState = {
@@ -10,7 +13,17 @@ class Search extends Component<{}, SearchState> {
     allCompanies: [],
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.getAllCompanies();
+  }
+
+  getAllCompanies = () => {
+    axios.get(API_URL + "all-companies").then((response) => {
+      this.setState({
+        allCompanies: response.data,
+      });
+    });
+  };
 
   handleSearchSubmit = (search: string, event: any) => {
     event.preventDefault();
@@ -22,7 +35,10 @@ class Search extends Component<{}, SearchState> {
       <div className="search">
         <div className="search__component-container">
           <SearchIntro />
-          <SearchBar handleSearchSubmit={this.handleSearchSubmit} />
+          <SearchBar
+            handleSearchSubmit={this.handleSearchSubmit}
+            allCompanies={this.state.allCompanies}
+          />
         </div>
       </div>
     );

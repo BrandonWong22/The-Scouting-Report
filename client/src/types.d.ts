@@ -6,6 +6,7 @@ interface SearchState {
 
 interface SearchBarProps {
   handleSearchSubmit(search: string, event: React.FormEvent<HTMLInputElement>);
+  allCompanies: Array<string>;
 }
 
 interface ISearchBarState {
