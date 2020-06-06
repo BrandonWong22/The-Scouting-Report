@@ -1,10 +1,15 @@
 import React, { Component } from "react";
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Search.scss";
 import SearchIntro from "../../components/SearchIntro/SearchIntro";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import axios from "axios";
 
 const API_URL: string = "http://localhost:8080/";
+
+toast.configure();
 
 class Search extends Component<{}, SearchState> {
   state: SearchState = {
@@ -35,9 +40,21 @@ class Search extends Component<{}, SearchState> {
       console.log("missing");
     } else {
       axios.get(API_URL + "search/" + searchResult).then((response: any) => {
-        let resData: object = response.data;
+        let resData: Object = response.data;
+
+        //Check if response data is {}
+        //This indicates that the searched company is not valid
         if (Object.keys(resData).length === 0) {
-          console.log("this works");
+          //display toast notifcation for invalid company
+          toast.error("Company Not Found", {
+            position: "bottom-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         } else {
           console.log("company is valid");
         }
