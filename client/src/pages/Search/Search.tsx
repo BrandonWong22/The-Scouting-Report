@@ -27,7 +27,22 @@ class Search extends Component<{}, SearchState> {
 
   handleSearchSubmit = (search: string, event: any) => {
     event.preventDefault();
-    console.log(search);
+    this.validateSearchResult(search);
+  };
+
+  validateSearchResult = (searchResult: string) => {
+    if (searchResult === "") {
+      console.log("missing");
+    } else {
+      axios.get(API_URL + "search/" + searchResult).then((response: any) => {
+        let resData: object = response.data;
+        if (Object.keys(resData).length === 0) {
+          console.log("this works");
+        } else {
+          console.log("company is valid");
+        }
+      });
+    }
   };
 
   render() {

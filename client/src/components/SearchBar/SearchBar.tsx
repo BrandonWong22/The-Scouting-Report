@@ -34,7 +34,7 @@ class SearchBar extends Component<SearchBarProps, ISearchBarState> {
 
   render() {
     let allCompanies: any = Object.values(this.props);
-    console.log(allCompanies[1].companylist);
+    // console.log(allCompanies[1].companylist);
 
     return (
       <div className="search__searchbar-contents">
