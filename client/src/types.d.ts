@@ -3,6 +3,7 @@ interface SearchState {
   reportIsReady: Boolean;
   allCompanies: Array<string>;
   redirect: Boolean;
+  companySymbol: String;
 }
 
 interface SearchBarProps {
@@ -12,4 +13,8 @@ interface SearchBarProps {
 
 interface ISearchBarState {
   searchValue: string;
+}
+
+interface ResultsProps {
+  passedDownProps: Array;
 }

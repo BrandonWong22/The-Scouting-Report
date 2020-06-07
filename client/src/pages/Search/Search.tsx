@@ -18,6 +18,7 @@ class Search extends Component<{}, SearchState> {
     reportIsReady: false,
     allCompanies: [],
     redirect: false,
+    companySymbol: "",
   };
 
   componentDidMount() {
@@ -60,6 +61,7 @@ class Search extends Component<{}, SearchState> {
           console.log("company is valid");
           this.setState({
             redirect: true,
+            companySymbol: searchResult,
           });
         }
       });
@@ -68,7 +70,14 @@ class Search extends Component<{}, SearchState> {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to={"/results"} />;
+      return (
+        <Redirect
+          to={{
+            pathname: "/results",
+            state: { symbol: this.state.companySymbol },
+          }}
+        />
+      );
     }
 
     return (
