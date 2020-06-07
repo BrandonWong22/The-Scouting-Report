@@ -6,6 +6,7 @@ import "./Search.scss";
 import SearchIntro from "../../components/SearchIntro/SearchIntro";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 const API_URL: string = "http://localhost:8080/";
 
@@ -16,6 +17,7 @@ class Search extends Component<{}, SearchState> {
     validateSearch: false,
     reportIsReady: false,
     allCompanies: [],
+    redirect: false,
   };
 
   componentDidMount() {
@@ -52,17 +54,23 @@ class Search extends Component<{}, SearchState> {
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
-            draggable: true,
             progress: undefined,
           });
         } else {
           console.log("company is valid");
+          this.setState({
+            redirect: true,
+          });
         }
       });
     }
   };
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={"/results"} />;
+    }
+
     return (
       <div className="search">
         <div className="search__component-container">

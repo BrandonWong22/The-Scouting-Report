@@ -2,6 +2,7 @@ interface SearchState {
   validateSearch: Boolean;
   reportIsReady: Boolean;
   allCompanies: Array<string>;
+  redirect: Boolean;
 }
 
 interface SearchBarProps {
