@@ -1,10 +1,10 @@
 interface LoginPageState {
   isSignedIn: Boolean;
-  profileData: String | null;
-  loadLoginPage: Boolean;
-  loadRegisterPage: Boolean;
-  userEmail: String | null;
-  userPassword: String | null;
+  // profileData: String | null;
+  // loadLoginPage: Boolean;
+  // loadRegisterPage: Boolean;
+  // userEmail: String | null;
+  // userPassword: String | null;
 }
 
 interface SearchState {

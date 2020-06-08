@@ -10,9 +10,15 @@ import { Redirect } from "react-router-dom";
 
 const API_URL: string = "http://localhost:8080/";
 
+interface SearchProps {
+  loginState?: undefined | Boolean;
+}
+
 toast.configure();
 
-class Search extends Component<{}, SearchState> {
+class Search extends Component<SearchProps, SearchState> {
+  _isMounted: Boolean = false;
+
   state: SearchState = {
     validateSearch: false,
     reportIsReady: false,
@@ -21,8 +27,29 @@ class Search extends Component<{}, SearchState> {
     companySymbol: "",
   };
 
+  // componentWillMount() {
+  //   let passedDownProps: Object = Object.values(this.props);
+
+  //   if (passedDownProps[1].state === undefined) {
+  //     console.log("not logged in");
+  //     // this.props.history.replace('/login')
+  //     return (
+  //       <Redirect
+  //         to={{
+  //           pathname: "/",
+  //         }}
+  //       />
+  //     );
+  //   }
+  // }
+
   componentDidMount() {
+    this._isMounted = true;
     this.getAllCompanies();
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   getAllCompanies = () => {
@@ -69,6 +96,32 @@ class Search extends Component<{}, SearchState> {
   };
 
   render() {
+    // let passedDownProps: Object = Object.values(this.props);
+    // console.log(passedDownProps);
+
+    // // console.log(passedDownProps[1]);
+    // if (passedDownProps[1].state === undefined) {
+    //   console.log("not logged in");
+    //   toast.error("Not Signed In", {
+    //     position: "bottom-center",
+    //     autoClose: 3000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     progress: undefined,
+    //   });
+    //   return (
+    //     <>
+    //       <Redirect
+    //         to={{
+    //           pathname: "/",
+    //         }}
+    //       />
+    //     </>
+    //   );
+    // }
+    console.log(this.props);
+
     if (this.state.redirect) {
       return (
         <Redirect
@@ -79,6 +132,7 @@ class Search extends Component<{}, SearchState> {
         />
       );
     }
+    // console.log(this.props);
 
     return (
       <div className="search">

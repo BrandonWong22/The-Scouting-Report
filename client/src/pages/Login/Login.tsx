@@ -12,11 +12,6 @@ firebase.initializeApp({
 class Login extends Component<{}, LoginPageState> {
   state = {
     isSignedIn: false,
-    profileData: null,
-    loadLoginPage: true,
-    loadRegisterPage: false,
-    userEmail: "",
-    userPassword: "",
   };
 
   // Configure FirebaseUI.
@@ -43,15 +38,9 @@ class Login extends Component<{}, LoginPageState> {
       .onAuthStateChanged((user) => this.setState({ isSignedIn: !!user }));
   }
 
-  handleRegisterMode = (event: any) => {
-    event.preventDefault();
-    this.setState({
-      loadLoginPage: false,
-      loadRegisterPage: true,
-    });
-  };
-
   render() {
+    console.log(this.props);
+
     if (!this.state.isSignedIn) {
       return (
         <div className="login-page">
@@ -65,12 +54,13 @@ class Login extends Component<{}, LoginPageState> {
     } else {
       return (
         <div className="login-page">
-          <Redirect
+          logout
+          {/* <Redirect
             to={{
               pathname: "/search",
-              state: { isSignedIn: this.state.isSignedIn },
+              // state: { isSignedIn: this.state.isSignedIn },
             }}
-          />
+          /> */}
           <button onClick={() => firebase.auth().signOut()}>Sign Out</button>
         </div>
       );
