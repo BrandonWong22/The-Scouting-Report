@@ -1,5 +1,5 @@
 interface LoginPageState {
-  isLoggedIn: Boolean;
+  isSignedIn: Boolean;
   profileData: String | null;
   loadLoginPage: Boolean;
   loadRegisterPage: Boolean;
