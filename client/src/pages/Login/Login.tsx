@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Login.scss";
+import Facebook from "../../components/Facebook/Facebook";
 
 class Login extends Component<{}, LoginPageState> {
   state = {
@@ -24,6 +25,7 @@ class Login extends Component<{}, LoginPageState> {
               <label>PASSWORD</label>
               <input placeholder="Enter email" type="password" />
             </div>
+            <Facebook />
           </form>
         </div>
       </div>

@@ -3,10 +3,9 @@ const app = express();
 const cors = require("cors");
 const getAllComapnies = require("./routes/getAllCompanies");
 const searchCompany = require("./routes/searchCompany");
+const passport = require("passport");
 
 require("dotenv").config();
-let API_KEY = process.env.API_KEY;
-let API_URL = process.env.API_URL;
 
 app.use(express.json());
 app.use(cors());
