@@ -6,19 +6,17 @@ import "./Search.scss";
 import SearchIntro from "../../components/SearchIntro/SearchIntro";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 
 const API_URL: string = "http://localhost:8080/";
 
 interface SearchProps {
   loginState?: undefined | Boolean;
+  history: any;
 }
 
 toast.configure();
 
 class Search extends Component<SearchProps, SearchState> {
-  _isMounted: Boolean = false;
-
   state: SearchState = {
     validateSearch: false,
     reportIsReady: false,
@@ -29,27 +27,46 @@ class Search extends Component<SearchProps, SearchState> {
 
   // componentWillMount() {
   //   let passedDownProps: Object = Object.values(this.props);
+  //   console.log(passedDownProps);
 
+  //   // console.log(passedDownProps[1]);
   //   if (passedDownProps[1].state === undefined) {
   //     console.log("not logged in");
-  //     // this.props.history.replace('/login')
-  //     return (
-  //       <Redirect
-  //         to={{
-  //           pathname: "/",
-  //         }}
-  //       />
-  //     );
+  //     toast.error("Not Signed In", {
+  //       position: "bottom-center",
+  //       autoClose: 3000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       progress: undefined,
+  //     });
+  //     this.props.history.push({
+  //       pathname: "/",
+  //     });
   //   }
   // }
 
   componentDidMount() {
-    this._isMounted = true;
-    this.getAllCompanies();
-  }
+    let passedDownProps: Object = Object.values(this.props);
+    console.log(passedDownProps);
 
-  componentWillUnmount() {
-    this._isMounted = false;
+    // console.log(passedDownProps[1]);
+    if (passedDownProps[1].state === undefined) {
+      console.log("not logged in");
+      toast.error("Not Signed In", {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        progress: undefined,
+      });
+      this.props.history.push({
+        pathname: "/",
+      });
+    } else {
+      this.getAllCompanies();
+    }
   }
 
   getAllCompanies = () => {
@@ -96,42 +113,6 @@ class Search extends Component<SearchProps, SearchState> {
   };
 
   render() {
-    // let passedDownProps: Object = Object.values(this.props);
-    // console.log(passedDownProps);
-
-    // // console.log(passedDownProps[1]);
-    // if (passedDownProps[1].state === undefined) {
-    //   console.log("not logged in");
-    //   toast.error("Not Signed In", {
-    //     position: "bottom-center",
-    //     autoClose: 3000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     progress: undefined,
-    //   });
-    //   return (
-    //     <>
-    //       <Redirect
-    //         to={{
-    //           pathname: "/",
-    //         }}
-    //       />
-    //     </>
-    //   );
-    // }
-    console.log(this.props);
-
-    if (this.state.redirect) {
-      return (
-        <Redirect
-          to={{
-            pathname: "/results",
-            state: { symbol: this.state.companySymbol },
-          }}
-        />
-      );
-    }
     // console.log(this.props);
 
     return (
