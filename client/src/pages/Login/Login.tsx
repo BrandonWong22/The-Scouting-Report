@@ -42,12 +42,13 @@ class Login extends Component<LoginPageProps, LoginPageState> {
   }
 
   componentDidUpdate(_: any, prevState: { isSignedIn: Boolean }) {
-    // console.log(prevState);
-    // if (prevState.isSignedIn !== this.state.isSignedIn && !prevState.isSignedIn)
-    //   this.props.history.push({
-    //     pathname: "/search",
-    //     state: { isSignedIn: this.state.isSignedIn },
-    //   });
+    if (prevState.isSignedIn !== this.state.isSignedIn && !prevState.isSignedIn)
+      this.props.history.push({
+        pathname: "/search",
+        state: {
+          isSignedIn: this.state.isSignedIn,
+        },
+      });
   }
 
   render() {
@@ -56,7 +57,6 @@ class Login extends Component<LoginPageProps, LoginPageState> {
     if (!this.state.isSignedIn) {
       return (
         <div className="login-page">
-          Not signed in
           <StyledFirebaseAuth
             uiConfig={this.uiConfig}
             firebaseAuth={firebase.auth()}

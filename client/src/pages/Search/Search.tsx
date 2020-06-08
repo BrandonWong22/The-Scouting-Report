@@ -6,6 +6,7 @@ import "./Search.scss";
 import SearchIntro from "../../components/SearchIntro/SearchIntro";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import axios from "axios";
+import firebase from "firebase";
 
 const API_URL: string = "http://localhost:8080/";
 
@@ -25,34 +26,15 @@ class Search extends Component<SearchProps, SearchState> {
     companySymbol: "",
   };
 
-  // componentWillMount() {
-  //   let passedDownProps: Object = Object.values(this.props);
-  //   console.log(passedDownProps);
-
-  //   // console.log(passedDownProps[1]);
-  //   if (passedDownProps[1].state === undefined) {
-  //     console.log("not logged in");
-  //     toast.error("Not Signed In", {
-  //       position: "bottom-center",
-  //       autoClose: 3000,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       progress: undefined,
-  //     });
-  //     this.props.history.push({
-  //       pathname: "/",
-  //     });
-  //   }
-  // }
-
   componentDidMount() {
     let passedDownProps: Object = Object.values(this.props);
     console.log(passedDownProps);
 
-    // console.log(passedDownProps[1]);
-    if (passedDownProps[1].state === undefined) {
-      console.log("not logged in");
+    let loginState = passedDownProps[1].state;
+
+    if (loginState === undefined) {
+      //toast notification to show that user
+      //has not been authenticated
       toast.error("Not Signed In", {
         position: "bottom-center",
         autoClose: 3000,
@@ -84,7 +66,14 @@ class Search extends Component<SearchProps, SearchState> {
 
   validateSearchResult = (searchResult: string) => {
     if (searchResult === "") {
-      console.log("missing");
+      toast.error("Text Field is Empty", {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        progress: undefined,
+      });
     } else {
       axios.get(API_URL + "search/" + searchResult).then((response: any) => {
         let resData: Object = response.data;
@@ -102,7 +91,6 @@ class Search extends Component<SearchProps, SearchState> {
             progress: undefined,
           });
         } else {
-          console.log("company is valid");
           this.setState({
             redirect: true,
             companySymbol: searchResult,
@@ -112,8 +100,16 @@ class Search extends Component<SearchProps, SearchState> {
     }
   };
 
+  handleLogout = () => {
+    console.log("i have been touched");
+    firebase.auth().signOut();
+    this.props.history.push({
+      pathname: "/",
+    });
+  };
+
   render() {
-    // console.log(this.props);
+    console.log(this.props);
 
     return (
       <div className="search">
@@ -123,6 +119,7 @@ class Search extends Component<SearchProps, SearchState> {
             handleSearchSubmit={this.handleSearchSubmit}
             allCompanies={this.state.allCompanies}
           />
+          <button onClick={this.handleLogout}>Logout</button>
         </div>
       </div>
     );
