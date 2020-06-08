@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
+const passport = require("passport");
 const uuid = require("uuid/v4");
+
+const initializePassport = require("../passport-config");
+initializePassport(passport);
 
 //will change this to db later on
 const users = [];
