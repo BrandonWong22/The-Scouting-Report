@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import "./Login.scss";
-import Facebook from "../../components/Facebook/Facebook";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import { Redirect } from "react-router-dom";
 
 firebase.initializeApp({
   apiKey: "AIzaSyDyKwEkYTg5Ap3NBVktoJtGwuS1QnDmoI0",
@@ -67,7 +65,12 @@ class Login extends Component<{}, LoginPageState> {
     } else {
       return (
         <div className="login-page">
-          Signed In
+          <Redirect
+            to={{
+              pathname: "/search",
+              state: { isSignedIn: this.state.isSignedIn },
+            }}
+          />
           <button onClick={() => firebase.auth().signOut()}>Sign Out</button>
         </div>
       );

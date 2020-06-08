@@ -13,7 +13,7 @@ const API_URL: string = "http://localhost:8080/";
 toast.configure();
 
 class Search extends Component<{}, SearchState> {
-  state = {
+  state: SearchState = {
     validateSearch: false,
     reportIsReady: false,
     allCompanies: [],
