@@ -28,9 +28,74 @@
     border-radius: 10px;
   }
 
-  &__input-container {
+  &__form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  &__login-register-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 240px;
+  }
+
+  &__button-container {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // border: 1px solid black;
+    height: 40px;
     margin-bottom: 20px;
+
+    &--active {
+      border-bottom: 1px solid $silver;
+    }
+  }
+
+  &__mode-button {
+    background-color: $white;
+    border: none;
+    // width: 100%;
+    // height: 20px;
+  }
+
+  &__input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  &__icon-ctn {
+    background-color: $silver;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__fontawesome {
+    color: $white;
+  }
+
+  &__input {
+    height: 40px;
+    padding-left: 15px;
+    border: none;
+    background-color: $alabaster;
+    // padding-right: 10px;
+  }
+
+  &__login-button {
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: $silver;
+    color: $black;
   }
 }

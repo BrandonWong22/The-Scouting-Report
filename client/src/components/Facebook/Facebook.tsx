@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import FacebookLogin from "react-facebook-login";
+import "./Facebook.scss";
+
+interface IFacebookProps {
+  width: any;
+}
 
 interface IFacebookState {
   isLoggedIn: Boolean;
@@ -23,7 +28,14 @@ class Facebook extends Component<{}, IFacebookState> {
   };
 
   responseFacebook = (response: any) => {
-    console.log(response);
+    // console.log(response);
+    this.setState({
+      // isLoggedIn: true,
+      userID: response.userID,
+      name: response.name,
+      email: response.email,
+      picture: response.picture.data.url,
+    });
   };
 
   render() {
@@ -43,7 +55,7 @@ class Facebook extends Component<{}, IFacebookState> {
       );
     }
 
-    return <div>{fbContent}</div>;
+    return <div className="facebook">{fbContent}</div>;
   }
 }
 

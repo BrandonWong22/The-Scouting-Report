@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./Login.scss";
 import Facebook from "../../components/Facebook/Facebook";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
 class Login extends Component<{}, LoginPageState> {
   state = {
@@ -16,15 +18,46 @@ class Login extends Component<{}, LoginPageState> {
     return (
       <div className="login-page">
         <div className="login-page__container">
+          <div className="login-page__login-register-container">
+            <div className="login-page__button-container login-page__button-container--active">
+              <button className="login-page__mode-button ">Login</button>
+            </div>
+            <div className="login-page__button-container">
+              <button className="login-page__mode-button">Register</button>
+            </div>
+          </div>
+
           <form className="login-page__form">
             <div className="login-page__input-container">
-              <label>EMAIL</label>
-              <input placeholder="Enter email" type="text" />
+              <div className="login-page__icon-ctn">
+                <FontAwesomeIcon
+                  icon={faUser}
+                  className="login-page__fontawesome"
+                />
+              </div>
+              <input
+                placeholder="email"
+                type="text"
+                className="login-page__input"
+              />
             </div>
+
             <div className="login-page__input-container">
-              <label>PASSWORD</label>
-              <input placeholder="Enter email" type="password" />
+              <div className="login-page__icon-ctn">
+                <FontAwesomeIcon
+                  icon={faLock}
+                  className="login-page__fontawesome"
+                />
+              </div>
+              <input
+                placeholder="password"
+                type="password"
+                className="login-page__input"
+              />
             </div>
+
+            <button className="login-page__login-button">LOGIN</button>
+            <p style={{ margin: 10 }}>OR</p>
             <Facebook />
           </form>
         </div>
