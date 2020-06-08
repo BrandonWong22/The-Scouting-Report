@@ -1,3 +1,12 @@
+interface LoginPageState {
+  isLoggedIn: Boolean;
+  profileData: String | null;
+  loadLoginPage: Boolean;
+  loadRegisterPage: Boolean;
+  userEmail: String | null;
+  userPassword: String | null;
+}
+
 interface SearchState {
   validateSearch: Boolean;
   reportIsReady: Boolean;
