@@ -21,11 +21,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    // justify-content: center;
     width: 288px;
-    height: 370px;
+    height: 50%;
     border: 1px solid $silver;
     border-radius: 10px;
+    padding-top: 20px;
   }
 
   &__form {
@@ -52,14 +53,18 @@
 
     &--active {
       border-bottom: 1px solid $silver;
+      transition: visibility 0s linear 0s, opacity 300ms;
+    }
+
+    &--not-active {
+      border: none;
     }
   }
 
   &__mode-button {
     background-color: $white;
     border: none;
-    // width: 100%;
-    // height: 20px;
+    outline: none;
   }
 
   &__input-container {
@@ -67,6 +72,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    width: 220px;
   }
 
   &__icon-ctn {
@@ -87,6 +93,8 @@
     padding-left: 15px;
     border: none;
     background-color: $alabaster;
+    // width: 100%;
+    width: 200px;
     // padding-right: 10px;
   }
 

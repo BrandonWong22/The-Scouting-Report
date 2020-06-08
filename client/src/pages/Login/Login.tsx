@@ -44,7 +44,7 @@ class Login extends Component<{}, LoginPageState> {
                   Login
                 </button>
               </div>
-              <div className="login-page__button-container">
+              <div className="login-page__button-container login-page__button-container--not-active">
                 <button
                   className="login-page__mode-button"
                   onClick={this.handleRegisterMode}
@@ -85,7 +85,7 @@ class Login extends Component<{}, LoginPageState> {
 
               <button className="login-page__login-button">LOGIN</button>
               <p style={{ margin: 10 }}>OR</p>
-              <Facebook />
+              {/* <Facebook /> */}
             </form>
           </div>
         </div>
@@ -95,7 +95,7 @@ class Login extends Component<{}, LoginPageState> {
         <div className="login-page">
           <div className="login-page__container">
             <div className="login-page__login-register-container">
-              <div className="login-page__button-container ">
+              <div className="login-page__button-container login-page__button-container--not-active">
                 <button
                   className="login-page__mode-button"
                   onClick={this.handleLoginMode}
@@ -142,7 +142,21 @@ class Login extends Component<{}, LoginPageState> {
                 />
               </div>
 
-              <button className="login-page__login-button">LOGIN</button>
+              <div className="login-page__input-container">
+                <div className="login-page__icon-ctn">
+                  <FontAwesomeIcon
+                    icon={faLock}
+                    className="login-page__fontawesome"
+                  />
+                </div>
+                <input
+                  placeholder="validate password"
+                  type="password"
+                  className="login-page__input"
+                />
+              </div>
+
+              <button className="login-page__login-button">REGISTER</button>
             </form>
           </div>
         </div>
