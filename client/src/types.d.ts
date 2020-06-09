@@ -13,14 +13,14 @@ interface SearchProps {
 interface SearchState {
   validateSearch: Boolean;
   reportIsReady: Boolean;
-  allCompanies: Array<string>;
   redirect: Boolean;
   companySymbol: String;
+  allCompaniesFireBase: Array;
 }
 
 interface SearchBarProps {
   handleSearchSubmit(search: string, event: React.FormEvent<HTMLInputElement>);
-  allCompanies: Array<string>;
+  allCompaniesFireBase: Array;
 }
 
 interface ISearchBarState {

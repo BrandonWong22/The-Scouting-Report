@@ -4,10 +4,12 @@ import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
+import { firebaseConfig } from "../../firebase/fire";
 
 firebase.initializeApp({
-  apiKey: "AIzaSyDyKwEkYTg5Ap3NBVktoJtGwuS1QnDmoI0",
-  authDomain: "the-scouting-report.firebaseapp.com",
+  apiKey: firebaseConfig.apiKey,
+  authDomain: firebaseConfig.authDomain,
+  databaseURL: firebaseConfig.databaseURL,
 });
 
 class Login extends Component<LoginPageProps, LoginPageState> {

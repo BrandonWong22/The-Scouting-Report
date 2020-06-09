@@ -10,20 +10,20 @@ import firebase from "firebase";
 
 const API_URL: string = "http://localhost:8080/";
 
-// const REAL_API_URL: string =
-//   "https://financialmodelingprep.com/api/v3/stock/list?apikey=";
-// const API_KEY: string = "d084cd25905084810ee3429ed54c83d9";
-
 toast.configure();
 
 class Search extends Component<SearchProps, SearchState> {
   state: SearchState = {
     validateSearch: false,
     reportIsReady: false,
-    allCompanies: [],
     redirect: false,
     companySymbol: "",
+    allCompaniesFireBase: [],
   };
+
+  // connect to firebase db which has a json file of every
+  //publicly traded US company
+  database: any = firebase.database().ref().child("companylist");
 
   componentDidMount() {
     let passedDownProps: Object = Object.values(this.props);
@@ -59,19 +59,12 @@ class Search extends Component<SearchProps, SearchState> {
     }
   }
 
-  // tryGetAllCompanies = () => {
-  //   axios.get(REAL_API_URL + API_KEY).then((response) => {
-  //     // console.log(response.data);
-  //     this.setState({
-  //       APIAllCompanies: response.data,
-  //     });
-  //   });
-  // };
-
   getAllCompanies = () => {
-    axios.get(API_URL + "all-companies").then((response) => {
+    // query the database on firebase and the set the state
+    // of all companies to the database
+    this.database.on("value", (snap: any) => {
       this.setState({
-        allCompanies: response.data,
+        allCompaniesFireBase: snap.val(),
       });
     });
   };
@@ -131,7 +124,7 @@ class Search extends Component<SearchProps, SearchState> {
           <SearchIntro />
           <SearchBar
             handleSearchSubmit={this.handleSearchSubmit}
-            allCompanies={this.state.allCompanies}
+            allCompaniesFireBase={this.state.allCompaniesFireBase}
           />
           <button onClick={this.handleLogout} className="search__logout-button">
             Logout

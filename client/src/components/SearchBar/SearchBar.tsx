@@ -8,7 +8,7 @@ class SearchBar extends Component<SearchBarProps, ISearchBarState> {
   };
 
   handleOnSearch = (company: string) => {
-    // console.log("search", company);
+    console.log("search", company);
     this.setState({
       searchValue: company,
     });
@@ -16,9 +16,10 @@ class SearchBar extends Component<SearchBarProps, ISearchBarState> {
 
   handleOnSelect = (company: any) => {
     let companyArr: Array<string> = Object.values(company);
+    console.log(companyArr[1]);
 
     this.setState({
-      searchValue: companyArr[0],
+      searchValue: companyArr[1],
     });
   };
 
@@ -33,15 +34,13 @@ class SearchBar extends Component<SearchBarProps, ISearchBarState> {
   };
 
   render() {
-    let allCompanies: any = Object.values(this.props);
-
     return (
       <div className="search__searchbar-contents">
         <div className="search__searchbar-div">
           <div className="search__autocomplete-container">
             <form className="search__form" onSubmit={this.handleFormSubmit}>
               <ReactSearchAutocomplete
-                items={allCompanies[1].companylist}
+                items={this.props.allCompaniesFireBase}
                 onSearch={this.handleOnSearch}
                 onSelect={this.handleOnSelect}
                 onFocus={this.handleOnFocus}
