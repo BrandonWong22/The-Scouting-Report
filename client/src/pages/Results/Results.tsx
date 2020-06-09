@@ -6,6 +6,12 @@ import io from "socket.io-client";
 const socket = io("http://localhost:8080");
 
 class Results extends Component<ResultsProps, {}> {
+  componentDidMount() {
+    socket.on("stock_price", (data: any) => {
+      console.log(data);
+    });
+  }
+
   render() {
     // let passedDownProps: any = Object.values(this.props);
 

@@ -9,6 +9,8 @@ const axios = require("axios");
 
 let stockPrice = "";
 
+let data = "Test";
+
 require("dotenv").config();
 
 app.use(express.json());
@@ -24,10 +26,12 @@ function getUpToDateStockPrice() {
   });
 }
 
-setInterval(getUpToDateStockPrice, 10000);
+// setInterval(getUpToDateStockPrice, 10000);
 
+//configure web sockets
 io.on("connection", function (socket) {
   console.log("a user connected");
+  socket.emit("stock_price", data);
 });
 
 server.listen(8080, () => console.log("Server started at 8080"));
