@@ -1,10 +1,13 @@
+interface LoginPageProps {
+  history: any;
+}
+
 interface LoginPageState {
   isSignedIn: Boolean;
-  // profileData: String | null;
-  // loadLoginPage: Boolean;
-  // loadRegisterPage: Boolean;
-  // userEmail: String | null;
-  // userPassword: String | null;
+}
+
+interface SearchProps {
+  history: any;
 }
 
 interface SearchState {

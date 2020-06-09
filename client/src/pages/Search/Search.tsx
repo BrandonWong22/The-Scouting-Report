@@ -10,11 +10,6 @@ import firebase from "firebase";
 
 const API_URL: string = "http://localhost:8080/";
 
-interface SearchProps {
-  loginState?: undefined | Boolean;
-  history: any;
-}
-
 toast.configure();
 
 class Search extends Component<SearchProps, SearchState> {
@@ -28,8 +23,6 @@ class Search extends Component<SearchProps, SearchState> {
 
   componentDidMount() {
     let passedDownProps: Object = Object.values(this.props);
-    console.log(passedDownProps);
-
     let loginState = passedDownProps[1].state;
 
     if (loginState === undefined) {
@@ -101,7 +94,6 @@ class Search extends Component<SearchProps, SearchState> {
   };
 
   handleLogout = () => {
-    console.log("i have been touched");
     firebase.auth().signOut();
     this.props.history.push({
       pathname: "/",
@@ -109,8 +101,6 @@ class Search extends Component<SearchProps, SearchState> {
   };
 
   render() {
-    console.log(this.props);
-
     return (
       <div className="search">
         <div className="search__component-container">
@@ -119,7 +109,9 @@ class Search extends Component<SearchProps, SearchState> {
             handleSearchSubmit={this.handleSearchSubmit}
             allCompanies={this.state.allCompanies}
           />
-          <button onClick={this.handleLogout}>Logout</button>
+          <button onClick={this.handleLogout} className="search__logout-button">
+            Logout
+          </button>
         </div>
       </div>
     );

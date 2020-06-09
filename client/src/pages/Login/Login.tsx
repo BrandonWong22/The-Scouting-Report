@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import "./Login.scss";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-
-interface LoginPageProps {
-  history: any;
-}
+import loginImage from "../../assets/images/login.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLaptop, faDollarSign } from "@fortawesome/free-solid-svg-icons";
 
 firebase.initializeApp({
   apiKey: "AIzaSyDyKwEkYTg5Ap3NBVktoJtGwuS1QnDmoI0",
@@ -52,29 +51,32 @@ class Login extends Component<LoginPageProps, LoginPageState> {
   }
 
   render() {
-    // console.log(this.props);
-
-    if (!this.state.isSignedIn) {
-      return (
-        <div className="login-page">
+    return (
+      <div className="login-page">
+        <div className="login-page__container">
+          <h1>Login</h1>
+          {/* <img src={loginImage} alt="login" className="login-page__image" /> */}
+          <div className="login-page__icon-ctn">
+            <FontAwesomeIcon
+              icon={faDollarSign}
+              className="login-page__image"
+            />
+            <FontAwesomeIcon
+              icon={faDollarSign}
+              className="login-page__image"
+            />
+            <FontAwesomeIcon
+              icon={faDollarSign}
+              className="login-page__image"
+            />
+          </div>
           <StyledFirebaseAuth
             uiConfig={this.uiConfig}
             firebaseAuth={firebase.auth()}
           />
         </div>
-      );
-    } else {
-      return (
-        <div className="login-page">
-          logout
-          {/* {this.props.history.push({
-            pathname: "/search",
-            state: { isSignedIn: this.state.isSignedIn },
-          })} */}
-          <button onClick={() => firebase.auth().signOut()}>Sign Out</button>
-        </div>
-      );
-    }
+      </div>
+    );
   }
 }
 
