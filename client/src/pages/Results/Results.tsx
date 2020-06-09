@@ -1,6 +1,9 @@
 import React from "react";
 import { Component } from "react";
 import "./Results.scss";
+import io from "socket.io-client";
+
+const socket = io("http://localhost:8080");
 
 class Results extends Component<ResultsProps, {}> {
   render() {

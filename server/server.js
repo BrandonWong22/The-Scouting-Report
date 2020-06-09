@@ -1,14 +1,18 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const getAllComapnies = require("./routes/getAllCompanies");
 const searchCompany = require("./routes/searchCompany");
+const http = require("http").Server(app);
+const io = require("socket.io")(http);
 
 require("dotenv").config();
 
 app.use(express.json());
 app.use(cors());
-app.use("/", getAllComapnies); //will store this in a database eventually
 app.use("/search", searchCompany);
 
-app.listen(8080, () => console.log("Server started at 8080"));
+io.on("connection", function (socket) {
+  console.log("a user connected");
+});
+
+http.listen(8080, () => console.log("Server started at 8080"));
