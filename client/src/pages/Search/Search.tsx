@@ -44,6 +44,17 @@ class Search extends Component<SearchProps, SearchState> {
     }
   }
 
+  componentDidUpdate(_: any, prevState: { redirect: Boolean }) {
+    if (prevState.redirect !== this.state.redirect && !prevState.redirect) {
+      this.props.history.push({
+        pathname: "/results",
+        state: {
+          redirect: this.state.redirect,
+        },
+      });
+    }
+  }
+
   getAllCompanies = () => {
     axios.get(API_URL + "all-companies").then((response) => {
       this.setState({
