@@ -10,6 +10,10 @@ import firebase from "firebase";
 
 const API_URL: string = "http://localhost:8080/";
 
+// const REAL_API_URL: string =
+//   "https://financialmodelingprep.com/api/v3/stock/list?apikey=";
+// const API_KEY: string = "d084cd25905084810ee3429ed54c83d9";
+
 toast.configure();
 
 class Search extends Component<SearchProps, SearchState> {
@@ -54,6 +58,15 @@ class Search extends Component<SearchProps, SearchState> {
       });
     }
   }
+
+  // tryGetAllCompanies = () => {
+  //   axios.get(REAL_API_URL + API_KEY).then((response) => {
+  //     // console.log(response.data);
+  //     this.setState({
+  //       APIAllCompanies: response.data,
+  //     });
+  //   });
+  // };
 
   getAllCompanies = () => {
     axios.get(API_URL + "all-companies").then((response) => {
