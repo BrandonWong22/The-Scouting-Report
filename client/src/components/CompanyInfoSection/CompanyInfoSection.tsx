@@ -8,6 +8,7 @@ interface CompanyInfoProps {
   companyIndustry: String;
   companyWebsite: String;
   companyCEO: String;
+  companyDescription: String;
 }
 
 class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
@@ -19,6 +20,7 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
       companyIndustry,
       companyWebsite,
       companyCEO,
+      companyDescription,
     } = this.props;
     return (
       <div className="company-info">
@@ -28,6 +30,7 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
         <p>{companyExchange}</p>
         <p>{companyIndustry}</p>
         <p>{companyCEO}</p>
+        <p>{companyDescription}</p>
         <p>{companyWebsite}</p>
       </div>
     );

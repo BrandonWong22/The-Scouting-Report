@@ -106,6 +106,11 @@ class Search extends Component<SearchProps, SearchState> {
             redirect: true,
             companySymbol: searchResult,
           });
+          axios
+            .post(API_URL + "stock", this.state.companySymbol)
+            .then((response) => {
+              console.log(response);
+            });
         }
       });
     }

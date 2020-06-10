@@ -24,6 +24,7 @@ interface ResultsState {
   companyIndustry: String;
   companyWebsite: String;
   companyCEO: String;
+  companyDescription: String;
   loading: Boolean;
 }
 
@@ -35,6 +36,7 @@ class Results extends Component<ResultsProps, ResultsState> {
     companyIndustry: "",
     companyWebsite: "",
     companyCEO: "",
+    companyDescription: "",
     loading: true,
   };
 
@@ -59,6 +61,7 @@ class Results extends Component<ResultsProps, ResultsState> {
         companyIndustry: data.profile.industry,
         companyWebsite: data.profile.website,
         companyCEO: data.profile.ceo,
+        companyDescription: data.profile.description,
       });
     });
     // this.setState({
@@ -79,6 +82,7 @@ class Results extends Component<ResultsProps, ResultsState> {
           companyIndustry={this.state.companyIndustry}
           companyWebsite={this.state.companyWebsite}
           companyCEO={this.state.companyCEO}
+          companyDescription={this.state.companyDescription}
         />
         <CompanyResultsSection />
         {/* <ClipLoader
