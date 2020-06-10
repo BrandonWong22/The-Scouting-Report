@@ -18,8 +18,6 @@ app.use(express.json());
 app.use(cors());
 app.use("/search", searchCompany);
 
-//function to stock prices every 10 seconds
-
 app.get("/testtest", (req, res) => {
   res.send("working");
 });
@@ -33,26 +31,30 @@ app.post("/stock/", async (req, res) => {
   //   console.log(error);
   // }
 
+  console.log("working");
+
   res.send("working");
 });
 
-function getUpToDateStockPrice(compSymbol) {
+function getUpToDateStockPrice() {
   let url =
-    "https://financialmodelingprep.com/api/v3/quote-short/" +
-    compSymbol +
-    "?apikey=d084cd25905084810ee3429ed54c83d9";
+    "https://financialmodelingprep.com/api/v3/quote-short/AAPL?apikey=d084cd25905084810ee3429ed54c83d9";
   axios.get(url).then((response) => {
     stockPrice = response.data[0].price;
-    console.log(stockPrice);
+    data = stockPrice;
+    // console.log("stock price", stockPrice);
+    // console.log("data", data);
   });
 }
 
-// setInterval(() => getUpToDateStockPrice(defSymbol), 3000);
+setInterval(() => getUpToDateStockPrice(), 2000);
 
 //configure web sockets
 io.on("connection", function (socket) {
   console.log("a user connected");
-  socket.emit("stock_price", data);
+  setInterval(() => socket.emit("stock_price", data), 2000);
+
+  // console.log(data);
 });
 
 server.listen(8080, () => console.log("Server started at 8080"));

@@ -26,6 +26,7 @@ interface ResultsState {
   companyCEO: String;
   companyDescription: String;
   loading: Boolean;
+  currentStockPrice: String;
 }
 
 class Results extends Component<ResultsProps, ResultsState> {
@@ -38,6 +39,7 @@ class Results extends Component<ResultsProps, ResultsState> {
     companyCEO: "",
     companyDescription: "",
     loading: true,
+    currentStockPrice: "",
   };
 
   componentDidMount() {
@@ -52,7 +54,7 @@ class Results extends Component<ResultsProps, ResultsState> {
       "?apikey=d084cd25905084810ee3429ed54c83d9";
 
     axios.get(url).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       const data: any = response.data;
       this.setState({
         companySymbol: data.symbol,
@@ -64,15 +66,20 @@ class Results extends Component<ResultsProps, ResultsState> {
         companyDescription: data.profile.description,
       });
     });
-    // this.setState({
-    //   loading: false,
-    // });
+    this.setState({
+      loading: false,
+    });
     socket.on("stock_price", (data: string) => {
-      console.log(data);
+      console.log("socket data", data);
+      this.setState({
+        currentStockPrice: data,
+      });
     });
   }
 
   render() {
+    console.log("state", this.state.currentStockPrice);
+
     return (
       <div className="results-page">
         <CompanyInfoSection
@@ -85,6 +92,7 @@ class Results extends Component<ResultsProps, ResultsState> {
           companyDescription={this.state.companyDescription}
         />
         <CompanyResultsSection />
+        {this.state.currentStockPrice}
         {/* <ClipLoader
           css={override}
           size={150}
