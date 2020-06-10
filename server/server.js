@@ -35,20 +35,20 @@ io.on("connection", function (socket) {
   app.post("/stock/", (req, res) => {
     console.log("symbol", req.body.symbol);
 
-    // setInterval(() => {
-    //   getUpToDateStockPrice(req.body.symbol).then((data) => {
-    //     console.log(data);
-    //     socket.emit("stock_price", (data = "123"));
-    //   });
-    // }, 2000);
+    setInterval(() => {
+      getUpToDateStockPrice(req.body.symbol).then((data) => {
+        console.log(data);
+        socket.emit("stock_price", data);
+      });
+    }, 2000);
   });
 
-  setInterval(() => {
-    getUpToDateStockPrice("AAPL").then((data) => {
-      console.log(data);
-      socket.emit("stock_price", data);
-    });
-  }, 2000);
+  // setInterval(() => {
+  //   getUpToDateStockPrice("AAPL").then((data) => {
+  //     console.log(data);
+  //     socket.emit("stock_price", data);
+  //   });
+  // }, 2000);
 });
 
 server.listen(8080, () => console.log("Server started at 8080"));

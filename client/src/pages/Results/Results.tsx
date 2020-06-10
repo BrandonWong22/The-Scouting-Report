@@ -17,6 +17,12 @@ import io from "socket.io-client";
 
 const socket = io("http://localhost:8080");
 
+const API_URL: string = "http://localhost:8080/";
+
+interface ResultsProps {
+  location: any;
+}
+
 interface ResultsState {
   companySymbol: String;
   companyName: String;
@@ -69,6 +75,15 @@ class Results extends Component<ResultsProps, ResultsState> {
     this.setState({
       loading: false,
     });
+
+    axios
+      .post(API_URL + "stock", {
+        symbol: this.props.location.state.companySymbol,
+      })
+      .then((response) => {
+        console.log(response);
+      });
+
     socket.on("stock_price", (data: string) => {
       console.log("socket data", data);
       this.setState({
@@ -78,7 +93,8 @@ class Results extends Component<ResultsProps, ResultsState> {
   }
 
   render() {
-    console.log("state", this.state.currentStockPrice);
+    // console.log("state", this.state.currentStockPrice);
+    console.log(this.props);
 
     return (
       <div className="results-page">

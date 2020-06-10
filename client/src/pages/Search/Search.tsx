@@ -107,11 +107,11 @@ class Search extends Component<SearchProps, SearchState> {
             companySymbol: searchResult,
           });
 
-          axios
-            .post(API_URL + "stock", { symbol: this.state.companySymbol })
-            .then((response) => {
-              console.log(response);
-            });
+          // axios
+          //   .post(API_URL + "stock", { symbol: this.state.companySymbol })
+          //   .then((response) => {
+          //     console.log(response);
+          //   });
         }
       });
     }
