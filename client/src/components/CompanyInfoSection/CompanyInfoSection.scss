@@ -1,0 +1,10 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/mixins";
+
+.company-info {
+  background-color: $light-mode-nav-background-color;
+  padding-left: $margin-mobile;
+  padding-right: $margin-mobile;
+  color: $light-mode-text-color;
+}

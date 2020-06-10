@@ -54,6 +54,7 @@ class Search extends Component<SearchProps, SearchState> {
         pathname: "/results",
         state: {
           redirect: this.state.redirect,
+          companySymbol: this.state.companySymbol,
         },
       });
     }

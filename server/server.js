@@ -9,7 +9,7 @@ const axios = require("axios");
 
 let stockPrice = "";
 
-let data = "Test";
+let data = "hello world";
 
 require("dotenv").config();
 
@@ -17,6 +17,7 @@ app.use(express.json());
 app.use(cors());
 app.use("/search", searchCompany);
 
+//function to stock prices every 10 seconds
 function getUpToDateStockPrice() {
   let url =
     "https://financialmodelingprep.com/api/v3/quote-short/AAPL?apikey=d084cd25905084810ee3429ed54c83d9";

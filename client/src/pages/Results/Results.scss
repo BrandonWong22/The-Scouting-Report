@@ -1,0 +1,8 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/mixins";
+
+.results-page {
+  display: flex;
+  flex-direction: column;
+}
