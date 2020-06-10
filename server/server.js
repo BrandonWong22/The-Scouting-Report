@@ -7,8 +7,6 @@ const server = require("http").Server(app);
 const io = require("socket.io")(server);
 const axios = require("axios");
 
-let stockPrice = "";
-
 require("dotenv").config();
 
 app.use(express.json());
@@ -19,10 +17,6 @@ app.get("/testtest", (req, res) => {
   res.send("working");
 });
 
-let defSymbol = "";
-let sendData = false;
-
-// let data = "hello world";
 function getUpToDateStockPrice(symbol) {
   let url =
     "https://financialmodelingprep.com/api/v3/quote-short/" +
@@ -33,25 +27,28 @@ function getUpToDateStockPrice(symbol) {
   });
 }
 
-// getUpToDateStockPrice("TSLA").then((data) => {
-//   console.log(data);
-// });
-
 //configure web sockets
 io.on("connection", function (socket) {
   console.log("a user connected");
 
   // change to get
   app.post("/stock/", (req, res) => {
-    console.log(req.body.symbol);
+    console.log("symbol", req.body.symbol);
 
-    setInterval(() => {
-      getUpToDateStockPrice(req.body.symbol).then((data) => {
-        console.log(data);
-        socket.emit("stock_price", (data = "123"));
-      });
-    }, 2000);
+    // setInterval(() => {
+    //   getUpToDateStockPrice(req.body.symbol).then((data) => {
+    //     console.log(data);
+    //     socket.emit("stock_price", (data = "123"));
+    //   });
+    // }, 2000);
   });
+
+  setInterval(() => {
+    getUpToDateStockPrice("AAPL").then((data) => {
+      console.log(data);
+      socket.emit("stock_price", data);
+    });
+  }, 2000);
 });
 
 server.listen(8080, () => console.log("Server started at 8080"));
