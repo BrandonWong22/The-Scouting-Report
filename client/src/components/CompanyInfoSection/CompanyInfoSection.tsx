@@ -3,17 +3,6 @@ import "./CompanyInfoSection.scss";
 import Collapsible from "react-collapsible";
 import firebase from "firebase";
 
-interface CompanyInfoProps {
-  companySymbol: string;
-  companyName: string;
-  companyExchange: string;
-  companyIndustry: string;
-  companyWebsite: string;
-  companyCEO: string;
-  companyDescription?: string;
-  history: any;
-}
-
 class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
   handleLogout = () => {
     firebase.auth().signOut();

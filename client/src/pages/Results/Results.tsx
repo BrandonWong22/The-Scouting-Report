@@ -10,23 +10,6 @@ const socket = io("http://localhost:8080");
 
 const API_URL: string = "http://localhost:8080/";
 
-interface ResultsProps {
-  location: any;
-  history: any;
-}
-
-interface ResultsState {
-  companySymbol: String;
-  companyName: String;
-  companyExchange: String;
-  companyIndustry: String;
-  companyWebsite: String;
-  companyCEO: String;
-  companyDescription: String;
-  loading: Boolean;
-  currentStockPrice: String;
-}
-
 class Results extends Component<ResultsProps, ResultsState> {
   state = {
     companySymbol: "",
@@ -83,6 +66,11 @@ class Results extends Component<ResultsProps, ResultsState> {
 
   componentWillUnmount() {
     socket.emit("disconnect", "i have been disconnected");
+
+    //?!?!?!?!?!
+    // socket.on('disconnectThatSoc', function(){
+    //   socket.disconnect();
+    // })
   }
 
   render() {
