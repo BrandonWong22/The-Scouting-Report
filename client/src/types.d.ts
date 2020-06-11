@@ -43,6 +43,7 @@ interface ResultsState {
   companyDescription: String;
   loading: Boolean;
   currentStockPrice: String;
+  socket: any;
 }
 
 interface CompanyInfoProps {

@@ -31,8 +31,7 @@ let interval;
 
 //configure web sockets
 io.on("connection", function (socket) {
-  console.log("a user connected");
-  console.log(socket.id);
+  console.log("a user connected", socket.id);
 
   if (interval) {
     clearInterval(interval);
@@ -43,24 +42,15 @@ io.on("connection", function (socket) {
     clearInterval(interval);
   });
 
-  // change to get
-  app.post("/stock/", (req, res) => {
-    console.log("symbol", req.body.symbol);
-
+  socket.on("client-message", (symbol) => {
+    console.log("CLIENT EVENT", symbol);
     interval = setInterval(() => {
-      getUpToDateStockPrice(req.body.symbol).then((data) => {
+      getUpToDateStockPrice(symbol).then((data) => {
         console.log(data);
         socket.emit("stock_price", data);
       });
     }, 2000);
   });
-
-  // setInterval(() => {
-  //   getUpToDateStockPrice(req.body.symbol).then((data) => {
-  //     console.log(data);
-  //     socket.emit("stock_price", data);
-  //   });
-  // }, 2000);
 });
 
 server.listen(8080, () => console.log("Server started at 8080"));

@@ -4,9 +4,7 @@ import axios from "axios";
 import CompanyInfoSection from "../../components/CompanyInfoSection/CompanyInfoSection";
 import CompanyResultsSection from "../../components/CompanyResultsSection/CompanyResultsSection";
 
-import io from "socket.io-client";
-
-const socket = io("http://localhost:8080");
+import connectSocket from "socket.io-client";
 
 const API_URL: string = "http://localhost:8080/";
 
@@ -21,13 +19,13 @@ class Results extends Component<ResultsProps, ResultsState> {
     companyDescription: "",
     loading: true,
     currentStockPrice: "",
+    socket: connectSocket("http://localhost:8080"),
   };
 
   componentDidMount() {
     //make get request using data from the search page to get
     //company profile from API
-    let passedDownProps: any = Object.values(this.props);
-    let symbol: String = passedDownProps[1].state.companySymbol;
+    let symbol: String = this.props.location.state.companySymbol;
 
     let url =
       "https://financialmodelingprep.com/api/v3/company/profile/" +
@@ -48,35 +46,25 @@ class Results extends Component<ResultsProps, ResultsState> {
       });
     });
 
-    axios
-      .post(API_URL + "stock", {
-        symbol: this.props.location.state.companySymbol,
-      })
-      .then((response) => {
-        console.log(response);
-      });
-
-    socket.on("stock_price", (data: string) => {
-      console.log("socket data", data);
-      this.setState({
-        currentStockPrice: data,
+    this.state.socket.on("connect", () => {
+      this.state.socket.emit(
+        "client-message",
+        this.props.location.state.companySymbol
+      );
+      this.state.socket.on("stock_price", (data: string) => {
+        console.log("socket data", data);
+        this.setState({
+          currentStockPrice: data,
+        });
       });
     });
   }
 
   componentWillUnmount() {
-    socket.emit("disconnect", "i have been disconnected");
-
-    //?!?!?!?!?!
-    // socket.on('disconnectThatSoc', function(){
-    //   socket.disconnect();
-    // })
+    this.state.socket.close();
   }
 
   render() {
-    // console.log("state", this.state.currentStockPrice);
-    // console.log(this.props.history);
-
     return (
       <div className="results-page">
         <CompanyInfoSection
