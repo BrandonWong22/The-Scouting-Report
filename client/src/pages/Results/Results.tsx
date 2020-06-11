@@ -12,6 +12,7 @@ const API_URL: string = "http://localhost:8080/";
 
 interface ResultsProps {
   location: any;
+  history: any;
 }
 
 interface ResultsState {
@@ -86,7 +87,7 @@ class Results extends Component<ResultsProps, ResultsState> {
 
   render() {
     // console.log("state", this.state.currentStockPrice);
-    console.log(this.props);
+    // console.log(this.props.history);
 
     return (
       <div className="results-page">
@@ -97,6 +98,7 @@ class Results extends Component<ResultsProps, ResultsState> {
           companyIndustry={this.state.companyIndustry}
           companyWebsite={this.state.companyWebsite}
           companyCEO={this.state.companyCEO}
+          history={this.props.history}
           // companyDescription={this.state.companyDescription}
         />
         <CompanyResultsSection />

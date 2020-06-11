@@ -106,12 +106,6 @@ class Search extends Component<SearchProps, SearchState> {
             redirect: true,
             companySymbol: searchResult,
           });
-
-          // axios
-          //   .post(API_URL + "stock", { symbol: this.state.companySymbol })
-          //   .then((response) => {
-          //     console.log(response);
-          //   });
         }
       });
     }
@@ -125,6 +119,8 @@ class Search extends Component<SearchProps, SearchState> {
   };
 
   render() {
+    // console.log(this.props);
+
     return (
       <div className="search">
         <div className="search__component-container">
@@ -133,9 +129,6 @@ class Search extends Component<SearchProps, SearchState> {
             handleSearchSubmit={this.handleSearchSubmit}
             allCompaniesFireBase={this.state.allCompaniesFireBase}
           />
-          <button onClick={this.handleLogout} className="search__logout-button">
-            Logout
-          </button>
         </div>
       </div>
     );

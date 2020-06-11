@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./CompanyInfoSection.scss";
 import Collapsible from "react-collapsible";
+import firebase from "firebase";
 
 interface CompanyInfoProps {
   companySymbol: string;
@@ -10,9 +11,17 @@ interface CompanyInfoProps {
   companyWebsite: string;
   companyCEO: string;
   companyDescription?: string;
+  history: any;
 }
 
 class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
+  handleLogout = () => {
+    firebase.auth().signOut();
+    this.props.history.push({
+      pathname: "/",
+    });
+  };
+
   render() {
     const {
       companySymbol,
@@ -50,6 +59,13 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
             <p className="company-info__info-description">Website: </p>
             <a href={companyWebsite}>{companyWebsite}</a>
           </div>
+
+          <button
+            onClick={this.handleLogout}
+            className="company-info__logout-button"
+          >
+            Logout
+          </button>
         </Collapsible>
         <div className="company-info__tablet-mode">
           <div className="company-info__company-name-ctn">
@@ -80,6 +96,13 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
             <p className="company-info__info-description">Website: </p>
             <a href={companyWebsite}>{companyWebsite}</a>
           </div>
+
+          <button
+            onClick={this.handleLogout}
+            className="company-info__logout-button"
+          >
+            Logout
+          </button>
         </div>
       </div>
     );

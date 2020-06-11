@@ -9,6 +9,8 @@
   color: $light-mode-text-color;
   padding-top: 20px;
   padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 
   @include tablet {
     height: 100vh;
@@ -56,6 +58,15 @@
     @include desktop {
       font-size: 30px;
     }
+  }
+
+  &__logout-button {
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    margin-top: 15px;
+    border-radius: 10px;
+    outline: none;
   }
 }
 
