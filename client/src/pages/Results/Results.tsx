@@ -4,16 +4,7 @@ import axios from "axios";
 import CompanyInfoSection from "../../components/CompanyInfoSection/CompanyInfoSection";
 import CompanyResultsSection from "../../components/CompanyResultsSection/CompanyResultsSection";
 
-// import { css } from "@emotion/core";
-// import ClipLoader from "react-spinners/ClipLoader";
-
 import io from "socket.io-client";
-
-// const override = css`
-//   display: block;
-//   margin: 0 auto;
-//   border-color: red;
-// `;
 
 const socket = io("http://localhost:8080");
 
@@ -72,9 +63,6 @@ class Results extends Component<ResultsProps, ResultsState> {
         companyDescription: data.profile.description,
       });
     });
-    this.setState({
-      loading: false,
-    });
 
     axios
       .post(API_URL + "stock", {
@@ -92,6 +80,10 @@ class Results extends Component<ResultsProps, ResultsState> {
     });
   }
 
+  componentWillUnmount() {
+    socket.emit("disconnect", "i have been disconnected");
+  }
+
   render() {
     // console.log("state", this.state.currentStockPrice);
     console.log(this.props);
@@ -105,7 +97,7 @@ class Results extends Component<ResultsProps, ResultsState> {
           companyIndustry={this.state.companyIndustry}
           companyWebsite={this.state.companyWebsite}
           companyCEO={this.state.companyCEO}
-          companyDescription={this.state.companyDescription}
+          // companyDescription={this.state.companyDescription}
         />
         <CompanyResultsSection />
         {this.state.currentStockPrice}

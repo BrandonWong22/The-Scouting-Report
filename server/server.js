@@ -27,15 +27,27 @@ function getUpToDateStockPrice(symbol) {
   });
 }
 
+let interval;
+
 //configure web sockets
 io.on("connection", function (socket) {
   console.log("a user connected");
+  console.log(socket.id);
+
+  if (interval) {
+    clearInterval(interval);
+  }
+
+  socket.on("disconnect", (reason) => {
+    console.log("user disconnected");
+    clearInterval(interval);
+  });
 
   // change to get
   app.post("/stock/", (req, res) => {
     console.log("symbol", req.body.symbol);
 
-    setInterval(() => {
+    interval = setInterval(() => {
       getUpToDateStockPrice(req.body.symbol).then((data) => {
         console.log(data);
         socket.emit("stock_price", data);
@@ -44,7 +56,7 @@ io.on("connection", function (socket) {
   });
 
   // setInterval(() => {
-  //   getUpToDateStockPrice("AAPL").then((data) => {
+  //   getUpToDateStockPrice(req.body.symbol).then((data) => {
   //     console.log(data);
   //     socket.emit("stock_price", data);
   //   });
