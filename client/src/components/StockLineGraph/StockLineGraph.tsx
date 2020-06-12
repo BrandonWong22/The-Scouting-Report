@@ -11,7 +11,7 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
     labels: props.stockData30DateLabel.reverse(),
     datasets: [
       {
-        label: "Sales 2020 (M)",
+        label: "Stock Prices",
         data: props.stockData30.reverse(),
         borderColor: ["rgba(255, 206, 86, 0.2)"],
         backgroundColor: ["rgba(255, 206, 86, 0.2)"],
@@ -21,22 +21,41 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
     ],
   };
 
-  const options: { title: Object; scales: Object } = {
+  const options: {
+    title: Object;
+    scales: Object;
+    responsive: boolean;
+    maintainAspectRatio: boolean;
+  } = {
     title: {
       display: true,
-      text: "Line Chart",
+      text: "Stock Prices for the Past 30 Days",
     },
     scales: {
       yAxes: [
         {
           ticks: {
-            min: Math.min(...props.stockData30),
-            max: Math.max(...props.stockData30),
-            stepSize: 1,
+            min: Math.min(...props.stockData30) - 25,
+            max: Math.max(...props.stockData30) + 25,
+            stepSize: 5,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "Price in USD",
+          },
+        },
+      ],
+      xAxes: [
+        {
+          scaleLabel: {
+            display: true,
+            labelString: "Date in (YYYY-MM-DD)",
           },
         },
       ],
     },
+    responsive: true,
+    maintainAspectRatio: false,
   };
 
   return <Line data={data} options={options} />;

@@ -54,4 +54,20 @@
       width: 400px;
     }
   }
+
+  &__graph-ctn {
+    height: 600px;
+    width: 280px;
+    position: relative;
+
+    @include tablet {
+      height: 400px;
+      width: 450px;
+    }
+
+    @include desktop {
+      width: 1200px;
+      height: 600px;
+    }
+  }
 }

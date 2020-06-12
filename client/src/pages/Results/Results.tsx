@@ -69,16 +69,17 @@ class Results extends Component<ResultsProps, ResultsState> {
         `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${day30}&to=${yesterday}&apikey=d084cd25905084810ee3429ed54c83d9`
       )
       .then((response) => {
-        // let filteredData: Array<number> = []
-        // let dates: Array<string> = []
-        response.data.historical.map((data: any) => {
-          this.setState({
-            stockData30: [...this.state.stockData30, data.close],
-            stockData30DateLabel: [
-              ...this.state.stockData30DateLabel,
-              data.date,
-            ],
-          });
+        let filteredData: Array<number> = [];
+        let filteredDates: Array<string> = [];
+
+        response.data.historical.forEach((element: any) => {
+          filteredData.push(element.close);
+          filteredDates.push(element.date);
+        });
+
+        this.setState({
+          stockData30: filteredData,
+          stockData30DateLabel: filteredDates,
         });
       });
   };
