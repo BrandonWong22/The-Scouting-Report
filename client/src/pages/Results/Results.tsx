@@ -64,6 +64,8 @@ class Results extends Component<ResultsProps, ResultsState> {
     let yesterday: string = this.getDate(Date.now() - 1 * 24 * 60 * 60 * 1000);
     let day30: string = this.getDate(Date.now() - 30 * 24 * 60 * 60 * 1000);
 
+    // console.log(yesterday, day30);
+
     axios
       .get(
         `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${day30}&to=${yesterday}&apikey=d084cd25905084810ee3429ed54c83d9`
@@ -78,8 +80,8 @@ class Results extends Component<ResultsProps, ResultsState> {
         });
 
         this.setState({
-          stockData30: filteredData,
-          stockData30DateLabel: filteredDates,
+          stockData30: filteredData.reverse(),
+          stockData30DateLabel: filteredDates.reverse(),
         });
       });
   };
@@ -153,8 +155,6 @@ class Results extends Component<ResultsProps, ResultsState> {
   }
 
   render() {
-    console.log(this.state.stockData30);
-
     return (
       <div className="results-page">
         <CompanyInfoSection

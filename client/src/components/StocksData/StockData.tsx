@@ -74,10 +74,12 @@ class StockData extends Component<StockDataProps, {}> {
         </div>
 
         <div className="stock-data__graph-ctn">
-          <StockLineGraph
-            stockData30={stockData30}
-            stockData30DateLabel={stockData30DateLabel}
-          />
+          {stockDate.length && (
+            <StockLineGraph
+              stockData30={stockData30}
+              stockData30DateLabel={stockData30DateLabel}
+            />
+          )}
         </div>
       </div>
     );
