@@ -6,7 +6,7 @@ import CompanyResultsSection from "../../components/CompanyResultsSection/Compan
 
 import connectSocket from "socket.io-client";
 
-const API_URL: string = "http://localhost:8080/";
+// const API_URL: string = "http://localhost:8080/";
 
 class Results extends Component<ResultsProps, ResultsState> {
   state = {
@@ -52,7 +52,7 @@ class Results extends Component<ResultsProps, ResultsState> {
         this.props.location.state.companySymbol
       );
       this.state.socket.on("stock_price", (data: string) => {
-        console.log("socket data", data);
+        // console.log("socket data", data);
         this.setState({
           currentStockPrice: data,
         });
@@ -78,7 +78,7 @@ class Results extends Component<ResultsProps, ResultsState> {
           // companyDescription={this.state.companyDescription}
         />
         <CompanyResultsSection />
-        {this.state.currentStockPrice}
+        {/* {this.state.currentStockPrice} */}
         {/* <ClipLoader
           css={override}
           size={150}
