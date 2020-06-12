@@ -44,6 +44,13 @@ interface ResultsState {
   loading: Boolean;
   currentStockPrice: String;
   socket: any;
+  stockDate: string;
+  stockOpenPrice: number | null;
+  stockLowPrice: number | null;
+  stockHighPrice: number | null;
+  stockClosingPrice: number | null;
+  stockVolume: number | null;
+  stockChange: number | null;
 }
 
 interface CompanyInfoProps {
@@ -55,4 +62,34 @@ interface CompanyInfoProps {
   companyCEO: string;
   companyDescription?: string;
   history: any;
+}
+
+interface CompanyResultsProps {
+  companyName: string;
+  companySymbol: string;
+  currentStockPrice: string;
+  stockDate: string;
+  stockOpenPrice: number | null;
+  stockLowPrice: number | null;
+  stockHighPrice: number | null;
+  stockClosingPrice: number | null;
+  stockVolume: number | null;
+  stockChange: number | null;
+}
+
+interface CompanyResultsState {
+  tabIndex: number;
+}
+
+interface StockDataProps {
+  companyName: string;
+  companySymbol: string;
+  currentStockPrice: string;
+  stockDate: string;
+  stockOpenPrice: number | null;
+  stockLowPrice: number | null;
+  stockHighPrice: number | null;
+  stockClosingPrice: number | null;
+  stockVolume: number | null;
+  stockChange: number | null;
 }

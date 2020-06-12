@@ -20,18 +20,62 @@ class Results extends Component<ResultsProps, ResultsState> {
     loading: true,
     currentStockPrice: "",
     socket: connectSocket("http://localhost:8080"),
+    stockDate: "",
+    stockOpenPrice: null,
+    stockLowPrice: null,
+    stockHighPrice: null,
+    stockClosingPrice: null,
+    stockVolume: null,
+    stockChange: null,
   };
 
   componentDidMount() {
     //make get request using data from the search page to get
     //company profile from API
-    let symbol: String = this.props.location.state.companySymbol;
+    let symbol: string = this.props.location.state.companySymbol;
 
-    let url =
+    let url: string =
       "https://financialmodelingprep.com/api/v3/company/profile/" +
       symbol +
       "?apikey=d084cd25905084810ee3429ed54c83d9";
 
+    this.fetchCompanyData(symbol);
+    this.fetchCompanyInformation(url);
+    this.configureSocketConnection();
+  }
+
+  //get numerical data for the stocks tab
+  fetchCompanyData = (symbol: string) => {
+    const API_URL_NUMERICAL_DATA: string =
+      "https://financialmodelingprep.com/api/v3/historical-price-full/";
+
+    const API_KEY = "?apikey=d084cd25905084810ee3429ed54c83d9";
+
+    axios.get(API_URL_NUMERICAL_DATA + symbol + API_KEY).then((response) => {
+      let resData: {
+        date: string;
+        open: number;
+        low: number;
+        high: number;
+        close: number;
+        volume: number;
+        change: null;
+      } = response.data.historical[0];
+
+      this.setState({
+        stockDate: resData.date,
+        stockOpenPrice: resData.open,
+        stockLowPrice: resData.low,
+        stockHighPrice: resData.high,
+        stockClosingPrice: resData.close,
+        stockVolume: resData.volume,
+        stockChange: resData.change,
+      });
+    });
+  };
+
+  //get company information for the nav bar
+  fetchCompanyInformation = (url: string) => {
     axios.get(url).then((response) => {
       // console.log(response.data);
       const data: any = response.data;
@@ -45,7 +89,10 @@ class Results extends Component<ResultsProps, ResultsState> {
         companyDescription: data.profile.description,
       });
     });
+  };
 
+  //configure web socket connection
+  configureSocketConnection = () => {
     this.state.socket.on("connect", () => {
       this.state.socket.emit(
         "client-message",
@@ -58,8 +105,9 @@ class Results extends Component<ResultsProps, ResultsState> {
         });
       });
     });
-  }
+  };
 
+  //disconnect web socket when component unmounts
   componentWillUnmount() {
     this.state.socket.close();
   }
@@ -81,6 +129,13 @@ class Results extends Component<ResultsProps, ResultsState> {
           companyName={this.state.companyName}
           companySymbol={this.state.companySymbol}
           currentStockPrice={this.state.currentStockPrice}
+          stockDate={this.state.stockDate}
+          stockOpenPrice={this.state.stockOpenPrice}
+          stockLowPrice={this.state.stockLowPrice}
+          stockHighPrice={this.state.stockHighPrice}
+          stockClosingPrice={this.state.stockClosingPrice}
+          stockVolume={this.state.stockVolume}
+          stockChange={this.state.stockChange}
         />
         {/* {this.state.currentStockPrice} */}
         {/* <ClipLoader

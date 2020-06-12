@@ -4,16 +4,6 @@ import "./CompanyResultsSection.scss";
 import StockData from "../StocksData/StockData";
 import FinancialStatement from "../FinancialStatement/FinancialStatement";
 
-interface CompanyResultsProps {
-  companyName: string;
-  companySymbol: string;
-  currentStockPrice: string;
-}
-
-interface CompanyResultsState {
-  tabIndex: number;
-}
-
 class CompanyResultsSection extends Component<
   CompanyResultsProps,
   CompanyResultsState
@@ -23,7 +13,18 @@ class CompanyResultsSection extends Component<
   };
 
   render() {
-    const { companyName, companySymbol, currentStockPrice } = this.props;
+    const {
+      companyName,
+      companySymbol,
+      currentStockPrice,
+      stockDate,
+      stockOpenPrice,
+      stockLowPrice,
+      stockHighPrice,
+      stockClosingPrice,
+      stockVolume,
+      stockChange,
+    } = this.props;
 
     return (
       <div className="company-results">
@@ -47,6 +48,13 @@ class CompanyResultsSection extends Component<
                   companyName={companyName}
                   companySymbol={companySymbol}
                   currentStockPrice={currentStockPrice}
+                  stockDate={stockDate}
+                  stockOpenPrice={stockOpenPrice}
+                  stockLowPrice={stockLowPrice}
+                  stockHighPrice={stockHighPrice}
+                  stockClosingPrice={stockClosingPrice}
+                  stockVolume={stockVolume}
+                  stockChange={stockChange}
                 />
               </TabPanel>
               <TabPanel className="react-tab__tab-panel">

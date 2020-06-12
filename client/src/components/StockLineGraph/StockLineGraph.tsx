@@ -1,7 +1,9 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 
-const StockLineGraph: React.FC = () => {
+interface StockLineGraphProps {}
+
+const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
   const data: { labels: Array<string>; datasets: Array<Object> } = {
     labels: ["Jan", "Feb", "Mar", "April", "May"],
     datasets: [
