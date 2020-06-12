@@ -13,7 +13,7 @@
 
   &__section-results {
     margin-bottom: 15px;
-    // align-self: flex-start;
+    margin-top: 15px;
   }
 
   &__data-ctn {
@@ -46,9 +46,12 @@
   &__section-ctn {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
+    @include tablet {
+      margin-bottom: 10px;
+    }
 
     @include desktop {
+      margin-bottom: 15px;
       width: 400px;
     }
   }
