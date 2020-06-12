@@ -77,7 +77,11 @@ class Results extends Component<ResultsProps, ResultsState> {
           history={this.props.history}
           // companyDescription={this.state.companyDescription}
         />
-        <CompanyResultsSection />
+        <CompanyResultsSection
+          companyName={this.state.companyName}
+          companySymbol={this.state.companySymbol}
+          currentStockPrice={this.state.currentStockPrice}
+        />
         {/* {this.state.currentStockPrice} */}
         {/* <ClipLoader
           css={override}

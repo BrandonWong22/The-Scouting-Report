@@ -25,6 +25,7 @@
   // }
 
   &__results-header {
+    color: $light-mode-text-color;
     @include tablet {
       font-size: 22px;
     }
@@ -35,8 +36,10 @@
   }
 }
 
+//styles for the tab bar
 .react-tabs {
   -webkit-tap-highlight-color: transparent;
+  padding-top: 20px;
 
   &__tab-list {
     border-bottom: 1px solid #aaa;
@@ -57,7 +60,7 @@
     &--selected {
       background: #fff;
       border-color: #aaa;
-      color: black;
+      color: $light-mode-text-color;
       border-radius: 5px 5px 0 0;
     }
 

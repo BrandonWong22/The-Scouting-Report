@@ -1,0 +1,55 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/mixins";
+
+.stock-data {
+  color: $light-mode-text-color;
+  display: flex;
+  flex-direction: column;
+
+  @include desktop {
+    align-items: center;
+  }
+
+  &__section-results {
+    margin-bottom: 15px;
+    // align-self: flex-start;
+  }
+
+  &__data-ctn {
+    display: flex;
+    flex-direction: column;
+
+    @include desktop {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+
+    &--col1 {
+      @include desktop {
+        margin-right: 20px;
+      }
+    }
+
+    &--col2 {
+      @include desktop {
+        margin-left: 20px;
+      }
+    }
+  }
+
+  &__section-ctn {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+
+    @include desktop {
+      width: 400px;
+    }
+  }
+}
