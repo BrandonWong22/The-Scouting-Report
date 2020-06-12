@@ -27,6 +27,8 @@ class Results extends Component<ResultsProps, ResultsState> {
     stockClosingPrice: null,
     stockVolume: null,
     stockChange: null,
+    stockData30: [],
+    stockData30DateLabel: [],
   };
 
   componentDidMount() {
@@ -39,10 +41,47 @@ class Results extends Component<ResultsProps, ResultsState> {
       symbol +
       "?apikey=d084cd25905084810ee3429ed54c83d9";
 
+    this.fetchHistoricalStockData30Day(symbol);
     this.fetchCompanyData(symbol);
     this.fetchCompanyInformation(url);
     this.configureSocketConnection();
   }
+
+  getDate = (date: any) => {
+    let d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [year, month, day].join("-");
+  };
+
+  //get historical stock data for the past 30 days
+  fetchHistoricalStockData30Day = (symbol: string) => {
+    let yesterday: string = this.getDate(Date.now() - 1 * 24 * 60 * 60 * 1000);
+    let day30: string = this.getDate(Date.now() - 30 * 24 * 60 * 60 * 1000);
+
+    axios
+      .get(
+        `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${day30}&to=${yesterday}&apikey=d084cd25905084810ee3429ed54c83d9`
+      )
+      .then((response) => {
+        // let filteredData: Array<number> = []
+        // let dates: Array<string> = []
+        response.data.historical.map((data: any) => {
+          this.setState({
+            stockData30: [...this.state.stockData30, data.close],
+            stockData30DateLabel: [
+              ...this.state.stockData30DateLabel,
+              data.date,
+            ],
+          });
+        });
+      });
+  };
 
   //get numerical data for the stocks tab
   fetchCompanyData = (symbol: string) => {
@@ -59,7 +98,7 @@ class Results extends Component<ResultsProps, ResultsState> {
         high: number;
         close: number;
         volume: number;
-        change: null;
+        change: number;
       } = response.data.historical[0];
 
       this.setState({
@@ -113,6 +152,8 @@ class Results extends Component<ResultsProps, ResultsState> {
   }
 
   render() {
+    console.log(this.state.stockData30);
+
     return (
       <div className="results-page">
         <CompanyInfoSection
@@ -136,6 +177,8 @@ class Results extends Component<ResultsProps, ResultsState> {
           stockClosingPrice={this.state.stockClosingPrice}
           stockVolume={this.state.stockVolume}
           stockChange={this.state.stockChange}
+          stockData30={this.state.stockData30}
+          stockData30DateLabel={this.state.stockData30DateLabel}
         />
         {/* {this.state.currentStockPrice} */}
         {/* <ClipLoader

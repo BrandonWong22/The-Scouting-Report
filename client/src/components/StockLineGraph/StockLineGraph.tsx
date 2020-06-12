@@ -1,27 +1,22 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 
-interface StockLineGraphProps {}
+interface StockLineGraphProps {
+  stockData30: Array<number>;
+  stockData30DateLabel: Array<string>;
+}
 
 const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
   const data: { labels: Array<string>; datasets: Array<Object> } = {
-    labels: ["Jan", "Feb", "Mar", "April", "May"],
+    labels: props.stockData30DateLabel.reverse(),
     datasets: [
       {
         label: "Sales 2020 (M)",
-        data: [3, 2, 2, 1, 5],
+        data: props.stockData30.reverse(),
         borderColor: ["rgba(255, 206, 86, 0.2)"],
         backgroundColor: ["rgba(255, 206, 86, 0.2)"],
         pointBackgroundColor: "rgba(255, 206, 86, 0.2)",
         pointBorderColor: "rgba(255, 206, 86, 0.2)",
-      },
-      {
-        label: "Sales 2019 (M)",
-        data: [1, 3, 2, 2, 3],
-        borderColor: ["rgba(54, 162, 235, 0.2)"],
-        backgroundColor: ["rgba(54, 162, 235, 0.2)"],
-        pointBackgroundColor: "rgba(54, 162, 235, 0.2)",
-        pointBorderColor: "rgba(54, 162, 235, 0.2)",
       },
     ],
   };
@@ -35,8 +30,8 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
       yAxes: [
         {
           ticks: {
-            min: 0,
-            max: 6,
+            min: Math.min(...props.stockData30),
+            max: Math.max(...props.stockData30),
             stepSize: 1,
           },
         },

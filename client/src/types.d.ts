@@ -51,6 +51,8 @@ interface ResultsState {
   stockClosingPrice: number | null;
   stockVolume: number | null;
   stockChange: number | null;
+  stockData30: Array<number>;
+  stockData30DateLabel: Array<string>;
 }
 
 interface CompanyInfoProps {
@@ -75,6 +77,8 @@ interface CompanyResultsProps {
   stockClosingPrice: number | null;
   stockVolume: number | null;
   stockChange: number | null;
+  stockData30: Array<number>;
+  stockData30DateLabel: Array<string>;
 }
 
 interface CompanyResultsState {
@@ -92,4 +96,6 @@ interface StockDataProps {
   stockClosingPrice: number | null;
   stockVolume: number | null;
   stockChange: number | null;
+  stockData30: Array<number>;
+  stockData30DateLabel: Array<string>;
 }

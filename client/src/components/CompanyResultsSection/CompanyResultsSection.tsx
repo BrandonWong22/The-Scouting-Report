@@ -24,6 +24,8 @@ class CompanyResultsSection extends Component<
       stockClosingPrice,
       stockVolume,
       stockChange,
+      stockData30,
+      stockData30DateLabel,
     } = this.props;
 
     return (
@@ -55,6 +57,8 @@ class CompanyResultsSection extends Component<
                   stockClosingPrice={stockClosingPrice}
                   stockVolume={stockVolume}
                   stockChange={stockChange}
+                  stockData30={stockData30}
+                  stockData30DateLabel={stockData30DateLabel}
                 />
               </TabPanel>
               <TabPanel className="react-tab__tab-panel">

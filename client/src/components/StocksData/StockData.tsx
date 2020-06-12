@@ -15,8 +15,9 @@ class StockData extends Component<StockDataProps, {}> {
       stockClosingPrice,
       stockVolume,
       stockChange,
+      stockData30,
+      stockData30DateLabel,
     } = this.props;
-    console.log("render", companySymbol);
 
     return (
       <div className="stock-data">
@@ -72,7 +73,10 @@ class StockData extends Component<StockDataProps, {}> {
           </div>
         </div>
 
-        <StockLineGraph />
+        <StockLineGraph
+          stockData30={stockData30}
+          stockData30DateLabel={stockData30DateLabel}
+        />
       </div>
     );
   }

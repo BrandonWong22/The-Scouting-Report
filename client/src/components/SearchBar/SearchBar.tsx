@@ -16,7 +16,6 @@ class SearchBar extends Component<SearchBarProps, ISearchBarState> {
 
   handleOnSelect = (company: any) => {
     let companyArr: Array<string> = Object.values(company);
-    console.log(companyArr[1]);
 
     this.setState({
       searchValue: companyArr[1],
