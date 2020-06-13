@@ -38,7 +38,7 @@ class FinancialStatement extends Component<
     } = this.props;
 
     return (
-      <div className="financials__chart-ctn">
+      <div className="financials__data-ctn">
         <Tabs
           selectedIndex={this.state.tabIndex}
           onSelect={(tabIndex: number) => this.setState({ tabIndex })}
@@ -49,15 +49,19 @@ class FinancialStatement extends Component<
             <Tab>Bar Graph</Tab>
           </TabList>
           <TabPanel className="react-tab__tab-panel">
-            <FinancialLineGraph
-              financialsDates={financialsDates}
-              financialsRevenue={financialsRevenue}
-              financialsCostOfRevenue={financialsCostOfRevenue}
-              financialsGrossProfit={financialsGrossProfit}
-              financialsNetIncome={financialsNetIncome}
-              financialsCostAndExpenses={financialsCostAndExpenses}
-              financialsOperatingExpenses={financialsOperatingExpenses}
-            />
+            <div className="financials__graph-ctn">
+              {financialsRevenue.length && (
+                <FinancialLineGraph
+                  financialsDates={financialsDates}
+                  financialsRevenue={financialsRevenue}
+                  financialsCostOfRevenue={financialsCostOfRevenue}
+                  financialsGrossProfit={financialsGrossProfit}
+                  financialsNetIncome={financialsNetIncome}
+                  financialsCostAndExpenses={financialsCostAndExpenses}
+                  financialsOperatingExpenses={financialsOperatingExpenses}
+                />
+              )}
+            </div>
           </TabPanel>
           <TabPanel className="react-tab__tab-panel">
             <FinancialBarGraph />

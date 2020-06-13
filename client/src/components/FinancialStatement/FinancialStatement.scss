@@ -1,3 +1,12 @@
 @import "../../styles/partials/variables";
 @import "../../styles/partials/breakpoints";
 @import "../../styles/partials/mixins";
+
+.financials {
+  &__graph-ctn {
+    // height: 600px;
+    // width: 280px;
+    position: relative;
+    height: 500px;
+  }
+}
