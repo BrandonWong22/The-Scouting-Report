@@ -64,7 +64,19 @@ class FinancialStatement extends Component<
             </div>
           </TabPanel>
           <TabPanel className="react-tab__tab-panel">
-            <FinancialBarGraph />
+            <div className="financials__graph-ctn">
+              {financialsRevenue.length && (
+                <FinancialBarGraph
+                  financialsDates={financialsDates}
+                  financialsRevenue={financialsRevenue}
+                  financialsCostOfRevenue={financialsCostOfRevenue}
+                  financialsGrossProfit={financialsGrossProfit}
+                  financialsNetIncome={financialsNetIncome}
+                  financialsCostAndExpenses={financialsCostAndExpenses}
+                  financialsOperatingExpenses={financialsOperatingExpenses}
+                />
+              )}
+            </div>
           </TabPanel>
         </Tabs>
       </div>

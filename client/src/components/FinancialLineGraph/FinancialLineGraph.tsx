@@ -20,12 +20,13 @@ const FinancialLineGraph: React.FC<FinancialLineGraphProps> = (props) => {
     financialsNetIncome,
     financialsCostAndExpenses,
     financialsOperatingExpenses,
+    financialsDates,
   } = props;
 
   console.log(financialsNetIncome);
 
   const data = {
-    labels: props.financialsDates,
+    labels: financialsDates,
     datasets: [
       {
         label: "Total Revenue",
@@ -106,6 +107,22 @@ const FinancialLineGraph: React.FC<FinancialLineGraphProps> = (props) => {
                 ...props.financialsCostOfRevenue
               ) + 400,
             stepSize: 1000,
+            scaleLabel: {
+              display: true,
+              labelString: "Price in USD",
+            },
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "Price in USD (In $$$)",
+          },
+        },
+      ],
+      xAxes: [
+        {
+          scaleLabel: {
+            display: true,
+            labelString: "Financial Quarter. Date in (YYYY-MM-DD)",
           },
         },
       ],
