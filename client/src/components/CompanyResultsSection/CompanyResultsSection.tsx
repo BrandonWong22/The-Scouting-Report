@@ -26,6 +26,13 @@ class CompanyResultsSection extends Component<
       stockChange,
       stockData30,
       stockData30DateLabel,
+      financialsDates,
+      financialsRevenue,
+      financialsCostOfRevenue,
+      financialsGrossProfit,
+      financialsNetIncome,
+      financialsCostAndExpenses,
+      financialsOperatingExpenses,
     } = this.props;
 
     return (
@@ -62,7 +69,15 @@ class CompanyResultsSection extends Component<
                 />
               </TabPanel>
               <TabPanel className="react-tab__tab-panel">
-                <FinancialStatement />
+                <FinancialStatement
+                  financialsDates={financialsDates}
+                  financialsRevenue={financialsRevenue}
+                  financialsCostOfRevenue={financialsCostOfRevenue}
+                  financialsGrossProfit={financialsGrossProfit}
+                  financialsNetIncome={financialsNetIncome}
+                  financialsCostAndExpenses={financialsCostAndExpenses}
+                  financialsOperatingExpenses={financialsOperatingExpenses}
+                />
               </TabPanel>
             </Tabs>
           </div>
