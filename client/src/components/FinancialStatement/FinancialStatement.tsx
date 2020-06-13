@@ -3,6 +3,7 @@ import "./FinancialStatement.scss";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import FinancialLineGraph from "../FinancialLineGraph/FinancialLineGraph";
 import FinancialBarGraph from "../FinanacialBarGraph/FinancialBarGraph";
+import FinancialRadarGraph from "../FinancialRadarGraph/FinancialRadarGraph";
 
 interface FinancialStatementProps {
   financialsDates: Array<string>;
@@ -46,7 +47,8 @@ class FinancialStatement extends Component<
         >
           <TabList className="react-tabs__tab-list">
             <Tab className="react-tabs__tab">Line Graph</Tab>
-            <Tab>Bar Graph</Tab>
+            <Tab className="react-tabs__tab">Bar Graph</Tab>
+            <Tab className="react-tabs__tab">Radar Graph</Tab>
           </TabList>
           <TabPanel className="react-tab__tab-panel">
             <div className="financials__graph-ctn">
@@ -67,6 +69,21 @@ class FinancialStatement extends Component<
             <div className="financials__graph-ctn">
               {financialsRevenue.length && (
                 <FinancialBarGraph
+                  financialsDates={financialsDates}
+                  financialsRevenue={financialsRevenue}
+                  financialsCostOfRevenue={financialsCostOfRevenue}
+                  financialsGrossProfit={financialsGrossProfit}
+                  financialsNetIncome={financialsNetIncome}
+                  financialsCostAndExpenses={financialsCostAndExpenses}
+                  financialsOperatingExpenses={financialsOperatingExpenses}
+                />
+              )}
+            </div>
+          </TabPanel>
+          <TabPanel className="react-tab__tab-panel">
+            <div className="financials__graph-ctn">
+              {financialsRevenue.length && (
+                <FinancialRadarGraph
                   financialsDates={financialsDates}
                   financialsRevenue={financialsRevenue}
                   financialsCostOfRevenue={financialsCostOfRevenue}
