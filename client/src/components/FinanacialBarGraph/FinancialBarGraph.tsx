@@ -175,7 +175,12 @@ const FinancialBarGraph: React.FC<FinancialBarGraphProps> = (props) => {
     ],
   };
 
-  const options = {
+  const options: {
+    title: Object;
+    scales: Object;
+    responsive: boolean;
+    maintainAspectRatio: boolean;
+  } = {
     title: {
       display: true,
       text: "Financial Statement from the Past 8 Quarters",
