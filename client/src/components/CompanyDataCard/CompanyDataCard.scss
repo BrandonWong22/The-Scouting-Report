@@ -1,0 +1,14 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/mixins";
+
+.financial {
+  // &__card-comp {
+
+  // }
+
+  &__data-ctn {
+    display: flex;
+    justify-content: space-between;
+  }
+}

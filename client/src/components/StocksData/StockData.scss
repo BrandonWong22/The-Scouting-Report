@@ -1,6 +1,7 @@
 @import "../../styles/partials/variables";
 @import "../../styles/partials/breakpoints";
 @import "../../styles/partials/mixins";
+@import "../../styles/partials/fonts";
 
 .stock-data {
   color: $light-mode-text-color;
@@ -75,6 +76,10 @@
       // width: 400px;
       width: 100%;
     }
+  }
+
+  &__data-label {
+    font-family: "RobotoBold";
   }
 
   &__graph-ctn {

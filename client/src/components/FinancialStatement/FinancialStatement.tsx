@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import FinancialLineGraph from "../FinancialLineGraph/FinancialLineGraph";
 import FinancialBarGraph from "../FinanacialBarGraph/FinancialBarGraph";
 import FinancialRadarGraph from "../FinancialRadarGraph/FinancialRadarGraph";
+import CompanyDataCardList from "../ComapnyDataCardList/CompanyDataCardList";
 
 interface FinancialStatementProps {
   financialsDates: Array<string>;
@@ -78,6 +79,15 @@ class FinancialStatement extends Component<
   render() {
     return (
       <div className="financials__data-ctn">
+        <CompanyDataCardList
+          financialsDates={this.props.financialsDates}
+          financialsRevenue={this.props.financialsRevenue}
+          financialsCostOfRevenue={this.props.financialsCostOfRevenue}
+          financialsGrossProfit={this.props.financialsGrossProfit}
+          financialsNetIncome={this.props.financialsNetIncome}
+          financialsCostAndExpenses={this.props.financialsCostAndExpenses}
+          financialsOperatingExpenses={this.props.financialsOperatingExpenses}
+        />
         <Tabs
           selectedIndex={this.state.tabIndex}
           onSelect={(tabIndex: number) => this.setState({ tabIndex })}

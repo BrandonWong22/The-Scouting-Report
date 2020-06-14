@@ -56,22 +56,22 @@ const StockData: React.FC<StockDataProps> = (props) => {
           >
             <CardContent>
               <div className="stock-data__section-ctn">
-                <h3>Symbol</h3>
+                <h3 className="stock-data__data-label">Symbol</h3>
                 <h3>{companySymbol}</h3>
               </div>
 
               <div className="stock-data__section-ctn">
-                <h3>Date</h3>
+                <h3 className="stock-data__data-label">Date</h3>
                 <h3>{stockDate}</h3>
               </div>
 
               <div className="stock-data__section-ctn">
-                <h3>Open</h3>
+                <h3 className="stock-data__data-label">Open</h3>
                 <h3>{stockOpenPrice}</h3>
               </div>
 
               <div className="stock-data__section-ctn">
-                <h3>Low</h3>
+                <h3 className="stock-data__data-label">Low</h3>
                 <h3>{stockLowPrice}</h3>
               </div>
             </CardContent>
@@ -83,22 +83,22 @@ const StockData: React.FC<StockDataProps> = (props) => {
           >
             <CardContent>
               <div className="stock-data__section-ctn">
-                <h3>High</h3>
+                <h3 className="stock-data__data-label">High</h3>
                 <h3>{stockHighPrice}</h3>
               </div>
 
               <div className="stock-data__section-ctn">
-                <h3>Close</h3>
+                <h3 className="stock-data__data-label">Close</h3>
                 <h3>{stockClosingPrice}</h3>
               </div>
 
               <div className="stock-data__section-ctn">
-                <h3>Volume</h3>
+                <h3 className="stock-data__data-label">Volume</h3>
                 <h3>{stockVolume}</h3>
               </div>
 
               <div className="stock-data__section-ctn">
-                <h3>Change</h3>
+                <h3 className="stock-data__data-label">Change</h3>
                 <h3>{stockChange}</h3>
               </div>
             </CardContent>

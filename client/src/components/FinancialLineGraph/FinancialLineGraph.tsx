@@ -23,8 +23,6 @@ const FinancialLineGraph: React.FC<FinancialLineGraphProps> = (props) => {
     financialsDates,
   } = props;
 
-  console.log(financialsNetIncome);
-
   const data = {
     labels: financialsDates,
     datasets: [

@@ -85,13 +85,13 @@ class Results extends Component<ResultsProps, ResultsState> {
         });
 
         this.setState({
-          financialsDates: datesArr,
-          financialsRevenue: revenueArr,
-          financialsCostOfRevenue: costOfRevenueArr,
-          financialsGrossProfit: grossProfitArr,
-          financialsNetIncome: netIncomeArr,
-          financialsCostAndExpenses: costAndExpensesArr,
-          financialsOperatingExpenses: operatingExpensesArr,
+          financialsDates: datesArr.reverse(),
+          financialsRevenue: revenueArr.reverse(),
+          financialsCostOfRevenue: costOfRevenueArr.reverse(),
+          financialsGrossProfit: grossProfitArr.reverse(),
+          financialsNetIncome: netIncomeArr.reverse(),
+          financialsCostAndExpenses: costAndExpensesArr.reverse(),
+          financialsOperatingExpenses: operatingExpensesArr.reverse(),
         });
       });
   };
