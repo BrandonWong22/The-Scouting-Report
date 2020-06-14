@@ -18,6 +18,19 @@ const StockData: React.FC<StockDataProps> = (props) => {
     stockData30DateLabel,
   } = props;
 
+  // method to render the line graph when the data
+  // is not empty
+  const renderLineGraph = () => {
+    if (stockData30.length !== 0) {
+      return (
+        <StockLineGraph
+          stockData30={stockData30}
+          stockData30DateLabel={stockData30DateLabel}
+        />
+      );
+    }
+  };
+
   return (
     <div className="stock-data">
       <div className="stock-data__section-results">
@@ -72,15 +85,7 @@ const StockData: React.FC<StockDataProps> = (props) => {
         </div>
       </div>
 
-      <div className="stock-data__graph-ctn">
-        {/* only render when array isnt empty */}
-        {stockDate.length && (
-          <StockLineGraph
-            stockData30={stockData30}
-            stockData30DateLabel={stockData30DateLabel}
-          />
-        )}
-      </div>
+      <div className="stock-data__graph-ctn">{renderLineGraph()}</div>
     </div>
   );
 };

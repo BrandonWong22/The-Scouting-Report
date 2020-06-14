@@ -27,17 +27,55 @@ class FinancialStatement extends Component<
     tabIndex: 0,
   };
 
-  render() {
-    const {
-      financialsDates,
-      financialsRevenue,
-      financialsCostOfRevenue,
-      financialsGrossProfit,
-      financialsNetIncome,
-      financialsCostAndExpenses,
-      financialsOperatingExpenses,
-    } = this.props;
+  renderLineGraph = () => {
+    if (this.props.financialsRevenue.length !== 0) {
+      return (
+        <FinancialLineGraph
+          financialsDates={this.props.financialsDates}
+          financialsRevenue={this.props.financialsRevenue}
+          financialsCostOfRevenue={this.props.financialsCostOfRevenue}
+          financialsGrossProfit={this.props.financialsGrossProfit}
+          financialsNetIncome={this.props.financialsNetIncome}
+          financialsCostAndExpenses={this.props.financialsCostAndExpenses}
+          financialsOperatingExpenses={this.props.financialsOperatingExpenses}
+        />
+      );
+    }
+  };
 
+  renderBarGraph = () => {
+    if (this.props.financialsRevenue.length !== 0) {
+      return (
+        <FinancialBarGraph
+          financialsDates={this.props.financialsDates}
+          financialsRevenue={this.props.financialsRevenue}
+          financialsCostOfRevenue={this.props.financialsCostOfRevenue}
+          financialsGrossProfit={this.props.financialsGrossProfit}
+          financialsNetIncome={this.props.financialsNetIncome}
+          financialsCostAndExpenses={this.props.financialsCostAndExpenses}
+          financialsOperatingExpenses={this.props.financialsOperatingExpenses}
+        />
+      );
+    }
+  };
+
+  renderRadarGraph = () => {
+    if (this.props.financialsRevenue.length !== 0) {
+      return (
+        <FinancialRadarGraph
+          financialsDates={this.props.financialsDates}
+          financialsRevenue={this.props.financialsRevenue}
+          financialsCostOfRevenue={this.props.financialsCostOfRevenue}
+          financialsGrossProfit={this.props.financialsGrossProfit}
+          financialsNetIncome={this.props.financialsNetIncome}
+          financialsCostAndExpenses={this.props.financialsCostAndExpenses}
+          financialsOperatingExpenses={this.props.financialsOperatingExpenses}
+        />
+      );
+    }
+  };
+
+  render() {
     return (
       <div className="financials__data-ctn">
         <Tabs
@@ -52,57 +90,19 @@ class FinancialStatement extends Component<
           </TabList>
           <TabPanel className="react-tab__tab-panel">
             <div className="financials__graph-ctn">
-              {financialsRevenue.length && (
-                <FinancialLineGraph
-                  financialsDates={financialsDates}
-                  financialsRevenue={financialsRevenue}
-                  financialsCostOfRevenue={financialsCostOfRevenue}
-                  financialsGrossProfit={financialsGrossProfit}
-                  financialsNetIncome={financialsNetIncome}
-                  financialsCostAndExpenses={financialsCostAndExpenses}
-                  financialsOperatingExpenses={financialsOperatingExpenses}
-                />
-              )}
+              {this.renderLineGraph()}
             </div>
           </TabPanel>
           <TabPanel className="react-tab__tab-panel">
-            <div className="financials__graph-ctn">
-              {financialsRevenue.length && (
-                <FinancialBarGraph
-                  financialsDates={financialsDates}
-                  financialsRevenue={financialsRevenue}
-                  financialsCostOfRevenue={financialsCostOfRevenue}
-                  financialsGrossProfit={financialsGrossProfit}
-                  financialsNetIncome={financialsNetIncome}
-                  financialsCostAndExpenses={financialsCostAndExpenses}
-                  financialsOperatingExpenses={financialsOperatingExpenses}
-                />
-              )}
-            </div>
+            <div className="financials__graph-ctn">{this.renderBarGraph}</div>
           </TabPanel>
           <TabPanel className="react-tab__tab-panel">
-            <div className="financials__graph-ctn">
-              {financialsRevenue.length && (
-                <FinancialRadarGraph
-                  financialsDates={financialsDates}
-                  financialsRevenue={financialsRevenue}
-                  financialsCostOfRevenue={financialsCostOfRevenue}
-                  financialsGrossProfit={financialsGrossProfit}
-                  financialsNetIncome={financialsNetIncome}
-                  financialsCostAndExpenses={financialsCostAndExpenses}
-                  financialsOperatingExpenses={financialsOperatingExpenses}
-                />
-              )}
-            </div>
+            <div className="financials__graph-ctn">{this.renderRadarGraph}</div>
           </TabPanel>
         </Tabs>
       </div>
     );
   }
 }
-
-// const FinancialStatement: React.FC = () => {
-//   return <div>FinancialStatement</div>;
-// };
 
 export default FinancialStatement;
