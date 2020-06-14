@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import "./CompanyInfoSection.scss";
 import Collapsible from "react-collapsible";
 import firebase from "firebase";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBuilding,
+  faExchangeAlt,
+  faIndustry,
+  faIdBadge,
+  faWindowRestore,
+} from "@fortawesome/free-solid-svg-icons";
 
 class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
   handleLogout = () => {
@@ -25,27 +33,33 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
       <div className="company-info">
         <Collapsible trigger={companyName}>
           <div className="company-info__info-ctn">
-            <p className="company-info__info-description">Ticker Symbol: </p>
+            <FontAwesomeIcon icon={faBuilding} className="company-info__icon" />
             <p>{companySymbol}</p>
           </div>
 
           <div className="company-info__info-ctn">
-            <p className="company-info__info-description">Exchange: </p>
+            <FontAwesomeIcon
+              icon={faExchangeAlt}
+              className="company-info__icon"
+            />
             <p>{companyExchange}</p>
           </div>
 
           <div className="company-info__info-ctn">
-            <p className="company-info__info-description">Industry: </p>
+            <FontAwesomeIcon icon={faIndustry} className="company-info__icon" />
             <p>{companyIndustry}</p>
           </div>
 
           <div className="company-info__info-ctn">
-            <p className="company-info__info-description">CEO: </p>
+            <FontAwesomeIcon icon={faIdBadge} className="company-info__icon" />
             <p>{companyCEO}</p>
           </div>
 
           <div className="company-info__info-ctn">
-            <p className="company-info__info-description">Website: </p>
+            <FontAwesomeIcon
+              icon={faWindowRestore}
+              className="company-info__icon"
+            />
             <a href={companyWebsite}>{companyWebsite}</a>
           </div>
 
@@ -62,27 +76,53 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
           </div>
 
           <div className="company-info__info-ctn">
-            <p className="company-info__info-description">Ticker Symbol: </p>
+            <div className="company-info__icon-ctn">
+              <FontAwesomeIcon
+                icon={faBuilding}
+                className="company-info__icon"
+              />
+            </div>
             <p>{companySymbol}</p>
           </div>
 
           <div className="company-info__info-ctn">
-            <p className="company-info__info-description">Exchange: </p>
+            <div className="company-info__icon-ctn">
+              <FontAwesomeIcon
+                icon={faExchangeAlt}
+                className="company-info__icon"
+              />
+            </div>
+
             <p>{companyExchange}</p>
           </div>
 
           <div className="company-info__info-ctn">
-            <p className="company-info__info-description">Industry: </p>
+            <div className="company-info__icon-ctn">
+              <FontAwesomeIcon
+                icon={faIndustry}
+                className="company-info__icon"
+              />
+            </div>
             <p>{companyIndustry}</p>
           </div>
 
           <div className="company-info__info-ctn">
-            <p className="company-info__info-description">CEO: </p>
+            <div className="company-info__icon-ctn">
+              <FontAwesomeIcon
+                icon={faIdBadge}
+                className="company-info__icon"
+              />
+            </div>
             <p>{companyCEO}</p>
           </div>
 
           <div className="company-info__info-ctn">
-            <p className="company-info__info-description">Website: </p>
+            <div className="company-info__icon-ctn">
+              <FontAwesomeIcon
+                icon={faWindowRestore}
+                className="company-info__icon"
+              />
+            </div>
             <a href={companyWebsite}>{companyWebsite}</a>
           </div>
 

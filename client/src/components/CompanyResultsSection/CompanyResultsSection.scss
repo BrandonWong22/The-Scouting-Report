@@ -4,7 +4,7 @@
 
 .company-results {
   height: 100vh;
-  // background-color: aquamarine;
+  background-color: $light-mode-background-color;
   width: 100%;
 
   &__ctn {
@@ -58,7 +58,7 @@
     cursor: pointer;
 
     &--selected {
-      background: #fff;
+      background: $light-mode-background-color;
       border-color: #aaa;
       color: $light-mode-text-color;
       border-radius: 5px 5px 0 0;

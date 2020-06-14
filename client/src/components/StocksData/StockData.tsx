@@ -1,6 +1,8 @@
 import React from "react";
 import "./StockData.scss";
 import StockLineGraph from "../StockLineGraph/StockLineGraph";
+import Card from "@material-ui/core/Card";
+import { CardContent } from "@material-ui/core";
 
 const StockData: React.FC<StockDataProps> = (props) => {
   const {
@@ -33,55 +35,74 @@ const StockData: React.FC<StockDataProps> = (props) => {
 
   return (
     <div className="stock-data">
-      <div className="stock-data__section-results">
-        <h2>
-          {companyName} {currentStockPrice}
-        </h2>
-      </div>
+      <div className="stock-data__top-data-ctn">
+        <Card
+          style={{ backgroundColor: "#e5e7f0" }}
+          className="stock-data__section-results"
+        >
+          <CardContent>
+            <h2>
+              {companyName} {currentStockPrice}
+            </h2>
+          </CardContent>
 
-      <div className="stock-data__data-ctn">
-        <div className="stock-data__col stock-data__col--col1">
-          <div className="stock-data__section-ctn">
-            <h3>Symbol</h3>
-            <h3>{companySymbol}</h3>
-          </div>
+          {/* </div> */}
+        </Card>
 
-          <div className="stock-data__section-ctn">
-            <h3>Date</h3>
-            <h3>{stockDate}</h3>
-          </div>
+        <div className="stock-data__data-ctn">
+          <Card
+            className="stock-data__col stock-data__col--col1"
+            style={{ backgroundColor: "#e5e7f0" }}
+          >
+            <CardContent>
+              <div className="stock-data__section-ctn">
+                <h3>Symbol</h3>
+                <h3>{companySymbol}</h3>
+              </div>
 
-          <div className="stock-data__section-ctn">
-            <h3>Open</h3>
-            <h3>{stockOpenPrice}</h3>
-          </div>
+              <div className="stock-data__section-ctn">
+                <h3>Date</h3>
+                <h3>{stockDate}</h3>
+              </div>
 
-          <div className="stock-data__section-ctn">
-            <h3>Low</h3>
-            <h3>{stockLowPrice}</h3>
-          </div>
-        </div>
+              <div className="stock-data__section-ctn">
+                <h3>Open</h3>
+                <h3>{stockOpenPrice}</h3>
+              </div>
 
-        <div className="stock-data__col stock-data__col--col2">
-          <div className="stock-data__section-ctn">
-            <h3>High</h3>
-            <h3>{stockHighPrice}</h3>
-          </div>
+              <div className="stock-data__section-ctn">
+                <h3>Low</h3>
+                <h3>{stockLowPrice}</h3>
+              </div>
+            </CardContent>
+          </Card>
 
-          <div className="stock-data__section-ctn">
-            <h3>Close</h3>
-            <h3>{stockClosingPrice}</h3>
-          </div>
+          <Card
+            className="stock-data__col stock-data__col--col2"
+            style={{ backgroundColor: "#e5e7f0" }}
+          >
+            <CardContent>
+              <div className="stock-data__section-ctn">
+                <h3>High</h3>
+                <h3>{stockHighPrice}</h3>
+              </div>
 
-          <div className="stock-data__section-ctn">
-            <h3>Volume</h3>
-            <h3>{stockVolume}</h3>
-          </div>
+              <div className="stock-data__section-ctn">
+                <h3>Close</h3>
+                <h3>{stockClosingPrice}</h3>
+              </div>
 
-          <div className="stock-data__section-ctn">
-            <h3>Change</h3>
-            <h3>{stockChange}</h3>
-          </div>
+              <div className="stock-data__section-ctn">
+                <h3>Volume</h3>
+                <h3>{stockVolume}</h3>
+              </div>
+
+              <div className="stock-data__section-ctn">
+                <h3>Change</h3>
+                <h3>{stockChange}</h3>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
 

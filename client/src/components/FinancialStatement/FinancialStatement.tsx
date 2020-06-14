@@ -94,10 +94,12 @@ class FinancialStatement extends Component<
             </div>
           </TabPanel>
           <TabPanel className="react-tab__tab-panel">
-            <div className="financials__graph-ctn">{this.renderBarGraph}</div>
+            <div className="financials__graph-ctn">{this.renderBarGraph()}</div>
           </TabPanel>
           <TabPanel className="react-tab__tab-panel">
-            <div className="financials__graph-ctn">{this.renderRadarGraph}</div>
+            <div className="financials__graph-ctn">
+              {this.renderRadarGraph()}
+            </div>
           </TabPanel>
         </Tabs>
       </div>

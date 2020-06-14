@@ -25,6 +25,7 @@
   &__info-ctn {
     display: flex;
     font-size: 15px;
+    align-items: center;
     // justify-content: space-between;
     @include tablet {
       padding-top: 15px;
@@ -32,6 +33,18 @@
     @include desktop {
       font-size: 19px;
     }
+  }
+
+  &__icon-ctn {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    font-size: 20px;
   }
 
   &__info-description {
