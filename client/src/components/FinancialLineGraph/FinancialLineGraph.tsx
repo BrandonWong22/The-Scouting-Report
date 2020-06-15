@@ -77,6 +77,26 @@ const FinancialLineGraph: React.FC<FinancialLineGraphProps> = (props) => {
     ],
   };
 
+  let maxRange: number = Math.max(
+    ...props.financialsRevenue,
+    ...props.financialsCostAndExpenses,
+    ...props.financialsGrossProfit,
+    ...props.financialsNetIncome,
+    ...props.financialsOperatingExpenses,
+    ...props.financialsCostOfRevenue
+  );
+
+  let minRange: number = Math.min(
+    ...props.financialsRevenue,
+    ...props.financialsCostAndExpenses,
+    ...props.financialsGrossProfit,
+    ...props.financialsNetIncome,
+    ...props.financialsOperatingExpenses,
+    ...props.financialsCostOfRevenue
+  );
+
+  let range: number = (maxRange - minRange) / 12;
+
   const options = {
     title: {
       display: true,
@@ -86,25 +106,9 @@ const FinancialLineGraph: React.FC<FinancialLineGraphProps> = (props) => {
       yAxes: [
         {
           ticks: {
-            min:
-              Math.min(
-                ...props.financialsRevenue,
-                ...props.financialsCostAndExpenses,
-                ...props.financialsGrossProfit,
-                ...props.financialsNetIncome,
-                ...props.financialsOperatingExpenses,
-                ...props.financialsCostOfRevenue
-              ) - 400,
-            max:
-              Math.max(
-                ...props.financialsRevenue,
-                ...props.financialsCostAndExpenses,
-                ...props.financialsGrossProfit,
-                ...props.financialsNetIncome,
-                ...props.financialsOperatingExpenses,
-                ...props.financialsCostOfRevenue
-              ) + 400,
-            stepSize: 1000,
+            min: minRange - 400 - range / 2,
+            max: maxRange + 400 + range / 2,
+            stepSize: range,
             scaleLabel: {
               display: true,
               labelString: "Price in USD",

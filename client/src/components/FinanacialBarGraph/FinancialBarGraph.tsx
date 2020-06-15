@@ -175,6 +175,26 @@ const FinancialBarGraph: React.FC<FinancialBarGraphProps> = (props) => {
     ],
   };
 
+  let minRange: number = Math.min(
+    ...props.financialsRevenue,
+    ...props.financialsCostAndExpenses,
+    ...props.financialsGrossProfit,
+    ...props.financialsNetIncome,
+    ...props.financialsOperatingExpenses,
+    ...props.financialsCostOfRevenue
+  );
+
+  let maxRange: number = Math.max(
+    ...props.financialsRevenue,
+    ...props.financialsCostAndExpenses,
+    ...props.financialsGrossProfit,
+    ...props.financialsNetIncome,
+    ...props.financialsOperatingExpenses,
+    ...props.financialsCostOfRevenue
+  );
+
+  let range: number = (maxRange - minRange) / 12;
+
   const options: {
     title: Object;
     scales: Object;
@@ -189,25 +209,9 @@ const FinancialBarGraph: React.FC<FinancialBarGraphProps> = (props) => {
       yAxes: [
         {
           ticks: {
-            min:
-              Math.min(
-                ...props.financialsRevenue,
-                ...props.financialsCostAndExpenses,
-                ...props.financialsGrossProfit,
-                ...props.financialsNetIncome,
-                ...props.financialsOperatingExpenses,
-                ...props.financialsCostOfRevenue
-              ) - 400,
-            max:
-              Math.max(
-                ...props.financialsRevenue,
-                ...props.financialsCostAndExpenses,
-                ...props.financialsGrossProfit,
-                ...props.financialsNetIncome,
-                ...props.financialsOperatingExpenses,
-                ...props.financialsCostOfRevenue
-              ) + 400,
-            stepSize: 1000,
+            min: minRange - range / 2,
+            max: maxRange + range / 2,
+            stepSize: range,
             scaleLabel: {
               display: true,
               labelString: "Price in USD",

@@ -33,16 +33,18 @@ const CompanyDataCard: React.FC<CompanyDataCardProps> = (props) => {
             classParentString="collapsible__financial-section"
           >
             {/* <h2 className="financial-card__title">{title}</h2> */}
-            {Object.keys(dataObj).map((keyName, i) => (
-              <div key={i} className="financial-card__data-ctn">
-                <p>{keyName}</p>
-                <p>
-                  {dataObj[keyName]
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                </p>
-              </div>
-            ))}
+            <div className="collapsible__financial-section__contentInner">
+              {Object.keys(dataObj).map((keyName, i) => (
+                <div key={i} className="financial-card__data-ctn">
+                  <p>{keyName}</p>
+                  <p>
+                    {dataObj[keyName]
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  </p>
+                </div>
+              ))}
+            </div>
           </Collapsible>
           <div className="financial-card__desktop-section">
             <h2 className="financial-card__title">{title}</h2>
