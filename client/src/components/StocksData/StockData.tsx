@@ -1,8 +1,10 @@
 import React from "react";
 import "./StockData.scss";
-import StockLineGraph from "../StockLineGraph/StockLineGraph";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Card from "@material-ui/core/Card";
 import { CardContent } from "@material-ui/core";
+import StockLineGraph from "../StockLineGraph/StockLineGraph";
+import StockDailyGraph from "../StockDailyGraph/StockDailyGraph";
 
 const StockData: React.FC<StockDataProps> = (props) => {
   const {
@@ -18,11 +20,24 @@ const StockData: React.FC<StockDataProps> = (props) => {
     stockChange,
     stockData30,
     stockData30DateLabel,
+    stockDailyPrices,
+    stockDailyTimes,
   } = props;
+
+  const renderDailyStockPrice = () => {
+    if (stockDailyPrices.length !== 0) {
+      return (
+        <StockDailyGraph
+          stockDailyPrices={stockDailyPrices}
+          stockDailyTimes={stockDailyTimes}
+        />
+      );
+    }
+  };
 
   // method to render the line graph when the data
   // is not empty
-  const renderLineGraph = () => {
+  const renderLineGraph30Day = () => {
     if (stockData30.length !== 0) {
       return (
         <StockLineGraph
@@ -106,7 +121,24 @@ const StockData: React.FC<StockDataProps> = (props) => {
         </div>
       </div>
 
-      <div className="stock-data__graph-ctn">{renderLineGraph()}</div>
+      <div className="stock-data__tab-ctn">
+        <Tabs>
+          <TabList className="react-tabs__tab-list">
+            <Tab className="react-tabs__tab">30 Day</Tab>
+            <Tab>Daily</Tab>
+          </TabList>
+          <TabPanel>
+            <div className="stock-data__graph-ctn">
+              {renderLineGraph30Day()}
+            </div>
+          </TabPanel>
+          <TabPanel>
+            <div className="stock-data__graph-ctn">
+              {renderDailyStockPrice()}
+            </div>
+          </TabPanel>
+        </Tabs>
+      </div>
     </div>
   );
 };

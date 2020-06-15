@@ -1,20 +1,20 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 
-interface StockLineGraphProps {
-  stockData30: any;
-  stockData30DateLabel: Array<string>;
+interface StockDailyGraphProps {
+  stockDailyPrices: Array<number>;
+  stockDailyTimes: Array<string>;
 }
 
-const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
-  const { stockData30, stockData30DateLabel } = props;
+const StockDailyGraph: React.FC<StockDailyGraphProps> = (props) => {
+  const { stockDailyPrices, stockDailyTimes } = props;
 
   const data: { labels: Array<string>; datasets: Array<Object> } = {
-    labels: stockData30DateLabel,
+    labels: stockDailyTimes,
     datasets: [
       {
         label: "Stock Prices in USD",
-        data: stockData30,
+        data: stockDailyPrices,
         borderColor: ["rgba(255, 206, 86, 0.2)"],
         backgroundColor: ["rgba(255, 206, 86, 0.2)"],
         pointBackgroundColor: "rgba(255, 206, 86, 0.2)",
@@ -23,8 +23,8 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
     ],
   };
 
-  let minRange: number = Math.min(...props.stockData30);
-  let maxRange: number = Math.max(...props.stockData30);
+  let minRange: number = Math.min(...props.stockDailyPrices);
+  let maxRange: number = Math.max(...props.stockDailyPrices);
   let range: number = (maxRange - minRange) / 5;
 
   const options: {
@@ -35,7 +35,7 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
   } = {
     title: {
       display: true,
-      text: "Stock Prices for the Past 30 Days",
+      text: "Daily Stock Price Tracker",
     },
     scales: {
       yAxes: [
@@ -55,7 +55,7 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
         {
           scaleLabel: {
             display: true,
-            labelString: "Date in (YYYY-MM-DD)",
+            labelString: "Time is Set in Military Time",
           },
         },
       ],
@@ -67,4 +67,4 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
   return <Line data={data} options={options} />;
 };
 
-export default StockLineGraph;
+export default StockDailyGraph;

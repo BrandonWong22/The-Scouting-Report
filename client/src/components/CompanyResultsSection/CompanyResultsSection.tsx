@@ -26,6 +26,8 @@ class CompanyResultsSection extends Component<
       stockChange,
       stockData30,
       stockData30DateLabel,
+      stockDailyPrices,
+      stockDailyTimes,
       financialsDates,
       financialsRevenue,
       financialsCostOfRevenue,
@@ -66,6 +68,8 @@ class CompanyResultsSection extends Component<
                   stockChange={stockChange}
                   stockData30={stockData30}
                   stockData30DateLabel={stockData30DateLabel}
+                  stockDailyPrices={stockDailyPrices}
+                  stockDailyTimes={stockDailyTimes}
                 />
               </TabPanel>
               <TabPanel className="react-tab__tab-panel">

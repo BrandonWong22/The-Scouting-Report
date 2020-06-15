@@ -29,6 +29,8 @@ class Results extends Component<ResultsProps, ResultsState> {
     stockChange: null,
     stockData30: [],
     stockData30DateLabel: [],
+    stockDailyPrices: [],
+    stockDailyTimes: [],
     financialsDates: [],
     financialsRevenue: [],
     financialsCostOfRevenue: [],
@@ -48,6 +50,7 @@ class Results extends Component<ResultsProps, ResultsState> {
       symbol +
       "?apikey=d084cd25905084810ee3429ed54c83d9";
 
+    this.fetchDailyStockPrice(symbol);
     this.fetchFinancials(symbol);
     this.fetchHistoricalStockData30Day(symbol);
     this.fetchCompanyData(symbol);
@@ -107,6 +110,38 @@ class Results extends Component<ResultsProps, ResultsState> {
     if (day.length < 2) day = "0" + day;
 
     return [year, month, day].join("-");
+  };
+
+  //get daily stock prices/trends
+  fetchDailyStockPrice = (symbol: string) => {
+    let today: string = this.getDate(Date.now());
+    let filteredDataArray: any = [];
+    let dailyPrices: Array<number> = [];
+    let dailyTimes: Array<string> = [];
+
+    axios
+      .get(
+        `https://financialmodelingprep.com/api/v3/historical-chart/30min/${symbol}?apikey=d084cd25905084810ee3429ed54c83d9`
+      )
+      .then((response: any) => {
+        response.data.forEach((item: any) => {
+          if (item.date.includes(today)) {
+            filteredDataArray.push(item);
+          }
+        });
+
+        filteredDataArray.forEach((element: any) => {
+          let dateTime: string = element.date;
+          dateTime = dateTime.replace(today, "");
+          dailyPrices.push(element.open);
+          dailyTimes.push(dateTime);
+        });
+
+        this.setState({
+          stockDailyPrices: dailyPrices.reverse(),
+          stockDailyTimes: dailyTimes.reverse(),
+        });
+      });
   };
 
   //get historical stock data for the past 30 days
@@ -230,6 +265,8 @@ class Results extends Component<ResultsProps, ResultsState> {
           stockChange={this.state.stockChange}
           stockData30={this.state.stockData30}
           stockData30DateLabel={this.state.stockData30DateLabel}
+          stockDailyPrices={this.state.stockDailyPrices}
+          stockDailyTimes={this.state.stockDailyTimes}
           financialsDates={this.state.financialsDates}
           financialsRevenue={this.state.financialsRevenue}
           financialsCostOfRevenue={this.state.financialsCostOfRevenue}
