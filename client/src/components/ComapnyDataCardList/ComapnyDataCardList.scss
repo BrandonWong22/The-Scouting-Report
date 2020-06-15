@@ -1,0 +1,39 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/fonts";
+
+.card-list {
+  width: 100%;
+  // background-color: cadetblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include tablet {
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    // width: 288px;
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    &--mobile {
+      @include desktop {
+        display: none;
+      }
+    }
+  }
+
+  &__card-desktop {
+    display: none;
+
+    @include desktop {
+      display: inline;
+    }
+  }
+}

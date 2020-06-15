@@ -79,15 +79,6 @@ class FinancialStatement extends Component<
   render() {
     return (
       <div className="financials__data-ctn">
-        <CompanyDataCardList
-          financialsDates={this.props.financialsDates}
-          financialsRevenue={this.props.financialsRevenue}
-          financialsCostOfRevenue={this.props.financialsCostOfRevenue}
-          financialsGrossProfit={this.props.financialsGrossProfit}
-          financialsNetIncome={this.props.financialsNetIncome}
-          financialsCostAndExpenses={this.props.financialsCostAndExpenses}
-          financialsOperatingExpenses={this.props.financialsOperatingExpenses}
-        />
         <Tabs
           selectedIndex={this.state.tabIndex}
           onSelect={(tabIndex: number) => this.setState({ tabIndex })}
@@ -97,6 +88,7 @@ class FinancialStatement extends Component<
             <Tab className="react-tabs__tab">Line Graph</Tab>
             <Tab className="react-tabs__tab">Bar Graph</Tab>
             <Tab className="react-tabs__tab">Radar Graph</Tab>
+            <Tab className="react-tabs__tab">Financial Data</Tab>
           </TabList>
           <TabPanel className="react-tab__tab-panel">
             <div className="financials__graph-ctn">
@@ -110,6 +102,19 @@ class FinancialStatement extends Component<
             <div className="financials__graph-ctn">
               {this.renderRadarGraph()}
             </div>
+          </TabPanel>
+          <TabPanel className="react-tab__tab-panel">
+            <CompanyDataCardList
+              financialsDates={this.props.financialsDates}
+              financialsRevenue={this.props.financialsRevenue}
+              financialsCostOfRevenue={this.props.financialsCostOfRevenue}
+              financialsGrossProfit={this.props.financialsGrossProfit}
+              financialsNetIncome={this.props.financialsNetIncome}
+              financialsCostAndExpenses={this.props.financialsCostAndExpenses}
+              financialsOperatingExpenses={
+                this.props.financialsOperatingExpenses
+              }
+            />
           </TabPanel>
         </Tabs>
       </div>

@@ -84,22 +84,16 @@
 
   &__graph-ctn {
     height: 600px;
-    // width: 280px;
-    // width: 90%;
     width: 100%;
     position: relative;
     align-self: center;
 
     @include tablet {
       height: 400px;
-      // width: 450px;
-      // width: ;
     }
 
     @include desktop {
-      // width: 800px;
-      width: 30%;
-      // height: 475px;
+      height: 475px;
       width: 100%;
     }
   }

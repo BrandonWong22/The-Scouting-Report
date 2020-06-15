@@ -1,5 +1,6 @@
 import React from "react";
 import CompanyDataCard from "../CompanyDataCard/CompanyDataCard";
+import "./ComapnyDataCardList.scss";
 
 interface CompanyDataCardList {
   financialsDates: Array<string>;
@@ -25,40 +26,66 @@ const CompanyDataCardList: React.FC<CompanyDataCardList> = (props) => {
   return (
     <div className="card-list">
       <div className="card-list__col">
-        <CompanyDataCard
-          title={"Total Revenue"}
-          datesArr={financialsDates}
-          dataArr={financialsRevenue}
-        />
-        {/* <CompanyDataCard
-          title={"Cost of Revenue"}
-          datesArr={financialsDates}
-          dataArr={financialsCostOfRevenue}
-        /> */}
+        <div>
+          <CompanyDataCard
+            title={"Total Revenue"}
+            datesArr={financialsDates}
+            dataArr={financialsRevenue}
+          />
+        </div>
+        <div>
+          <CompanyDataCard
+            title={"Cost of Revenue"}
+            datesArr={financialsDates}
+            dataArr={financialsCostOfRevenue}
+          />
+        </div>
+        <div className="card-list__card-desktop">
+          <CompanyDataCard
+            title={"Cost and Expenses"}
+            datesArr={financialsDates}
+            dataArr={financialsCostAndExpenses}
+          />
+        </div>
       </div>
       <div className="card-list__col">
-        {/* <CompanyDataCard
-          title={"Gross Profit"}
-          datesArr={financialsDates}
-          dataArr={financialsGrossProfit}
-        />
-        <CompanyDataCard
-          title={"Net Income"}
-          datesArr={financialsDates}
-          dataArr={financialsNetIncome}
-        /> */}
+        <div>
+          <CompanyDataCard
+            title={"Gross Profit"}
+            datesArr={financialsDates}
+            dataArr={financialsGrossProfit}
+          />
+        </div>
+        <div>
+          <CompanyDataCard
+            title={"Net Income"}
+            datesArr={financialsDates}
+            dataArr={financialsNetIncome}
+          />
+        </div>
+        <div className="card-list__card-desktop">
+          <CompanyDataCard
+            title={"Operating Expenses"}
+            datesArr={financialsDates}
+            dataArr={financialsOperatingExpenses}
+          />
+        </div>
       </div>
-      <div className="card-list__col">
-        {/* <CompanyDataCard
-          title={"Cost and Expenses"}
-          datesArr={financialsDates}
-          dataArr={financialsCostAndExpenses}
-        />
-        <CompanyDataCard
-          title={"Operating Expenses"}
-          datesArr={financialsDates}
-          dataArr={financialsOperatingExpenses}
-        /> */}
+      <div className="card-list__col card-list__col--mobile">
+        <div>
+          <CompanyDataCard
+            title={"Cost and Expenses"}
+            datesArr={financialsDates}
+            dataArr={financialsCostAndExpenses}
+          />
+        </div>
+        <div>
+          <CompanyDataCard
+            title={"Operating Expenses"}
+            datesArr={financialsDates}
+            dataArr={financialsOperatingExpenses}
+          />
+        </div>
       </div>
     </div>
   );

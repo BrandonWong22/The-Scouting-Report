@@ -9,7 +9,7 @@ class CompanyResultsSection extends Component<
   CompanyResultsState
 > {
   state = {
-    tabIndex: 1,
+    tabIndex: 0,
   };
 
   render() {

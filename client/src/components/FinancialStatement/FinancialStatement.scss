@@ -8,5 +8,8 @@
     // width: 280px;
     position: relative;
     height: 500px;
+    @include desktop {
+      height: 650px;
+    }
   }
 }

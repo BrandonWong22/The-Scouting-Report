@@ -1,14 +1,42 @@
 @import "../../styles/partials/variables";
 @import "../../styles/partials/breakpoints";
 @import "../../styles/partials/mixins";
+@import "../../styles/partials/fonts";
 
-.financial {
-  // &__card-comp {
+.financial-card {
+  margin-top: 10px;
+  // width: 50%;
+  width: 250px;
 
-  // }
+  @include tablet {
+    width: 220px;
+    margin-top: 0;
+    margin: 10px;
+  }
+
+  @include desktop {
+    // width: 260px;
+    width: 17em;
+  }
 
   &__data-ctn {
     display: flex;
     justify-content: space-between;
+    margin-top: 8px;
+  }
+
+  &__desktop-section {
+    display: none;
+    @include desktop {
+      display: inline;
+    }
+  }
+}
+
+.collapsible__financial-section {
+  font-size: 17px;
+
+  @include desktop {
+    display: none;
   }
 }
