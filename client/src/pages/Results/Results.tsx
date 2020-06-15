@@ -43,7 +43,8 @@ class Results extends Component<ResultsProps, ResultsState> {
   componentDidMount() {
     //make get request using data from the search page to get
     //company profile from API
-    let symbol: string = this.props.location.state.companySymbol;
+    // let symbol: string = this.props.location.state.companySymbol;
+    let symbol: string = this.props.match.params.id;
 
     let url: string =
       "https://financialmodelingprep.com/api/v3/company/profile/" +
@@ -221,10 +222,7 @@ class Results extends Component<ResultsProps, ResultsState> {
   //configure web socket connection
   configureSocketConnection = () => {
     this.state.socket.on("connect", () => {
-      this.state.socket.emit(
-        "client-message",
-        this.props.location.state.companySymbol
-      );
+      this.state.socket.emit("client-message", this.props.match.params.id);
       this.state.socket.on("stock_price", (data: string) => {
         // console.log("socket data", data);
         this.setState({
@@ -240,6 +238,8 @@ class Results extends Component<ResultsProps, ResultsState> {
   }
 
   render() {
+    console.log("props", this.props.match);
+
     return (
       <div className="results-page">
         <CompanyInfoSection

@@ -31,6 +31,7 @@ interface ResultsProps {
   passedDownProps: Array;
   location: any;
   history: any;
+  match: any;
 }
 
 interface ResultsState {

@@ -51,11 +51,11 @@ class Search extends Component<SearchProps, SearchState> {
   componentDidUpdate(_: any, prevState: { redirect: Boolean }) {
     if (prevState.redirect !== this.state.redirect && !prevState.redirect) {
       this.props.history.push({
-        pathname: "/results",
         state: {
           redirect: this.state.redirect,
           companySymbol: this.state.companySymbol,
         },
+        pathname: "/results/" + this.state.companySymbol,
       });
     }
   }
