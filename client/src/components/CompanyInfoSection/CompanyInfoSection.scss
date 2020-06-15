@@ -74,11 +74,15 @@
     }
   }
 
+  &__logout-btn-ctn {
+    margin-top: 10px;
+  }
+
   &__logout-button {
     width: 120px;
     height: 40px;
     text-align: center;
-    margin-top: 15px;
+    // margin-top: 15px;
     border-radius: 10px;
     outline: none;
   }

@@ -10,6 +10,7 @@ import {
   faIdBadge,
   faWindowRestore,
 } from "@fortawesome/free-solid-svg-icons";
+import Button from "@material-ui/core/Button";
 
 class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
   handleLogout = () => {
@@ -85,12 +86,15 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
             <a href={companyWebsite}>{companyWebsite}</a>
           </div>
 
-          <button
-            onClick={this.handleLogout}
-            className="company-info__logout-button"
-          >
-            Logout
-          </button>
+          <div className="company-info__logout-btn-ctn">
+            <Button
+              variant="contained"
+              onClick={this.handleLogout}
+              className="company-info__logout-button"
+            >
+              Logout
+            </Button>
+          </div>
         </Collapsible>
 
         <div className="company-info__tablet-mode">
@@ -149,12 +153,15 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
             <a href={companyWebsite}>{companyWebsite}</a>
           </div>
 
-          <button
-            onClick={this.handleLogout}
-            className="company-info__logout-button"
-          >
-            Logout
-          </button>
+          <div className="company-info__logout-btn-ctn">
+            <Button
+              variant="contained"
+              onClick={this.handleLogout}
+              className="company-info__logout-button"
+            >
+              Logout
+            </Button>
+          </div>
         </div>
       </div>
     );

@@ -3,6 +3,7 @@ import "./StockData.scss";
 import StockLineGraph from "../StockLineGraph/StockLineGraph";
 import Card from "@material-ui/core/Card";
 import { CardContent } from "@material-ui/core";
+import { withStyles } from "@material-ui/core";
 
 const StockData: React.FC<StockDataProps> = (props) => {
   const {

@@ -18,7 +18,11 @@
   // &__top-ctn {}
 
   &__top-ctn {
-    align-self: center;
+    align-self: flex-start;
+
+    @include tablet {
+      align-self: center;
+    }
   }
 
   // &__tabs-ctn {
@@ -26,12 +30,13 @@
 
   &__results-header {
     color: $light-mode-text-color;
+    // display: none;
     @include tablet {
-      font-size: 22px;
+      font-size: 20px;
     }
 
     @include desktop {
-      font-size: 30px;
+      font-size: 28px;
     }
   }
 }

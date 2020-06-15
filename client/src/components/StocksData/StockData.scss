@@ -68,6 +68,7 @@
   &__section-ctn {
     display: flex;
     justify-content: space-between;
+    font-size: 12px;
     @include tablet {
       margin-bottom: 5px;
     }
@@ -93,7 +94,8 @@
     }
 
     @include desktop {
-      height: 475px;
+      // height: 425px;
+      height: 25rem;
       width: 100%;
     }
   }
