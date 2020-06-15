@@ -5,6 +5,7 @@ import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { firebaseConfig } from "../../firebase/fire";
+import Logo from "../../assets/images/logo/logo.png";
 
 firebase.initializeApp({
   apiKey: firebaseConfig.apiKey,
@@ -55,25 +56,14 @@ class Login extends Component<LoginPageProps, LoginPageState> {
     return (
       <div className="login-page">
         <div className="login-page__container">
-          <h1>Login</h1>
-          <div className="login-page__icon-ctn">
-            <FontAwesomeIcon
-              icon={faDollarSign}
-              className="login-page__image"
-            />
-            <FontAwesomeIcon
-              icon={faDollarSign}
-              className="login-page__image"
-            />
-            <FontAwesomeIcon
-              icon={faDollarSign}
-              className="login-page__image"
+          <img src={Logo} alt="logo" className="login-page__logo" />
+          <div className="login-page__login-btn-ctn">
+            <h1>Log In</h1>
+            <StyledFirebaseAuth
+              uiConfig={this.uiConfig}
+              firebaseAuth={firebase.auth()}
             />
           </div>
-          <StyledFirebaseAuth
-            uiConfig={this.uiConfig}
-            firebaseAuth={firebase.auth()}
-          />
         </div>
       </div>
     );
