@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import "./Login.scss";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { firebaseConfig } from "../../firebase/fire";
 import Logo from "../../assets/images/logo/logo.png";
 
