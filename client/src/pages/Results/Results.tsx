@@ -80,12 +80,12 @@ class Results extends Component<ResultsProps, ResultsState> {
         //append data to respective dummy arrays
         filteredFinancialData.forEach((element: any) => {
           datesArr.push(element.date);
-          revenueArr.push(element.revenue / 1000000);
-          costOfRevenueArr.push(element.costOfRevenue / 1000000);
-          grossProfitArr.push(element.grossProfit / 1000000);
-          netIncomeArr.push(element.netIncome / 1000000);
-          costAndExpensesArr.push(element.costAndExpenses / 1000000);
-          operatingExpensesArr.push(element.operatingExpenses / 1000000);
+          revenueArr.push(element.revenue / 1000000000);
+          costOfRevenueArr.push(element.costOfRevenue / 1000000000);
+          grossProfitArr.push(element.grossProfit / 1000000000);
+          netIncomeArr.push(element.netIncome / 1000000000);
+          costAndExpensesArr.push(element.costAndExpenses / 1000000000);
+          operatingExpensesArr.push(element.operatingExpenses / 1000000000);
         });
 
         this.setState({

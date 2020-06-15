@@ -214,12 +214,12 @@ const FinancialBarGraph: React.FC<FinancialBarGraphProps> = (props) => {
             stepSize: range,
             scaleLabel: {
               display: true,
-              labelString: "Price in USD",
+              // labelString: "Price in USD",
             },
           },
           scaleLabel: {
             display: true,
-            labelString: "Price in USD (In $$$)",
+            labelString: "Price in Billions (USD)",
           },
         },
       ],

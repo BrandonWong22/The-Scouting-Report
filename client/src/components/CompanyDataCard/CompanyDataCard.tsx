@@ -37,11 +37,7 @@ const CompanyDataCard: React.FC<CompanyDataCardProps> = (props) => {
               {Object.keys(dataObj).map((keyName, i) => (
                 <div key={i} className="financial-card__data-ctn">
                   <p>{keyName}</p>
-                  <p>
-                    {dataObj[keyName]
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                  </p>
+                  <p>{dataObj[keyName]}</p>
                 </div>
               ))}
             </div>
@@ -51,11 +47,7 @@ const CompanyDataCard: React.FC<CompanyDataCardProps> = (props) => {
             {Object.keys(dataObj).map((keyName, i) => (
               <div key={i} className="financial-card__data-ctn">
                 <p>{keyName}</p>
-                <p>
-                  {dataObj[keyName]
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                </p>
+                <p>{dataObj[keyName]}</p>
               </div>
             ))}
           </div>

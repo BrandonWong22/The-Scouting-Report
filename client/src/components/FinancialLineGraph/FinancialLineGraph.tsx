@@ -106,17 +106,17 @@ const FinancialLineGraph: React.FC<FinancialLineGraphProps> = (props) => {
       yAxes: [
         {
           ticks: {
-            min: minRange - 400 - range / 2,
-            max: maxRange + 400 + range / 2,
+            min: minRange - range / 2,
+            max: maxRange + range / 2,
             stepSize: range,
             scaleLabel: {
               display: true,
-              labelString: "Price in USD",
+              // labelString: "Price in USD",
             },
           },
           scaleLabel: {
             display: true,
-            labelString: "Price in USD (In $$$)",
+            labelString: "Price in Billions (USD)",
           },
         },
       ],
