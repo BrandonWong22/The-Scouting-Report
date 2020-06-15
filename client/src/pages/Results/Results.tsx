@@ -238,8 +238,6 @@ class Results extends Component<ResultsProps, ResultsState> {
   }
 
   render() {
-    console.log("props", this.props.match);
-
     return (
       <div className="results-page">
         <CompanyInfoSection
