@@ -23,6 +23,10 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
     ],
   };
 
+  let minRange: number = Math.min(...props.stockData30);
+  let maxRange: number = Math.max(...props.stockData30);
+  let range: number = (maxRange - minRange) / 10;
+
   const options: {
     title: Object;
     scales: Object;
@@ -37,9 +41,9 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
       yAxes: [
         {
           ticks: {
-            min: Math.min(...props.stockData30) - 10,
-            max: Math.max(...props.stockData30) + 10,
-            stepSize: 5,
+            min: minRange - range / 2,
+            max: maxRange + range / 2,
+            stepSize: range,
           },
           scaleLabel: {
             display: true,
