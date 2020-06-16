@@ -121,3 +121,9 @@ interface StockDataProps {
   stockDailyPrices: Array<number>;
   stockDailyTimes: Array<string>;
 }
+
+interface StockDataStates {
+  loading: string;
+  buttonLeftClassName: string;
+  buttonRightClassName: string;
+}
