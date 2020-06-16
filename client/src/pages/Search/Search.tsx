@@ -26,26 +26,26 @@ class Search extends Component<SearchProps, SearchState> {
   database: any = firebase.database().ref().child("companylist");
 
   componentDidMount() {
-    let loginState: undefined | { isSignedIn: boolean } = this.props.location
-      .state;
-
-    if (loginState === undefined) {
-      //toast notification to show that user
-      //has not been authenticated
-      toast.error("Not Signed In", {
-        position: "bottom-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        progress: undefined,
-      });
-      this.props.history.push({
-        pathname: "/",
-      });
-    } else {
-      this.getAllCompanies();
-    }
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        console.log("true");
+        this.getAllCompanies();
+      } else {
+        // No user is signed in.
+        toast.error("Not Signed In", {
+          position: "bottom-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          progress: undefined,
+        });
+        this.props.history.push({
+          pathname: "/",
+        });
+      }
+    });
   }
 
   componentDidUpdate(_: any, prevState: { redirect: Boolean }) {
@@ -54,6 +54,7 @@ class Search extends Component<SearchProps, SearchState> {
         state: {
           redirect: this.state.redirect,
           companySymbol: this.state.companySymbol,
+          signedIn: this.props.location.state,
         },
         pathname: "/results/" + this.state.companySymbol,
       });
@@ -111,14 +112,9 @@ class Search extends Component<SearchProps, SearchState> {
     }
   };
 
-  handleLogout = () => {
-    firebase.auth().signOut();
-    this.props.history.push({
-      pathname: "/",
-    });
-  };
-
   render() {
+    console.log(this.props);
+
     return (
       <div className="search">
         <div className="search__component-container">

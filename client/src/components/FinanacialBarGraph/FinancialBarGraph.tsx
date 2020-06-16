@@ -23,8 +23,6 @@ const FinancialBarGraph: React.FC<FinancialBarGraphProps> = (props) => {
     financialsDates,
   } = props;
 
-  console.log(financialsRevenue);
-
   const data = {
     labels: financialsDates,
     datasets: [

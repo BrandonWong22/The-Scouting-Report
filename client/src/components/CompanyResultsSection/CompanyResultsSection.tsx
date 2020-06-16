@@ -39,7 +39,7 @@ class CompanyResultsSection extends Component<
       financialsOperatingExpenses,
     } = this.props;
 
-    if (currentStockPrice === "") {
+    if (currentStockPrice === "" && stockData30.length === 0) {
       return (
         <div className="company-results company-results--loading">
           <div className="sweet-loading">

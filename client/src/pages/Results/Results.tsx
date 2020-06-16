@@ -3,6 +3,8 @@ import "./Results.scss";
 import axios from "axios";
 import CompanyInfoSection from "../../components/CompanyInfoSection/CompanyInfoSection";
 import CompanyResultsSection from "../../components/CompanyResultsSection/CompanyResultsSection";
+import firebase from "firebase";
+import { toast } from "react-toastify";
 
 import connectSocket from "socket.io-client";
 
@@ -41,22 +43,41 @@ class Results extends Component<ResultsProps, ResultsState> {
   };
 
   componentDidMount() {
-    //make get request using data from the search page to get
-    //company profile from API
-    // let symbol: string = this.props.location.state.companySymbol;
-    let symbol: string = this.props.match.params.id;
-
-    let url: string =
-      "https://financialmodelingprep.com/api/v3/company/profile/" +
-      symbol +
-      "?apikey=d084cd25905084810ee3429ed54c83d9";
-
-    this.fetchDailyStockPrice(symbol);
-    this.fetchFinancials(symbol);
-    this.fetchHistoricalStockData30Day(symbol);
-    this.fetchCompanyData(symbol);
-    this.fetchCompanyInformation(url);
     this.configureSocketConnection();
+
+    firebase.auth().onAuthStateChanged((user: any) => {
+      if (user) {
+        // User is signed in.
+        //make get request using data from the search page to get
+        //company profile from API
+
+        let symbol: string = this.props.match.params.id;
+
+        let url: string =
+          "https://financialmodelingprep.com/api/v3/company/profile/" +
+          symbol +
+          "?apikey=d084cd25905084810ee3429ed54c83d9";
+
+        this.fetchDailyStockPrice(symbol);
+        this.fetchFinancials(symbol);
+        this.fetchHistoricalStockData30Day(symbol);
+        this.fetchCompanyData(symbol);
+        this.fetchCompanyInformation(url);
+      } else {
+        // No user is signed in.
+        this.props.history.push({
+          pathname: "/",
+        });
+        toast.error("Not Signed In", {
+          position: "bottom-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          progress: undefined,
+        });
+      }
+    });
   }
 
   //get quarterly financial data from the past 8 quarters
@@ -122,7 +143,7 @@ class Results extends Component<ResultsProps, ResultsState> {
 
     axios
       .get(
-        `https://financialmodelingprep.com/api/v3/historical-chart/30min/${symbol}?apikey=d084cd25905084810ee3429ed54c83d9`
+        `https://financialmodelingprep.com/api/v3/historical-chart/15min/${symbol}?apikey=d084cd25905084810ee3429ed54c83d9`
       )
       .then((response: any) => {
         response.data.forEach((item: any) => {
@@ -222,6 +243,8 @@ class Results extends Component<ResultsProps, ResultsState> {
   //configure web socket connection
   configureSocketConnection = () => {
     this.state.socket.on("connect", () => {
+      console.log("connected");
+
       this.state.socket.emit("client-message", this.props.match.params.id);
       this.state.socket.on("stock_price", (data: string) => {
         // console.log("socket data", data);
@@ -238,7 +261,8 @@ class Results extends Component<ResultsProps, ResultsState> {
   }
 
   render() {
-    console.log(this.state.companySymbol);
+    // console.log(this.props);
+    console.log("id from props", this.props.match.params.id);
 
     return (
       <div className="results-page">
