@@ -14,14 +14,6 @@ class StockData extends Component<StockDataProps, StockDataStates> {
     buttonRightClassName: "stock-data__button stock-data__button--right",
   };
 
-  // componentDidMount() {
-  //   this.setState({
-  //     buttonLeftClassName:
-  //       "stock-data__button stock-data__button--left stock-data__button--selected",
-  //     buttonRightClassName: "stock-data__button stock-data__button--right",
-  //   });
-  // }
-
   componentDidUpdate(_: any, prevState: { loading: string }) {
     if (this.state.loading !== prevState.loading) {
       if (this.state.loading === "daily" && prevState.loading === "30day") {
@@ -151,7 +143,6 @@ class StockData extends Component<StockDataProps, StockDataStates> {
             <button
               onClick={this.handle30DayButton}
               className={this.state.buttonLeftClassName}
-              // className="stock-data__button stock-data__button--left stock-data__button--selected"
             >
               Past 30 Days
             </button>
