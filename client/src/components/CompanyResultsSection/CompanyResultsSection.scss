@@ -7,6 +7,12 @@
   background-color: $light-mode-background-color;
   width: 100%;
 
+  &--loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   &__ctn {
     padding-top: 20px;
     padding-left: $margin-mobile;

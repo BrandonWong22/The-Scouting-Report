@@ -238,6 +238,8 @@ class Results extends Component<ResultsProps, ResultsState> {
   }
 
   render() {
+    console.log(this.state.companySymbol);
+
     return (
       <div className="results-page">
         <CompanyInfoSection
@@ -275,11 +277,11 @@ class Results extends Component<ResultsProps, ResultsState> {
         />
         {/* {this.state.currentStockPrice} */}
         {/* <ClipLoader
-          css={override}
-          size={150}
-          color={"#123abc"}
-          loading={this.state.loading}
-        /> */}
+            css={override}
+            size={150}
+            color={"#123abc"}
+            loading={this.state.loading}
+          /> */}
       </div>
     );
   }
