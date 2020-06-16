@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./FinancialStatement.scss";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+// import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import FinancialLineGraph from "../FinancialLineGraph/FinancialLineGraph";
 import FinancialBarGraph from "../FinanacialBarGraph/FinancialBarGraph";
 import FinancialRadarGraph from "../FinancialRadarGraph/FinancialRadarGraph";
@@ -18,6 +18,11 @@ interface FinancialStatementProps {
 
 interface FinancialStatementState {
   tabIndex: number;
+  loading: string;
+  buttonLine: string;
+  buttonBar: string;
+  buttonRadar: string;
+  buttonFinancials: string;
 }
 
 class FinancialStatement extends Component<
@@ -26,7 +31,51 @@ class FinancialStatement extends Component<
 > {
   state = {
     tabIndex: 0,
+    loading: "line",
+    buttonLine:
+      "financials__button financials__button--line financials__button--selected",
+    buttonBar: "financials__button financials__button--bar",
+    buttonRadar: "financials__button financials__button--radar",
+    buttonFinancials: "financials__button financials__button--financials",
   };
+
+  componentDidUpdate(_: any, prevState: { loading: string }) {
+    if (this.state.loading !== prevState.loading) {
+      if (this.state.loading === "line") {
+        this.setState({
+          buttonLine:
+            "financials__button financials__button--line financials__button--selected",
+          buttonBar: "financials__button financials__button--bar",
+          buttonRadar: "financials__button financials__button--radar",
+          buttonFinancials: "financials__button financials__button--financials",
+        });
+      } else if (this.state.loading === "bar") {
+        this.setState({
+          buttonLine: "financials__button financials__button--line",
+          buttonBar:
+            "financials__button financials__button--bar financials__button--selected",
+          buttonRadar: "financials__button financials__button--radar",
+          buttonFinancials: "financials__button financials__button--financials",
+        });
+      } else if (this.state.loading === "radar") {
+        this.setState({
+          buttonLine: "financials__button financials__button--line",
+          buttonBar: "financials__button financials__button--bar",
+          buttonRadar:
+            "financials__button financials__button--radar financials__button--selected",
+          buttonFinancials: "financials__button financials__button--financials",
+        });
+      } else if (this.state.loading === "financials") {
+        this.setState({
+          buttonLine: "financials__button financials__button--line",
+          buttonBar: "financials__button financials__button--bar",
+          buttonRadar: "financials__button financials__button--radar",
+          buttonFinancials:
+            "financials__button financials__button--financials financials__button--selected",
+        });
+      }
+    }
+  }
 
   renderLineGraph = () => {
     if (this.props.financialsRevenue.length !== 0) {
@@ -76,34 +125,66 @@ class FinancialStatement extends Component<
     }
   };
 
+  handleLineButtonClick = () => {
+    this.setState({
+      loading: "line",
+    });
+  };
+
+  handleBarButtonClick = () => {
+    this.setState({
+      loading: "bar",
+    });
+  };
+
+  handleRadarButtonClick = () => {
+    this.setState({
+      loading: "radar",
+    });
+  };
+
+  handleFinancialsButtonClick = () => {
+    this.setState({
+      loading: "financials",
+    });
+  };
+
   render() {
+    console.log(this.state.loading);
+
     return (
       <div className="financials__data-ctn">
-        <Tabs
-          selectedIndex={this.state.tabIndex}
-          onSelect={(tabIndex: number) => this.setState({ tabIndex })}
-          className="react-tabs"
-        >
-          <TabList className="react-tabs__tab-list">
-            <Tab className="react-tabs__tab">Line Graph</Tab>
-            <Tab className="react-tabs__tab">Bar Graph</Tab>
-            <Tab className="react-tabs__tab">Radar Graph</Tab>
-            <Tab className="react-tabs__tab">Financial Data</Tab>
-          </TabList>
-          <TabPanel className="react-tab__tab-panel">
-            <div className="financials__graph-ctn">
-              {this.renderLineGraph()}
-            </div>
-          </TabPanel>
-          <TabPanel className="react-tab__tab-panel">
-            <div className="financials__graph-ctn">{this.renderBarGraph()}</div>
-          </TabPanel>
-          <TabPanel className="react-tab__tab-panel">
-            <div className="financials__graph-ctn">
-              {this.renderRadarGraph()}
-            </div>
-          </TabPanel>
-          <TabPanel className="react-tab__tab-panel">
+        <div className="financials__button-ctn">
+          <button
+            onClick={this.handleLineButtonClick}
+            className={this.state.buttonLine}
+          >
+            Line Graph
+          </button>
+          <button
+            onClick={this.handleBarButtonClick}
+            className={this.state.buttonBar}
+          >
+            Bar Graph
+          </button>
+          <button
+            onClick={this.handleRadarButtonClick}
+            className={this.state.buttonRadar}
+          >
+            Radar Graph
+          </button>
+          <button
+            onClick={this.handleFinancialsButtonClick}
+            className={this.state.buttonFinancials}
+          >
+            Financial Statement
+          </button>
+        </div>
+        <div className="financials__graph-ctn">
+          {this.state.loading === "line" && this.renderLineGraph()}
+          {this.state.loading === "bar" && this.renderBarGraph()}
+          {this.state.loading === "radar" && this.renderRadarGraph()}
+          {this.state.loading === "financials" && (
             <CompanyDataCardList
               financialsDates={this.props.financialsDates}
               financialsRevenue={this.props.financialsRevenue}
@@ -115,8 +196,8 @@ class FinancialStatement extends Component<
                 this.props.financialsOperatingExpenses
               }
             />
-          </TabPanel>
-        </Tabs>
+          )}
+        </div>
       </div>
     );
   }

@@ -5,6 +5,7 @@ import Card from "@material-ui/core/Card";
 import { CardContent } from "@material-ui/core";
 import StockLineGraph from "../StockLineGraph/StockLineGraph";
 import StockDailyGraph from "../StockDailyGraph/StockDailyGraph";
+import ClipLoader from "react-spinners/ClipLoader";
 
 class StockData extends Component<StockDataProps, StockDataStates> {
   state = {
@@ -47,6 +48,30 @@ class StockData extends Component<StockDataProps, StockDataStates> {
     });
   };
 
+  // method to render the line graph when the data
+  // is not empty
+  renderLineGraph30Day = () => {
+    if (this.props.stockData30.length !== 0) {
+      return (
+        <StockLineGraph
+          stockData30={this.props.stockData30}
+          stockData30DateLabel={this.props.stockData30DateLabel}
+        />
+      );
+    }
+  };
+
+  renderDailyStockPrice = () => {
+    if (this.props.stockDailyPrices.length !== 0) {
+      return (
+        <StockDailyGraph
+          stockDailyPrices={this.props.stockDailyPrices}
+          stockDailyTimes={this.props.stockDailyTimes}
+        />
+      );
+    }
+  };
+
   render() {
     const {
       companyName,
@@ -59,10 +84,6 @@ class StockData extends Component<StockDataProps, StockDataStates> {
       stockClosingPrice,
       stockVolume,
       stockChange,
-      stockData30,
-      stockData30DateLabel,
-      stockDailyPrices,
-      stockDailyTimes,
     } = this.props;
 
     return (
@@ -155,18 +176,8 @@ class StockData extends Component<StockDataProps, StockDataStates> {
           </div>
 
           <div className="stock-data__graph-ctn">
-            {this.state.loading === "30day" && (
-              <StockLineGraph
-                stockData30={stockData30}
-                stockData30DateLabel={stockData30DateLabel}
-              />
-            )}
-            {this.state.loading === "daily" && (
-              <StockDailyGraph
-                stockDailyPrices={stockDailyPrices}
-                stockDailyTimes={stockDailyTimes}
-              />
-            )}
+            {this.state.loading === "30day" && this.renderLineGraph30Day()}
+            {this.state.loading === "daily" && this.renderLineGraph30Day()}
           </div>
         </div>
       </div>

@@ -6,11 +6,58 @@
   &__graph-ctn {
     // height: 600px;
     // width: 280px;
+    margin-top: 20px;
     position: relative;
     height: 500px;
     @include desktop {
       // height: 650px;
       height: 35rem;
+    }
+  }
+
+  &__button-ctn {
+    display: flex;
+    margin-top: 20px;
+  }
+
+  &__button {
+    cursor: pointer;
+    background-color: $light-mode-background-color-card;
+    padding: 10px 15px;
+    border: 1px solid $light-mode-text-color;
+    // border: none;
+    // border-radius: 5px;
+    color: $light-mode-text-color;
+    outline: none;
+
+    &--selected {
+      background-color: $light-mode-nav-background-color;
+      color: $light-mode-background-color-card;
+    }
+
+    &:hover {
+      background-color: $light-mode-nav-background-color;
+      color: $light-mode-background-color;
+      transition: 0.3s;
+    }
+
+    &--line {
+      border-right: none;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    &--bar {
+      border-right: none;
+    }
+
+    &--radar {
+      border-right: none;
+    }
+
+    &--financials {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
     }
   }
 }
