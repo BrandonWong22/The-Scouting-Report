@@ -92,6 +92,7 @@ class CompanyResultsSection extends Component<
                     financialsNetIncome={financialsNetIncome}
                     financialsCostAndExpenses={financialsCostAndExpenses}
                     financialsOperatingExpenses={financialsOperatingExpenses}
+                    companySymbol={companySymbol}
                   />
                 </TabPanel>
               </Tabs>

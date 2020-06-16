@@ -5,6 +5,7 @@ import FinancialLineGraph from "../FinancialLineGraph/FinancialLineGraph";
 import FinancialBarGraph from "../FinanacialBarGraph/FinancialBarGraph";
 import FinancialRadarGraph from "../FinancialRadarGraph/FinancialRadarGraph";
 import CompanyDataCardList from "../ComapnyDataCardList/CompanyDataCardList";
+import axios from "axios";
 
 class FinancialStatement extends Component<
   FinancialStatementProps,
@@ -18,9 +19,25 @@ class FinancialStatement extends Component<
     buttonBar: "financials__button financials__button--bar",
     buttonRadar: "financials__button financials__button--radar",
     buttonFinancials: "financials__button financials__button--financials",
+    annual: false,
+    quarterlyClassName:
+      "financials__button financials__button--quarterly financials__button--selected",
+    annualClassName: "financials__button financials__button--annual",
   };
 
-  componentDidUpdate(_: any, prevState: { loading: string }) {
+  componentDidMount() {
+    console.log(this.props.companySymbol);
+
+    axios
+      .get(
+        `https://financialmodelingprep.com/api/v3/income-statement/${this.props.companySymbol}?apikey=d084cd25905084810ee3429ed54c83d9`
+      )
+      .then((response) => {
+        console.log(response.data);
+      });
+  }
+
+  componentDidUpdate(_: any, prevState: { loading: string; annual: boolean }) {
     if (this.state.loading !== prevState.loading) {
       if (this.state.loading === "line") {
         this.setState({
@@ -53,6 +70,23 @@ class FinancialStatement extends Component<
           buttonRadar: "financials__button financials__button--radar",
           buttonFinancials:
             "financials__button financials__button--financials financials__button--selected",
+        });
+      }
+    }
+
+    if (this.state.annual !== prevState.annual) {
+      if (this.state.annual) {
+        this.setState({
+          quarterlyClassName:
+            "financials__button financials__button--quarterly",
+          annualClassName:
+            "financials__button financials__button--annual financials__button--selected",
+        });
+      } else {
+        this.setState({
+          quarterlyClassName:
+            "financials__button financials__button--quarterly financials__button--selected",
+          annualClassName: "financials__button financials__button--annual",
         });
       }
     }
@@ -106,6 +140,18 @@ class FinancialStatement extends Component<
     }
   };
 
+  handleQuarterlyButtonClick = () => {
+    this.setState({
+      annual: false,
+    });
+  };
+
+  handleAnnualButtonClick = () => {
+    this.setState({
+      annual: true,
+    });
+  };
+
   handleLineButtonClick = () => {
     this.setState({
       loading: "line",
@@ -135,6 +181,20 @@ class FinancialStatement extends Component<
 
     return (
       <div className="financials__data-ctn">
+        <div className="financials__button-ctn">
+          <button
+            onClick={this.handleQuarterlyButtonClick}
+            className={this.state.quarterlyClassName}
+          >
+            Quarterly
+          </button>
+          <button
+            onClick={this.handleAnnualButtonClick}
+            className={this.state.annualClassName}
+          >
+            Annual
+          </button>
+        </div>
         <div className="financials__button-ctn">
           <button
             onClick={this.handleLineButtonClick}

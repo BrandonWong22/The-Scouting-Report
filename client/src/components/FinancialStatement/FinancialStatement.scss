@@ -59,5 +59,16 @@
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
     }
+
+    &--quarterly {
+      border-right: none;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    &--annual {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
   }
 }

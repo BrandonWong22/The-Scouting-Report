@@ -136,6 +136,7 @@ interface FinancialStatementProps {
   financialsNetIncome: Array<number>;
   financialsCostAndExpenses: Array<number>;
   financialsOperatingExpenses: Array<number>;
+  companySymbol: string;
 }
 
 interface FinancialStatementState {
@@ -145,6 +146,9 @@ interface FinancialStatementState {
   buttonBar: string;
   buttonRadar: string;
   buttonFinancials: string;
+  annual: boolean;
+  quarterlyClassName: string;
+  annualClassName: string;
 }
 
 interface FinancialLineGraphProps {
