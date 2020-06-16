@@ -8,11 +8,12 @@ interface LoginPageState {
 
 interface SearchProps {
   history: any;
+  location: any;
 }
 
 interface SearchState {
   validateSearch: Boolean;
-  reportIsReady: Boolean;
+  signedIn: Boolean;
   redirect: Boolean;
   companySymbol: String;
   allCompaniesFireBase: Array;

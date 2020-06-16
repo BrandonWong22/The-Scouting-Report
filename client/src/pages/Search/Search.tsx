@@ -15,7 +15,7 @@ toast.configure();
 class Search extends Component<SearchProps, SearchState> {
   state: SearchState = {
     validateSearch: false,
-    reportIsReady: false,
+    signedIn: false,
     redirect: false,
     companySymbol: "",
     allCompaniesFireBase: [],
@@ -26,8 +26,8 @@ class Search extends Component<SearchProps, SearchState> {
   database: any = firebase.database().ref().child("companylist");
 
   componentDidMount() {
-    let passedDownProps: Object = Object.values(this.props);
-    let loginState = passedDownProps[1].state;
+    let loginState: undefined | { isSignedIn: boolean } = this.props.location
+      .state;
 
     if (loginState === undefined) {
       //toast notification to show that user
