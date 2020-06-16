@@ -6,25 +6,6 @@ import FinancialBarGraph from "../FinanacialBarGraph/FinancialBarGraph";
 import FinancialRadarGraph from "../FinancialRadarGraph/FinancialRadarGraph";
 import CompanyDataCardList from "../ComapnyDataCardList/CompanyDataCardList";
 
-interface FinancialStatementProps {
-  financialsDates: Array<string>;
-  financialsRevenue: Array<number>;
-  financialsCostOfRevenue: Array<number>;
-  financialsGrossProfit: Array<number>;
-  financialsNetIncome: Array<number>;
-  financialsCostAndExpenses: Array<number>;
-  financialsOperatingExpenses: Array<number>;
-}
-
-interface FinancialStatementState {
-  tabIndex: number;
-  loading: string;
-  buttonLine: string;
-  buttonBar: string;
-  buttonRadar: string;
-  buttonFinancials: string;
-}
-
 class FinancialStatement extends Component<
   FinancialStatementProps,
   FinancialStatementState

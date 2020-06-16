@@ -5,7 +5,6 @@ import Card from "@material-ui/core/Card";
 import { CardContent } from "@material-ui/core";
 import StockLineGraph from "../StockLineGraph/StockLineGraph";
 import StockDailyGraph from "../StockDailyGraph/StockDailyGraph";
-import ClipLoader from "react-spinners/ClipLoader";
 
 class StockData extends Component<StockDataProps, StockDataStates> {
   state = {

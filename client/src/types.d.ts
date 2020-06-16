@@ -127,3 +127,52 @@ interface StockDataStates {
   buttonLeftClassName: string;
   buttonRightClassName: string;
 }
+
+interface FinancialStatementProps {
+  financialsDates: Array<string>;
+  financialsRevenue: Array<number>;
+  financialsCostOfRevenue: Array<number>;
+  financialsGrossProfit: Array<number>;
+  financialsNetIncome: Array<number>;
+  financialsCostAndExpenses: Array<number>;
+  financialsOperatingExpenses: Array<number>;
+}
+
+interface FinancialStatementState {
+  tabIndex: number;
+  loading: string;
+  buttonLine: string;
+  buttonBar: string;
+  buttonRadar: string;
+  buttonFinancials: string;
+}
+
+interface FinancialLineGraphProps {
+  financialsDates: Array<string>;
+  financialsRevenue: Array<number>;
+  financialsCostOfRevenue: Array<number>;
+  financialsGrossProfit: Array<number>;
+  financialsNetIncome: Array<number>;
+  financialsCostAndExpenses: Array<number>;
+  financialsOperatingExpenses: Array<number>;
+}
+
+interface FinancialBarGraphProps {
+  financialsDates: Array<string>;
+  financialsRevenue: Array<number>;
+  financialsCostOfRevenue: Array<number>;
+  financialsGrossProfit: Array<number>;
+  financialsNetIncome: Array<number>;
+  financialsCostAndExpenses: Array<number>;
+  financialsOperatingExpenses: Array<number>;
+}
+
+interface FinancialRadarGraphProps {
+  financialsDates: Array<string>;
+  financialsRevenue: Array<number>;
+  financialsCostOfRevenue: Array<number>;
+  financialsGrossProfit: Array<number>;
+  financialsNetIncome: Array<number>;
+  financialsCostAndExpenses: Array<number>;
+  financialsOperatingExpenses: Array<number>;
+}

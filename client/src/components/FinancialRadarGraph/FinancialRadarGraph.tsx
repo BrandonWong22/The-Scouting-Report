@@ -1,16 +1,6 @@
 import React from "react";
 import { Radar } from "react-chartjs-2";
 
-interface FinancialRadarGraphProps {
-  financialsDates: Array<string>;
-  financialsRevenue: Array<number>;
-  financialsCostOfRevenue: Array<number>;
-  financialsGrossProfit: Array<number>;
-  financialsNetIncome: Array<number>;
-  financialsCostAndExpenses: Array<number>;
-  financialsOperatingExpenses: Array<number>;
-}
-
 const FinancialRadarGraph: React.FC<FinancialRadarGraphProps> = (props) => {
   const {
     financialsRevenue,

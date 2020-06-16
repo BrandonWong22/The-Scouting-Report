@@ -1,16 +1,5 @@
 import React from "react";
-import "./FinancialLineGraph.scss";
 import { Line } from "react-chartjs-2";
-
-interface FinancialLineGraphProps {
-  financialsDates: Array<string>;
-  financialsRevenue: Array<number>;
-  financialsCostOfRevenue: Array<number>;
-  financialsGrossProfit: Array<number>;
-  financialsNetIncome: Array<number>;
-  financialsCostAndExpenses: Array<number>;
-  financialsOperatingExpenses: Array<number>;
-}
 
 const FinancialLineGraph: React.FC<FinancialLineGraphProps> = (props) => {
   const {

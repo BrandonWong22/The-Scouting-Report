@@ -1,16 +1,5 @@
 import React from "react";
-import "./FinancialBarGraph.scss";
 import { Bar } from "react-chartjs-2";
-
-interface FinancialBarGraphProps {
-  financialsDates: Array<string>;
-  financialsRevenue: Array<number>;
-  financialsCostOfRevenue: Array<number>;
-  financialsGrossProfit: Array<number>;
-  financialsNetIncome: Array<number>;
-  financialsCostAndExpenses: Array<number>;
-  financialsOperatingExpenses: Array<number>;
-}
 
 const FinancialBarGraph: React.FC<FinancialBarGraphProps> = (props) => {
   const {
