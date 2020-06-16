@@ -34,11 +34,14 @@
     align-items: center;
   }
 
+  &__input-ctn {
+    margin-bottom: 15px;
+  }
+
   &__button {
     width: 120px;
     height: 40px;
     text-align: center;
-    margin-top: 15px;
     border-radius: 10px;
     outline: none;
   }

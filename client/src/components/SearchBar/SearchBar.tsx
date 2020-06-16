@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./SearchBar.scss";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
+import Button from "@material-ui/core/Button";
 
 class SearchBar extends Component<SearchBarProps, ISearchBarState> {
   state = {
@@ -38,17 +39,24 @@ class SearchBar extends Component<SearchBarProps, ISearchBarState> {
         <div className="search__searchbar-div">
           <div className="search__autocomplete-container">
             <form className="search__form" onSubmit={this.handleFormSubmit}>
-              <ReactSearchAutocomplete
-                items={this.props.allCompaniesFireBase}
-                onSearch={this.handleOnSearch}
-                onSelect={this.handleOnSelect}
-                onFocus={this.handleOnFocus}
-                maxResults={5}
-                autoFocus
-              />
-              <button className="search__button" type="submit">
+              <div className="search__input-ctn">
+                <ReactSearchAutocomplete
+                  items={this.props.allCompaniesFireBase}
+                  onSearch={this.handleOnSearch}
+                  onSelect={this.handleOnSelect}
+                  onFocus={this.handleOnFocus}
+                  maxResults={5}
+                  autoFocus
+                />
+              </div>
+
+              <Button
+                className="search__button"
+                type="submit"
+                variant="contained"
+              >
                 submit
-              </button>
+              </Button>
             </form>
           </div>
         </div>
