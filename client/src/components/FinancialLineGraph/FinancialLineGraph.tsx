@@ -115,7 +115,7 @@ const FinancialLineGraph: React.FC<FinancialLineGraphProps> = (props) => {
           },
           gridLines: {
             color: color,
-            lineWidth: 0.3,
+            lineWidth: 0.45,
           },
         },
       ],
@@ -127,7 +127,7 @@ const FinancialLineGraph: React.FC<FinancialLineGraphProps> = (props) => {
           },
           gridLines: {
             color: color,
-            lineWidth: 0.3,
+            lineWidth: 0.45,
           },
           ticks: {
             fontColor: color,

@@ -95,6 +95,7 @@ interface StockLineGraphProps {
   stockData: any;
   stockDataDateLabel: Array<string>;
   color: string;
+  title: string;
 }
 
 interface StockDataProps {

@@ -2,7 +2,7 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 
 const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
-  const { stockData, stockDataDateLabel, color } = props;
+  const { stockData, stockDataDateLabel, color, title } = props;
 
   const data: { labels: Array<string>; datasets: Array<Object> } = {
     labels: stockDataDateLabel,
@@ -36,7 +36,7 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
     },
     title: {
       display: true,
-      text: "Stock Prices for the Past 30 Days",
+      text: title,
       fontColor: color,
     },
 
