@@ -4,7 +4,6 @@ import "./StockData.scss";
 import Card from "@material-ui/core/Card";
 import { CardContent } from "@material-ui/core";
 import StockLineGraph from "../StockLineGraph/StockLineGraph";
-import StockDailyGraph from "../StockDailyGraph/StockDailyGraph";
 
 class StockData extends Component<StockDataProps, StockDataStates> {
   state = {
@@ -58,6 +57,7 @@ class StockData extends Component<StockDataProps, StockDataStates> {
         <StockLineGraph
           stockData30={this.props.stockData30}
           stockData30DateLabel={this.props.stockData30DateLabel}
+          color={this.props.darkMode ? "#999" : "#C0C0C0"}
         />
       );
     }
@@ -66,9 +66,10 @@ class StockData extends Component<StockDataProps, StockDataStates> {
   renderDailyStockPrice = () => {
     if (this.props.stockDailyPrices.length !== 0) {
       return (
-        <StockDailyGraph
-          stockDailyPrices={this.props.stockDailyPrices}
-          stockDailyTimes={this.props.stockDailyTimes}
+        <StockLineGraph
+          stockData30={this.props.stockDailyPrices}
+          stockData30DateLabel={this.props.stockDailyTimes}
+          color={this.props.darkMode ? "#999" : "#C0C0C0"}
         />
       );
     }
@@ -88,6 +89,8 @@ class StockData extends Component<StockDataProps, StockDataStates> {
       stockChange,
       darkMode,
     } = this.props;
+
+    console.log(darkMode);
 
     return (
       <div className="stock-data">

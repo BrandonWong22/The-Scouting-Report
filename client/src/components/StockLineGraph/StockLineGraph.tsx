@@ -4,10 +4,11 @@ import { Line } from "react-chartjs-2";
 interface StockLineGraphProps {
   stockData30: any;
   stockData30DateLabel: Array<string>;
+  color: string;
 }
 
 const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
-  const { stockData30, stockData30DateLabel } = props;
+  const { stockData30, stockData30DateLabel, color } = props;
 
   const data: { labels: Array<string>; datasets: Array<Object> } = {
     labels: stockData30DateLabel,
@@ -32,11 +33,19 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
     scales: Object;
     responsive: boolean;
     maintainAspectRatio: boolean;
+    legend: Object;
   } = {
+    legend: {
+      labels: {
+        fontColor: color,
+      },
+    },
     title: {
       display: true,
       text: "Stock Prices for the Past 30 Days",
+      fontColor: color,
     },
+
     scales: {
       yAxes: [
         {
@@ -44,10 +53,16 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
             min: minRange - range,
             max: maxRange + range,
             stepSize: range,
+            fontColor: color,
           },
           scaleLabel: {
             display: true,
             labelString: "Price in USD",
+            fontColor: color,
+          },
+          gridLines: {
+            color: color,
+            lineWidth: 1,
           },
         },
       ],
@@ -56,6 +71,14 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
           scaleLabel: {
             display: true,
             labelString: "Date in (YYYY-MM-DD)",
+            fontColor: color,
+          },
+          gridLines: {
+            color: color,
+            lineWidth: 1,
+          },
+          ticks: {
+            fontColor: color,
           },
         },
       ],
