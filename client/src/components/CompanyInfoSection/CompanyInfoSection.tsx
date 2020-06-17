@@ -99,13 +99,16 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
           </div>
 
           <div className="company-info__logout-btn-ctn">
-            <Button
-              variant="contained"
+            <button
               onClick={this.handleLogout}
-              className="company-info__logout-button"
+              className={
+                darkMode
+                  ? "company-info__logout-button company-info__logout-button--dark"
+                  : "company-info__logout-button company-info__logout-button--light"
+              }
             >
               Logout
-            </Button>
+            </button>
           </div>
         </Collapsible>
 
