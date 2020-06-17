@@ -210,6 +210,20 @@ class Results extends Component<ResultsProps, ResultsState> {
     this.state.socket.close();
   }
 
+  //handle dark mode toggle
+  handleDarkModeToggle = () => {
+    // alert("i have been touched");
+    if (this.state.darkMode) {
+      this.setState({
+        darkMode: false,
+      });
+    } else {
+      this.setState({
+        darkMode: true,
+      });
+    }
+  };
+
   render() {
     return (
       <div className="results-page">
@@ -226,7 +240,35 @@ class Results extends Component<ResultsProps, ResultsState> {
           <div className="results-page__results-ctn">
             <div className="results-page__top-ctn">
               <h1 className="results-page__results-header">Results</h1>
-              {/* ADD TOGGLE  */}
+              <div className="results-page__switch-ctn">
+                <p
+                  className="results-page__light-icon"
+                  style={{ color: this.state.darkMode ? "grey" : "red" }}
+                >
+                  ☀︎
+                </p>
+                <Switch
+                  checked={this.state.darkMode}
+                  onChange={this.handleDarkModeToggle}
+                  onColor="#86d3ff"
+                  onHandleColor="#2693e6"
+                  handleDiameter={30}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                  activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                  height={20}
+                  width={48}
+                  className="results-page__results-switch"
+                  id="material-switch"
+                />
+                <p
+                  className="results-page__dark-icon"
+                  style={{ color: this.state.darkMode ? "red" : "grey" }}
+                >
+                  ☾
+                </p>
+              </div>
             </div>
             <CompanyResultsSection
               companyName={this.state.companyName}

@@ -25,25 +25,43 @@
   }
 
   &__top-ctn {
-    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // width: 100%;
 
     @include tablet {
-      align-self: center;
+      justify-content: space-between;
     }
   }
-
-  // &__tabs-ctn {
-  // }
 
   &__results-header {
     color: $light-mode-text-color;
     // display: none;
     @include tablet {
       font-size: 20px;
+      align-self: center;
     }
 
     @include desktop {
       font-size: 28px;
     }
+  }
+
+  &__switch-ctn {
+    display: flex;
+    align-items: center;
+    @include desktop {
+      margin-right: 10px;
+    }
+  }
+
+  &__light-icon {
+    margin-right: 5px;
+  }
+
+  &__dark-icon {
+    margin-top: 5px;
+    margin-left: 5px;
   }
 }
