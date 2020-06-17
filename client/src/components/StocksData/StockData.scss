@@ -4,7 +4,6 @@
 @import "../../styles/partials/fonts";
 
 .stock-data {
-  color: $light-mode-text-color;
   display: flex;
   flex-direction: column;
 
@@ -26,12 +25,7 @@
   &__section-results {
     margin-bottom: 15px;
     margin-top: 15px;
-    // width: 300px;
-    // width: fit-content;
     background-color: $light-mode-background-color-card;
-    // padding: 5px;
-    // border-radius: $border-radius;
-    // box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.35);
   }
 
   &__data-ctn {
@@ -81,6 +75,24 @@
 
   &__data-label {
     font-family: "RobotoBold";
+
+    &--light {
+      color: $light-mode-text-color;
+    }
+
+    &--dark {
+      color: $dark-mode-text-color;
+    }
+  }
+
+  &__data-text {
+    &--light {
+      color: $light-mode-text-color;
+    }
+
+    &--dark {
+      color: $dark-mode-text-color;
+    }
   }
 
   &__graph-ctn {
@@ -111,11 +123,20 @@
 
   &__button {
     cursor: pointer;
-    background-color: $light-mode-background-color-card;
     padding: 10px 15px;
-    border: 1px solid $light-mode-text-color;
-    color: $light-mode-text-color;
     outline: none;
+
+    &--light {
+      border: 1px solid $light-mode-text-color;
+      color: $light-mode-text-color;
+      background-color: $light-mode-background-color-card;
+    }
+
+    &--dark {
+      border: 1px solid $dark-mode-text-color;
+      color: $dark-mode-text-color;
+      background-color: $dark-mode-background-color-card;
+    }
 
     &--left {
       border-top-left-radius: 5px;

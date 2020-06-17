@@ -106,6 +106,7 @@ interface StockDataProps {
   stockData30DateLabel: Array<string>;
   stockDailyPrices: Array<number>;
   stockDailyTimes: Array<string>;
+  darkMode: boolean;
 }
 
 interface StockDataStates {

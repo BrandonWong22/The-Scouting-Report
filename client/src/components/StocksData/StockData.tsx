@@ -14,7 +14,10 @@ class StockData extends Component<StockDataProps, StockDataStates> {
     buttonRightClassName: "stock-data__button stock-data__button--right",
   };
 
-  componentDidUpdate(_: any, prevState: { loading: string }) {
+  componentDidUpdate(
+    prevProps: { darkMode: boolean },
+    prevState: { loading: string }
+  ) {
     if (this.state.loading !== prevState.loading) {
       if (this.state.loading === "daily" && prevState.loading === "30day") {
         this.setState({
@@ -83,75 +86,220 @@ class StockData extends Component<StockDataProps, StockDataStates> {
       stockClosingPrice,
       stockVolume,
       stockChange,
+      darkMode,
     } = this.props;
 
     return (
       <div className="stock-data">
         <div className="stock-data__top-data-ctn">
           <Card
-            style={{ backgroundColor: "#e5e7f0" }}
+            style={
+              darkMode
+                ? { backgroundColor: "#525252" }
+                : { backgroundColor: "#e5e7f0" }
+            }
             className="stock-data__section-results"
           >
             <CardContent>
-              <h2>
+              <h2
+                className={
+                  darkMode
+                    ? "stock-data__data-label stock-data__data-label--dark"
+                    : "stock-data__data-label stock-data__data-label--light"
+                }
+              >
                 {companyName} {currentStockPrice}
               </h2>
             </CardContent>
-
-            {/* </div> */}
           </Card>
 
           <div className="stock-data__data-ctn">
             <Card
               className="stock-data__col stock-data__col--col1"
-              style={{ backgroundColor: "#e5e7f0" }}
+              style={
+                darkMode
+                  ? { backgroundColor: "#525252" }
+                  : { backgroundColor: "#e5e7f0" }
+              }
             >
               <CardContent>
                 <div className="stock-data__section-ctn">
-                  <h3 className="stock-data__data-label">Symbol</h3>
-                  <h3>{companySymbol}</h3>
+                  <h3
+                    className={
+                      darkMode
+                        ? "stock-data__data-label stock-data__data-label--dark"
+                        : "stock-data__data-label stock-data__data-label--light"
+                    }
+                  >
+                    Symbol
+                  </h3>
+                  <h3
+                    className={
+                      darkMode
+                        ? "stock-data__data-text stock-data__data-text--dark"
+                        : "stock-data__data-text stock-data__data-text--light"
+                    }
+                  >
+                    {companySymbol}
+                  </h3>
                 </div>
 
                 <div className="stock-data__section-ctn">
-                  <h3 className="stock-data__data-label">Date</h3>
-                  <h3>{stockDate}</h3>
+                  <h3
+                    className={
+                      darkMode
+                        ? "stock-data__data-label stock-data__data-label--dark"
+                        : "stock-data__data-label stock-data__data-label--light"
+                    }
+                  >
+                    Date
+                  </h3>
+                  <h3
+                    className={
+                      darkMode
+                        ? "stock-data__data-text stock-data__data-text--dark"
+                        : "stock-data__data-text stock-data__data-text--light"
+                    }
+                  >
+                    {stockDate}
+                  </h3>
                 </div>
 
                 <div className="stock-data__section-ctn">
-                  <h3 className="stock-data__data-label">Open</h3>
-                  <h3>{stockOpenPrice}</h3>
+                  <h3
+                    className={
+                      darkMode
+                        ? "stock-data__data-label stock-data__data-label--dark"
+                        : "stock-data__data-label stock-data__data-label--light"
+                    }
+                  >
+                    Open
+                  </h3>
+                  <h3
+                    className={
+                      darkMode
+                        ? "stock-data__data-text stock-data__data-text--dark"
+                        : "stock-data__data-text stock-data__data-text--light"
+                    }
+                  >
+                    {stockOpenPrice}
+                  </h3>
                 </div>
 
                 <div className="stock-data__section-ctn">
-                  <h3 className="stock-data__data-label">Low</h3>
-                  <h3>{stockLowPrice}</h3>
+                  <h3
+                    className={
+                      darkMode
+                        ? "stock-data__data-label stock-data__data-label--dark"
+                        : "stock-data__data-label stock-data__data-label--light"
+                    }
+                  >
+                    Low
+                  </h3>
+                  <h3
+                    className={
+                      darkMode
+                        ? "stock-data__data-text stock-data__data-text--dark"
+                        : "stock-data__data-text stock-data__data-text--light"
+                    }
+                  >
+                    {stockLowPrice}
+                  </h3>
                 </div>
               </CardContent>
             </Card>
 
             <Card
               className="stock-data__col stock-data__col--col2"
-              style={{ backgroundColor: "#e5e7f0" }}
+              style={
+                darkMode
+                  ? { backgroundColor: "#525252" }
+                  : { backgroundColor: "#e5e7f0" }
+              }
             >
               <CardContent>
                 <div className="stock-data__section-ctn">
-                  <h3 className="stock-data__data-label">High</h3>
-                  <h3>{stockHighPrice}</h3>
+                  <h3
+                    className={
+                      darkMode
+                        ? "stock-data__data-label stock-data__data-label--dark"
+                        : "stock-data__data-label stock-data__data-label--light"
+                    }
+                  >
+                    High
+                  </h3>
+                  <h3
+                    className={
+                      darkMode
+                        ? "stock-data__data-text stock-data__data-text--dark"
+                        : "stock-data__data-text stock-data__data-text--light"
+                    }
+                  >
+                    {stockHighPrice}
+                  </h3>
                 </div>
 
                 <div className="stock-data__section-ctn">
-                  <h3 className="stock-data__data-label">Close</h3>
-                  <h3>{stockClosingPrice}</h3>
+                  <h3
+                    className={
+                      darkMode
+                        ? "stock-data__data-label stock-data__data-label--dark"
+                        : "stock-data__data-label stock-data__data-label--light"
+                    }
+                  >
+                    Close
+                  </h3>
+                  <h3
+                    className={
+                      darkMode
+                        ? "stock-data__data-text stock-data__data-text--dark"
+                        : "stock-data__data-text stock-data__data-text--light"
+                    }
+                  >
+                    {stockClosingPrice}
+                  </h3>
                 </div>
 
                 <div className="stock-data__section-ctn">
-                  <h3 className="stock-data__data-label">Volume</h3>
-                  <h3>{stockVolume}</h3>
+                  <h3
+                    className={
+                      darkMode
+                        ? "stock-data__data-label stock-data__data-label--dark"
+                        : "stock-data__data-label stock-data__data-label--light"
+                    }
+                  >
+                    Volume
+                  </h3>
+                  <h3
+                    className={
+                      darkMode
+                        ? "stock-data__data-text stock-data__data-text--dark"
+                        : "stock-data__data-text stock-data__data-text--light"
+                    }
+                  >
+                    {stockVolume}
+                  </h3>
                 </div>
 
                 <div className="stock-data__section-ctn">
-                  <h3 className="stock-data__data-label">Change</h3>
-                  <h3>{stockChange}</h3>
+                  <h3
+                    className={
+                      darkMode
+                        ? "stock-data__data-label stock-data__data-label--dark"
+                        : "stock-data__data-label stock-data__data-label--light"
+                    }
+                  >
+                    Change
+                  </h3>
+                  <h3
+                    className={
+                      darkMode
+                        ? "stock-data__data-text stock-data__data-text--dark"
+                        : "stock-data__data-text stock-data__data-text--light"
+                    }
+                  >
+                    {stockChange}
+                  </h3>
                 </div>
               </CardContent>
             </Card>
@@ -162,13 +310,24 @@ class StockData extends Component<StockDataProps, StockDataStates> {
           <div className="stock-data__button-ctn">
             <button
               onClick={this.handle30DayButton}
-              className={this.state.buttonLeftClassName}
+              className={
+                darkMode
+                  ? this.state.buttonLeftClassName + " stock-data__button--dark"
+                  : this.state.buttonLeftClassName +
+                    " stock-data__button--light"
+              }
             >
               Past 30 Days
             </button>
             <button
               onClick={this.handleDailyButton}
-              className={this.state.buttonRightClassName}
+              className={
+                darkMode
+                  ? this.state.buttonRightClassName +
+                    " stock-data__button--dark"
+                  : this.state.buttonRightClassName +
+                    " stock-data__button--light"
+              }
             >
               Daily Stock Tracker
             </button>

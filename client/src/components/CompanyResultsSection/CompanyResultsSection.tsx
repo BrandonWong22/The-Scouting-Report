@@ -5,7 +5,6 @@ import StockData from "../StocksData/StockData";
 import FinancialStatement from "../FinancialStatement/FinancialStatement";
 // import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
-import { dark } from "@material-ui/core/styles/createPalette";
 
 class CompanyResultsSection extends Component<
   CompanyResultsProps,
@@ -89,6 +88,7 @@ class CompanyResultsSection extends Component<
                 stockData30DateLabel={stockData30DateLabel}
                 stockDailyPrices={stockDailyPrices}
                 stockDailyTimes={stockDailyTimes}
+                darkMode={darkMode}
               />
             </TabPanel>
             <TabPanel className="react-tab__tab-panel">
