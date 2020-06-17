@@ -43,46 +43,38 @@ class CompanyResultsSection extends Component<
       );
     } else {
       return (
-        <div className="company-results">
-          <div className="company-results__ctn">
-            <div className="company-results__top-ctn">
-              <h1 className="company-results__results-header">Results</h1>
-              {/* ADD TOGGLE  */}
-            </div>
-            <div className="company-results__tabs-ctn">
-              <Tabs
-                selectedIndex={this.state.tabIndex}
-                onSelect={(tabIndex: number) => this.setState({ tabIndex })}
-                className="react-tabs"
-              >
-                <TabList className="react-tabs__tab-list">
-                  <Tab className="react-tabs__tab">Stocks</Tab>
-                  <Tab>Financial Statement</Tab>
-                </TabList>
-                <TabPanel className="react-tab__tab-panel">
-                  <StockData
-                    companyName={companyName}
-                    companySymbol={companySymbol}
-                    currentStockPrice={currentStockPrice}
-                    stockDate={stockDate}
-                    stockOpenPrice={stockOpenPrice}
-                    stockLowPrice={stockLowPrice}
-                    stockHighPrice={stockHighPrice}
-                    stockClosingPrice={stockClosingPrice}
-                    stockVolume={stockVolume}
-                    stockChange={stockChange}
-                    stockData30={stockData30}
-                    stockData30DateLabel={stockData30DateLabel}
-                    stockDailyPrices={stockDailyPrices}
-                    stockDailyTimes={stockDailyTimes}
-                  />
-                </TabPanel>
-                <TabPanel className="react-tab__tab-panel">
-                  <FinancialStatement companySymbol={companySymbol} />
-                </TabPanel>
-              </Tabs>
-            </div>
-          </div>
+        <div className="company-results__tabs-ctn">
+          <Tabs
+            selectedIndex={this.state.tabIndex}
+            onSelect={(tabIndex: number) => this.setState({ tabIndex })}
+            className="react-tabs"
+          >
+            <TabList className="react-tabs__tab-list">
+              <Tab className="react-tabs__tab">Stocks</Tab>
+              <Tab>Financial Statement</Tab>
+            </TabList>
+            <TabPanel className="react-tab__tab-panel">
+              <StockData
+                companyName={companyName}
+                companySymbol={companySymbol}
+                currentStockPrice={currentStockPrice}
+                stockDate={stockDate}
+                stockOpenPrice={stockOpenPrice}
+                stockLowPrice={stockLowPrice}
+                stockHighPrice={stockHighPrice}
+                stockClosingPrice={stockClosingPrice}
+                stockVolume={stockVolume}
+                stockChange={stockChange}
+                stockData30={stockData30}
+                stockData30DateLabel={stockData30DateLabel}
+                stockDailyPrices={stockDailyPrices}
+                stockDailyTimes={stockDailyTimes}
+              />
+            </TabPanel>
+            <TabPanel className="react-tab__tab-panel">
+              <FinancialStatement companySymbol={companySymbol} />
+            </TabPanel>
+          </Tabs>
         </div>
       );
     }

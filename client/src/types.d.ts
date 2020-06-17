@@ -42,7 +42,6 @@ interface ResultsState {
   companyIndustry: String;
   companyWebsite: String;
   companyCEO: String;
-  loading: Boolean;
   currentStockPrice: String;
   socket: any;
   stockDate: string;
@@ -56,6 +55,7 @@ interface ResultsState {
   stockData30DateLabel: Array<string>;
   stockDailyPrices: Array<number>;
   stockDailyTimes: Array<string>;
+  darkMode: boolean;
 }
 
 interface CompanyInfoProps {

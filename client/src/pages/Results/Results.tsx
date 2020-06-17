@@ -5,6 +5,7 @@ import CompanyInfoSection from "../../components/CompanyInfoSection/CompanyInfoS
 import CompanyResultsSection from "../../components/CompanyResultsSection/CompanyResultsSection";
 import firebase from "firebase";
 import { toast } from "react-toastify";
+import Switch from "react-switch";
 
 import connectSocket from "socket.io-client";
 
@@ -18,7 +19,6 @@ class Results extends Component<ResultsProps, ResultsState> {
     companyIndustry: "",
     companyWebsite: "",
     companyCEO: "",
-    loading: true,
     currentStockPrice: "",
     socket: connectSocket("http://localhost:8080"),
     stockDate: "",
@@ -32,6 +32,7 @@ class Results extends Component<ResultsProps, ResultsState> {
     stockData30DateLabel: [],
     stockDailyPrices: [],
     stockDailyTimes: [],
+    darkMode: false,
   };
 
   componentDidMount() {
@@ -221,22 +222,30 @@ class Results extends Component<ResultsProps, ResultsState> {
           companyCEO={this.state.companyCEO}
           history={this.props.history}
         />
-        <CompanyResultsSection
-          companyName={this.state.companyName}
-          companySymbol={this.state.companySymbol}
-          currentStockPrice={this.state.currentStockPrice}
-          stockDate={this.state.stockDate}
-          stockOpenPrice={this.state.stockOpenPrice}
-          stockLowPrice={this.state.stockLowPrice}
-          stockHighPrice={this.state.stockHighPrice}
-          stockClosingPrice={this.state.stockClosingPrice}
-          stockVolume={this.state.stockVolume}
-          stockChange={this.state.stockChange}
-          stockData30={this.state.stockData30}
-          stockData30DateLabel={this.state.stockData30DateLabel}
-          stockDailyPrices={this.state.stockDailyPrices}
-          stockDailyTimes={this.state.stockDailyTimes}
-        />
+        <div className="results-page__results">
+          <div className="results-page__results-ctn">
+            <div className="results-page__top-ctn">
+              <h1 className="results-page__results-header">Results</h1>
+              {/* ADD TOGGLE  */}
+            </div>
+            <CompanyResultsSection
+              companyName={this.state.companyName}
+              companySymbol={this.state.companySymbol}
+              currentStockPrice={this.state.currentStockPrice}
+              stockDate={this.state.stockDate}
+              stockOpenPrice={this.state.stockOpenPrice}
+              stockLowPrice={this.state.stockLowPrice}
+              stockHighPrice={this.state.stockHighPrice}
+              stockClosingPrice={this.state.stockClosingPrice}
+              stockVolume={this.state.stockVolume}
+              stockChange={this.state.stockChange}
+              stockData30={this.state.stockData30}
+              stockData30DateLabel={this.state.stockData30DateLabel}
+              stockDailyPrices={this.state.stockDailyPrices}
+              stockDailyTimes={this.state.stockDailyTimes}
+            />
+          </div>
+        </div>
       </div>
     );
   }
