@@ -11,7 +11,7 @@ class CompanyResultsSection extends Component<
   CompanyResultsState
 > {
   state = {
-    tabIndex: 1,
+    tabIndex: 0,
   };
 
   render() {
@@ -32,7 +32,6 @@ class CompanyResultsSection extends Component<
       stockDailyTimes,
       darkMode,
     } = this.props;
-    console.log(darkMode);
 
     if (currentStockPrice === "") {
       //&& stockData30.length === 0 check why this doesnt work

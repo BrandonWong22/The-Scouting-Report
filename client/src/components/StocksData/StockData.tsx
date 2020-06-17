@@ -91,8 +91,6 @@ class StockData extends Component<StockDataProps, StockDataStates> {
       darkMode,
     } = this.props;
 
-    console.log(darkMode);
-
     return (
       <div className="stock-data">
         <div className="stock-data__top-data-ctn">
