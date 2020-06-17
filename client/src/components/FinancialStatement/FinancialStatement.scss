@@ -3,18 +3,6 @@
 @import "../../styles/partials/mixins";
 
 .financials {
-  &__graph-ctn {
-    // height: 600px;
-    // width: 280px;
-    margin-top: 20px;
-    position: relative;
-    height: 500px;
-    @include desktop {
-      // height: 650px;
-      height: 35rem;
-    }
-  }
-
   &__button-ctn {
     display: flex;
     margin-top: 20px;
@@ -39,25 +27,6 @@
       background-color: $light-mode-nav-background-color;
       color: $light-mode-background-color;
       transition: 0.3s;
-    }
-
-    &--line {
-      border-right: none;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-    }
-
-    &--bar {
-      border-right: none;
-    }
-
-    &--radar {
-      border-right: none;
-    }
-
-    &--financials {
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
     }
 
     &--quarterly {
