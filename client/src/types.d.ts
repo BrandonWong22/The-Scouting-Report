@@ -66,6 +66,7 @@ interface CompanyInfoProps {
   companyWebsite: string;
   companyCEO: string;
   history: any;
+  darkMode: boolean;
 }
 
 interface CompanyResultsProps {

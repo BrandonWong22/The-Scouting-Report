@@ -21,6 +21,8 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
   };
 
   render() {
+    console.log(this.props.darkMode);
+
     const {
       companySymbol,
       companyName,
@@ -28,14 +30,17 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
       companyIndustry,
       companyWebsite,
       companyCEO,
-      // companyDescription,
+      darkMode,
     } = this.props;
     return (
-      <div className="company-info">
-        <Collapsible
-          trigger={companyName}
-          // classParentString="Collapsible__info-section"
-        >
+      <div
+        className={
+          darkMode
+            ? "company-info company-info--dark"
+            : "company-info company-info--light"
+        }
+      >
+        <Collapsible trigger={companyName}>
           <div className="company-info__info-ctn">
             <div className="company-info__icon-ctn">
               <FontAwesomeIcon

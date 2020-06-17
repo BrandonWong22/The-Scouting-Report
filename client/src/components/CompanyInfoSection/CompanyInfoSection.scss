@@ -3,14 +3,24 @@
 @import "../../styles/partials/mixins";
 
 .company-info {
-  background-color: $light-mode-nav-background-color;
   padding-left: $margin-mobile;
   padding-right: $margin-mobile;
-  color: $light-mode-text-color;
   padding-top: 20px;
   padding-bottom: 20px;
   display: flex;
   flex-direction: column;
+
+  &--light {
+    color: $light-mode-text-color;
+    background-color: $light-mode-nav-background-color;
+    transition: background-color 0.25s ease-out;
+  }
+
+  &--dark {
+    color: $dark-mode-text-color;
+    background-color: $dark-mode-nav-background-color;
+    transition: background-color 0.25s ease-out;
+  }
 
   @include tablet {
     height: 150vh;

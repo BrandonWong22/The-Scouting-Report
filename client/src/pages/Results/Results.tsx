@@ -235,6 +235,7 @@ class Results extends Component<ResultsProps, ResultsState> {
           companyWebsite={this.state.companyWebsite}
           companyCEO={this.state.companyCEO}
           history={this.props.history}
+          darkMode={this.state.darkMode}
         />
         <div className="results-page__results">
           <div className="results-page__results-ctn">
