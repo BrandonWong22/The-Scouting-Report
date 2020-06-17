@@ -47,7 +47,7 @@ class FinancialStatement extends Component<
       )
       .then((response) => {
         //filter response data to only get the last 8 quarters of data
-        let filteredFinancialData: Array<object> = response.data.splice(0, 8);
+        let filteredFinancialData: Array<object> = response.data.splice(0, 5);
 
         let datesArr: Array<string> = [];
         let revenueArr: Array<number> = [];
@@ -188,7 +188,7 @@ class FinancialStatement extends Component<
                 this.state.financialsQuarterlyOperatingExpenses
               }
               darkMode={darkMode}
-              title={"Financial Statement for the Past 8 Quarters"}
+              title={"Financial Statement for the Past 5 Quarters"}
             />
           </>
         )}

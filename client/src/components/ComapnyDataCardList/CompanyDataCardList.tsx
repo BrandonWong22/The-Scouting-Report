@@ -2,7 +2,7 @@ import React from "react";
 import CompanyDataCard from "../CompanyDataCard/CompanyDataCard";
 import "./ComapnyDataCardList.scss";
 
-interface CompanyDataCardList {
+interface CompanyDataCardListProps {
   financialsDates: Array<string>;
   financialsRevenue: Array<number>;
   financialsCostOfRevenue: Array<number>;
@@ -10,9 +10,10 @@ interface CompanyDataCardList {
   financialsNetIncome: Array<number>;
   financialsCostAndExpenses: Array<number>;
   financialsOperatingExpenses: Array<number>;
+  darkMode: Boolean;
 }
 
-const CompanyDataCardList: React.FC<CompanyDataCardList> = (props) => {
+const CompanyDataCardList: React.FC<CompanyDataCardListProps> = (props) => {
   const {
     financialsDates,
     financialsRevenue,
@@ -21,6 +22,7 @@ const CompanyDataCardList: React.FC<CompanyDataCardList> = (props) => {
     financialsNetIncome,
     financialsCostAndExpenses,
     financialsOperatingExpenses,
+    darkMode,
   } = props;
 
   return (
@@ -31,6 +33,7 @@ const CompanyDataCardList: React.FC<CompanyDataCardList> = (props) => {
             title={"Total Revenue"}
             datesArr={financialsDates}
             dataArr={financialsRevenue}
+            darkMode={darkMode}
           />
         </div>
         <div>
@@ -38,6 +41,7 @@ const CompanyDataCardList: React.FC<CompanyDataCardList> = (props) => {
             title={"Cost of Revenue"}
             datesArr={financialsDates}
             dataArr={financialsCostOfRevenue}
+            darkMode={darkMode}
           />
         </div>
         <div className="card-list__card-desktop">
@@ -45,6 +49,7 @@ const CompanyDataCardList: React.FC<CompanyDataCardList> = (props) => {
             title={"Cost and Expenses"}
             datesArr={financialsDates}
             dataArr={financialsCostAndExpenses}
+            darkMode={darkMode}
           />
         </div>
       </div>
@@ -54,6 +59,7 @@ const CompanyDataCardList: React.FC<CompanyDataCardList> = (props) => {
             title={"Gross Profit"}
             datesArr={financialsDates}
             dataArr={financialsGrossProfit}
+            darkMode={darkMode}
           />
         </div>
         <div>
@@ -61,6 +67,7 @@ const CompanyDataCardList: React.FC<CompanyDataCardList> = (props) => {
             title={"Net Income"}
             datesArr={financialsDates}
             dataArr={financialsNetIncome}
+            darkMode={darkMode}
           />
         </div>
         <div className="card-list__card-desktop">
@@ -68,6 +75,7 @@ const CompanyDataCardList: React.FC<CompanyDataCardList> = (props) => {
             title={"Operating Expenses"}
             datesArr={financialsDates}
             dataArr={financialsOperatingExpenses}
+            darkMode={darkMode}
           />
         </div>
       </div>
@@ -77,6 +85,7 @@ const CompanyDataCardList: React.FC<CompanyDataCardList> = (props) => {
             title={"Cost and Expenses"}
             datesArr={financialsDates}
             dataArr={financialsCostAndExpenses}
+            darkMode={darkMode}
           />
         </div>
         <div>
@@ -84,6 +93,7 @@ const CompanyDataCardList: React.FC<CompanyDataCardList> = (props) => {
             title={"Operating Expenses"}
             datesArr={financialsDates}
             dataArr={financialsOperatingExpenses}
+            darkMode={darkMode}
           />
         </div>
       </div>

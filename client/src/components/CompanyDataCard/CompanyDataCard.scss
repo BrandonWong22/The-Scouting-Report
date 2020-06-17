@@ -4,7 +4,7 @@
 @import "../../styles/partials/fonts";
 
 .financial-card {
-  margin-top: 10px;
+  // margin-top: 10px;
   // width: 50%;
   width: 250px;
 
@@ -22,7 +22,7 @@
   &__data-ctn {
     display: flex;
     justify-content: space-between;
-    margin-top: 8px;
+    margin-top: 6px;
     font-size: 12px;
   }
 
@@ -36,11 +36,6 @@
 
 .collapsible__financial-section {
   font-size: 17px;
-  // background-color: red;
-
-  // &__contentInner {
-  //   // background-color: royalblue;
-  // }
 
   @include desktop {
     display: none;

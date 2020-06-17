@@ -196,6 +196,7 @@ class FinancialStatementGraphs extends Component<
               financialsOperatingExpenses={
                 this.props.financialsOperatingExpenses
               }
+              darkMode={this.props.darkMode}
             />
           )}
         </div>
