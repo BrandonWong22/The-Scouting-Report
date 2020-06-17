@@ -262,7 +262,9 @@ class Results extends Component<ResultsProps, ResultsState> {
               <div className="results-page__switch-ctn">
                 <p
                   className="results-page__light-icon"
-                  style={{ color: this.state.darkMode ? "grey" : "steelblue" }}
+                  style={{
+                    color: this.state.darkMode ? "grey" : "steelblue",
+                  }}
                 >
                   ☀︎
                 </p>
@@ -283,12 +285,15 @@ class Results extends Component<ResultsProps, ResultsState> {
                 />
                 <p
                   className="results-page__dark-icon"
-                  style={{ color: this.state.darkMode ? "steelblue" : "grey" }}
+                  style={{
+                    color: this.state.darkMode ? "steelblue" : "grey",
+                  }}
                 >
                   ☾
                 </p>
               </div>
             </div>
+
             <CompanyResultsSection
               companyName={this.state.companyName}
               companySymbol={this.state.companySymbol}
@@ -310,6 +315,7 @@ class Results extends Component<ResultsProps, ResultsState> {
         </div>
       </div>
     );
+    // }
   }
 }
 
