@@ -10,7 +10,6 @@ import {
   faIdBadge,
   faWindowRestore,
 } from "@fortawesome/free-solid-svg-icons";
-import Button from "@material-ui/core/Button";
 
 class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
   handleLogout = () => {

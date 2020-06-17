@@ -226,7 +226,13 @@ class Results extends Component<ResultsProps, ResultsState> {
 
   render() {
     return (
-      <div className="results-page">
+      <div
+        className={
+          this.state.darkMode
+            ? "results-page results-page--dark"
+            : "results-page results-page--light"
+        }
+      >
         <CompanyInfoSection
           companySymbol={this.state.companySymbol}
           companyName={this.state.companyName}
@@ -244,7 +250,7 @@ class Results extends Component<ResultsProps, ResultsState> {
               <div className="results-page__switch-ctn">
                 <p
                   className="results-page__light-icon"
-                  style={{ color: this.state.darkMode ? "grey" : "red" }}
+                  style={{ color: this.state.darkMode ? "grey" : "steelblue" }}
                 >
                   ☀︎
                 </p>
@@ -265,7 +271,7 @@ class Results extends Component<ResultsProps, ResultsState> {
                 />
                 <p
                   className="results-page__dark-icon"
-                  style={{ color: this.state.darkMode ? "red" : "grey" }}
+                  style={{ color: this.state.darkMode ? "steelblue" : "grey" }}
                 >
                   ☾
                 </p>
@@ -286,6 +292,7 @@ class Results extends Component<ResultsProps, ResultsState> {
               stockData30DateLabel={this.state.stockData30DateLabel}
               stockDailyPrices={this.state.stockDailyPrices}
               stockDailyTimes={this.state.stockDailyTimes}
+              darkMode={this.state.darkMode}
             />
           </div>
         </div>

@@ -30,6 +30,7 @@ class CompanyResultsSection extends Component<
       stockData30DateLabel,
       stockDailyPrices,
       stockDailyTimes,
+      darkMode,
     } = this.props;
 
     if (currentStockPrice === "") {
