@@ -166,6 +166,7 @@ interface FinancialLineGraphProps {
   financialsNetIncome: Array<number>;
   financialsCostAndExpenses: Array<number>;
   financialsOperatingExpenses: Array<number>;
+  title: string;
 }
 
 interface FinancialBarGraphProps {
@@ -176,6 +177,7 @@ interface FinancialBarGraphProps {
   financialsNetIncome: Array<number>;
   financialsCostAndExpenses: Array<number>;
   financialsOperatingExpenses: Array<number>;
+  title: string;
 }
 
 interface FinancialRadarGraphProps {
@@ -186,4 +188,5 @@ interface FinancialRadarGraphProps {
   financialsNetIncome: Array<number>;
   financialsCostAndExpenses: Array<number>;
   financialsOperatingExpenses: Array<number>;
+  title: string;
 }

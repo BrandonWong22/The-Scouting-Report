@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./AnnualFinancialStatement.scss";
 import CompanyDataCardList from "../ComapnyDataCardList/CompanyDataCardList";
+import FinancialLineGraph from "../FinancialLineGraph/FinancialLineGraph";
+import FinancialBarGraph from "../FinanacialBarGraph/FinancialBarGraph";
+import FinancialRadarGraph from "../FinancialRadarGraph/FinancialRadarGraph";
 
 interface AnnualFinancialStatementProps {
   financialsAnnualDates: Array<string>;
@@ -71,6 +74,63 @@ class AnnualFinancialStatement extends Component<
     }
   }
 
+  renderLineGraph = () => {
+    if (this.props.financialsAnnualRevenue.length !== 0) {
+      return (
+        <FinancialLineGraph
+          financialsDates={this.props.financialsAnnualDates}
+          financialsRevenue={this.props.financialsAnnualRevenue}
+          financialsCostOfRevenue={this.props.financialsAnnualCostOfRevenue}
+          financialsGrossProfit={this.props.financialsAnnualGrossProfit}
+          financialsNetIncome={this.props.financialsAnnualNetIncome}
+          financialsCostAndExpenses={this.props.financialsAnnualCostAndExpenses}
+          financialsOperatingExpenses={
+            this.props.financialsAnnualOperatingExpenses
+          }
+          title={"Financial Statement from the Past 5 Years"}
+        />
+      );
+    }
+  };
+
+  renderBarGraph = () => {
+    if (this.props.financialsAnnualRevenue.length !== 0) {
+      return (
+        <FinancialBarGraph
+          financialsDates={this.props.financialsAnnualDates}
+          financialsRevenue={this.props.financialsAnnualRevenue}
+          financialsCostOfRevenue={this.props.financialsAnnualCostOfRevenue}
+          financialsGrossProfit={this.props.financialsAnnualGrossProfit}
+          financialsNetIncome={this.props.financialsAnnualNetIncome}
+          financialsCostAndExpenses={this.props.financialsAnnualCostAndExpenses}
+          financialsOperatingExpenses={
+            this.props.financialsAnnualOperatingExpenses
+          }
+          title={"Financial Statement from the Past 5 Years"}
+        />
+      );
+    }
+  };
+
+  renderRadarGraph = () => {
+    if (this.props.financialsAnnualRevenue.length !== 0) {
+      return (
+        <FinancialRadarGraph
+          financialsDates={this.props.financialsAnnualDates}
+          financialsRevenue={this.props.financialsAnnualRevenue}
+          financialsCostOfRevenue={this.props.financialsAnnualCostOfRevenue}
+          financialsGrossProfit={this.props.financialsAnnualGrossProfit}
+          financialsNetIncome={this.props.financialsAnnualNetIncome}
+          financialsCostAndExpenses={this.props.financialsAnnualCostAndExpenses}
+          financialsOperatingExpenses={
+            this.props.financialsAnnualOperatingExpenses
+          }
+          title={"Financial Statement from the Past 5 Years"}
+        />
+      );
+    }
+  };
+
   handleLineButtonClick = () => {
     this.setState({
       loadingState: "line",
@@ -125,9 +185,9 @@ class AnnualFinancialStatement extends Component<
           </button>
         </div>
         <div className="annual__graph-ctn">
-          {this.state.loadingState === "line" && <div>line</div>}
-          {this.state.loadingState === "bar" && <div>bar</div>}
-          {this.state.loadingState === "radar" && <div>radar</div>}
+          {this.state.loadingState === "line" && this.renderLineGraph()}
+          {this.state.loadingState === "bar" && this.renderBarGraph()}
+          {this.state.loadingState === "radar" && this.renderRadarGraph()}
           {this.state.loadingState === "financials" && (
             <CompanyDataCardList
               financialsDates={this.props.financialsAnnualDates}
@@ -146,68 +206,6 @@ class AnnualFinancialStatement extends Component<
         </div>
       </>
     );
-    // <div className="financials__data-ctn">
-    //   <div className="financials__button-ctn">
-    //     <button
-    //       onClick={this.handleQuarterlyButtonClick}
-    //       className={this.state.quarterlyClassName}
-    //     >
-    //       Quarterly
-    //     </button>
-    //     <button
-    //       onClick={this.handleAnnualButtonClick}
-    //       className={this.state.annualClassName}
-    //     >
-    //       Annual
-    //     </button>
-    //   </div>
-    //   <div className="financials__button-ctn">
-    //     <button
-    //       onClick={this.handleLineButtonClick}
-    //       className={this.state.buttonLine}
-    //     >
-    //       Line Graph
-    //     </button>
-    //     <button
-    //       onClick={this.handleBarButtonClick}
-    //       className={this.state.buttonBar}
-    //     >
-    //       Bar Graph
-    //     </button>
-    //     <button
-    //       onClick={this.handleRadarButtonClick}
-    //       className={this.state.buttonRadar}
-    //     >
-    //       Radar Graph
-    //     </button>
-    //     <button
-    //       onClick={this.handleFinancialsButtonClick}
-    //       className={this.state.buttonFinancials}
-    //     >
-    //       Financial Statement
-    //     </button>
-    //   </div>
-    //   <div className="financials__graph-ctn">
-    //     {this.state.loading === "line" && this.renderLineGraph()}
-    //     {this.state.loading === "bar" && this.renderBarGraph()}
-    //     {this.state.loading === "radar" && this.renderRadarGraph()}
-    //     {this.state.loading === "financials" && (
-    //       <CompanyDataCardList
-    //         financialsDates={this.state.financialsAnnualDates}
-    //         financialsRevenue={this.state.financialsAnnualRevenue}
-    //         financialsCostOfRevenue={this.state.financialsAnnualCostOfRevenue}
-    //         financialsGrossProfit={this.state.financialsAnnualGrossProfit}
-    //         financialsNetIncome={this.state.financialsAnnualNetIncome}
-    //         financialsCostAndExpenses={
-    //           this.state.financialsAnnualCostAndExpenses
-    //         }
-    //         financialsOperatingExpenses={
-    //           this.state.financialsAnnualOperatingExpenses
-    //         }
-    //       />
-    //     )}
-    //   </div>
-    // </div>;
   }
 }
 

@@ -10,6 +10,7 @@ const FinancialRadarGraph: React.FC<FinancialRadarGraphProps> = (props) => {
     financialsCostAndExpenses,
     financialsOperatingExpenses,
     financialsDates,
+    title,
   } = props;
 
   const data = {
@@ -70,7 +71,7 @@ const FinancialRadarGraph: React.FC<FinancialRadarGraphProps> = (props) => {
     },
     title: {
       display: true,
-      text: "Radar Graph of Financial Statement",
+      text: title,
     },
     scale: {
       reverse: false,

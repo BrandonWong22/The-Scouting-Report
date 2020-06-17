@@ -10,6 +10,7 @@ const FinancialBarGraph: React.FC<FinancialBarGraphProps> = (props) => {
     financialsCostAndExpenses,
     financialsOperatingExpenses,
     financialsDates,
+    title,
   } = props;
 
   const data = {
@@ -190,7 +191,7 @@ const FinancialBarGraph: React.FC<FinancialBarGraphProps> = (props) => {
   } = {
     title: {
       display: true,
-      text: "Financial Statement from the Past 8 Quarters",
+      text: title,
     },
     scales: {
       yAxes: [

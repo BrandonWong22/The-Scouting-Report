@@ -10,6 +10,7 @@ const FinancialLineGraph: React.FC<FinancialLineGraphProps> = (props) => {
     financialsCostAndExpenses,
     financialsOperatingExpenses,
     financialsDates,
+    title,
   } = props;
 
   const data = {
@@ -89,7 +90,7 @@ const FinancialLineGraph: React.FC<FinancialLineGraphProps> = (props) => {
   const options = {
     title: {
       display: true,
-      text: "Financial Statement from the Past 8 Quarters",
+      text: title,
     },
     scales: {
       yAxes: [

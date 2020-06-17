@@ -147,6 +147,7 @@ class FinancialStatement extends Component<
           financialsNetIncome={this.props.financialsNetIncome}
           financialsCostAndExpenses={this.props.financialsCostAndExpenses}
           financialsOperatingExpenses={this.props.financialsOperatingExpenses}
+          title={"Financial Statement from the Past 8 Quarters"}
         />
       );
     }
@@ -163,6 +164,7 @@ class FinancialStatement extends Component<
           financialsNetIncome={this.props.financialsNetIncome}
           financialsCostAndExpenses={this.props.financialsCostAndExpenses}
           financialsOperatingExpenses={this.props.financialsOperatingExpenses}
+          title={"Financial Statement from the Past 8 Quarters"}
         />
       );
     }
@@ -179,6 +181,7 @@ class FinancialStatement extends Component<
           financialsNetIncome={this.props.financialsNetIncome}
           financialsCostAndExpenses={this.props.financialsCostAndExpenses}
           financialsOperatingExpenses={this.props.financialsOperatingExpenses}
+          title={"Financial Statement from the Past 8 Quarters"}
         />
       );
     }
