@@ -32,7 +32,8 @@ class CompanyResultsSection extends Component<
       stockDailyTimes,
     } = this.props;
 
-    if (currentStockPrice === "" && stockData30.length === 0) {
+    if (currentStockPrice === "") {
+      //&& stockData30.length === 0 check why this doesnt work
       return (
         <div className="company-results company-results--loading">
           <div className="sweet-loading">
