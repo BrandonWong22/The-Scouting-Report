@@ -188,6 +188,7 @@ class FinancialStatement extends Component<
                 this.state.financialsQuarterlyOperatingExpenses
               }
               darkMode={darkMode}
+              title={"Financial Statement for the Past 8 Quarters"}
             />
           </>
         )}
@@ -205,6 +206,7 @@ class FinancialStatement extends Component<
               this.state.financialsAnnualOperatingExpenses
             }
             darkMode={darkMode}
+            title={"Financial Statement for the Past 5 Years"}
           />
         )}
       </div>

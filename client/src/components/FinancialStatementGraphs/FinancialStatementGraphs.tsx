@@ -14,6 +14,7 @@ interface FinancialStatementGraphsProps {
   financialsCostAndExpenses: Array<number>;
   financialsOperatingExpenses: Array<number>;
   darkMode: Boolean;
+  title: string;
 }
 
 interface FinancialStatementGraphsState {
@@ -83,7 +84,7 @@ class FinancialStatementGraphs extends Component<
           financialsNetIncome={this.props.financialsNetIncome}
           financialsCostAndExpenses={this.props.financialsCostAndExpenses}
           financialsOperatingExpenses={this.props.financialsOperatingExpenses}
-          title={"Financial Statement from the Past 5 Years"}
+          title={this.props.title}
           color={this.props.darkMode ? "#999" : "#C0C0C0"}
         />
       );
@@ -101,7 +102,7 @@ class FinancialStatementGraphs extends Component<
           financialsNetIncome={this.props.financialsNetIncome}
           financialsCostAndExpenses={this.props.financialsCostAndExpenses}
           financialsOperatingExpenses={this.props.financialsOperatingExpenses}
-          title={"Financial Statement from the Past 5 Years"}
+          title={this.props.title}
           color={this.props.darkMode ? "#999" : "#C0C0C0"}
         />
       );
@@ -119,7 +120,7 @@ class FinancialStatementGraphs extends Component<
           financialsNetIncome={this.props.financialsNetIncome}
           financialsCostAndExpenses={this.props.financialsCostAndExpenses}
           financialsOperatingExpenses={this.props.financialsOperatingExpenses}
-          title={"Financial Statement from the Past 5 Years"}
+          title={this.props.title}
           color={this.props.darkMode ? "#999" : "#C0C0C0"}
           backDrop={this.props.darkMode ? "#1a1919" : "#fff"}
         />

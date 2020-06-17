@@ -43,10 +43,10 @@ const FinancialRadarGraph: React.FC<FinancialRadarGraphProps> = (props) => {
       {
         label: "Net Income",
         data: financialsNetIncome,
-        borderColor: ["rgba(21, 21, 146, 0.2)"],
-        backgroundColor: ["rgba(21, 21, 146, 0.2)"],
-        pointBackgroundColor: "rgba(21, 21, 146, 0.2)",
-        pointBorderColor: "rgba(21, 21, 146, 0.2)",
+        borderColor: ["rgba(135,206,235, 0.2)"],
+        backgroundColor: ["rgba(135,206,235, 0.2)"],
+        pointBackgroundColor: "rgba(135,206,235, 0.2)",
+        pointBorderColor: "rgba(135,206,235, 0.2)",
       },
       {
         label: "Cost and Expenses",
