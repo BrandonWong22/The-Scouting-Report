@@ -160,13 +160,21 @@ class FinancialStatement extends Component<
         <div className="financials__button-ctn">
           <button
             onClick={this.handleQuarterlyButtonClick}
-            className={this.state.quarterlyClassName}
+            className={
+              darkMode
+                ? this.state.quarterlyClassName + " financials__button--dark"
+                : this.state.quarterlyClassName + " financials__button--light"
+            }
           >
             Quarterly
           </button>
           <button
             onClick={this.handleAnnualButtonClick}
-            className={this.state.annualClassName}
+            className={
+              darkMode
+                ? this.state.annualClassName + " financials__button--dark"
+                : this.state.annualClassName + " financials__button--light"
+            }
           >
             Annual
           </button>

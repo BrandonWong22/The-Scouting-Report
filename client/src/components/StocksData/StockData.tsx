@@ -13,10 +13,7 @@ class StockData extends Component<StockDataProps, StockDataStates> {
     buttonRightClassName: "stock-data__button stock-data__button--right",
   };
 
-  componentDidUpdate(
-    prevProps: { darkMode: boolean },
-    prevState: { loading: string }
-  ) {
+  componentDidUpdate(_: any, prevState: { loading: string }) {
     if (this.state.loading !== prevState.loading) {
       if (this.state.loading === "daily" && prevState.loading === "30day") {
         this.setState({

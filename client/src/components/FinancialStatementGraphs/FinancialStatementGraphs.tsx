@@ -153,30 +153,48 @@ class FinancialStatementGraphs extends Component<
   };
 
   render() {
+    const { darkMode } = this.props;
+
     return (
       <>
         <div className="data__button-ctn">
           <button
             onClick={this.handleLineButtonClick}
-            className={this.state.buttonLine}
+            className={
+              darkMode
+                ? this.state.buttonLine + " data__button--dark"
+                : this.state.buttonLine + " data__button--light"
+            }
           >
             Line Graph
           </button>
           <button
             onClick={this.handleBarButtonClick}
-            className={this.state.buttonBar}
+            className={
+              darkMode
+                ? this.state.buttonBar + " data__button--dark"
+                : this.state.buttonBar + " data__button--light"
+            }
           >
             Bar Graph
           </button>
           <button
             onClick={this.handleRadarButtonClick}
-            className={this.state.buttonRadar}
+            className={
+              darkMode
+                ? this.state.buttonRadar + " data__button--dark"
+                : this.state.buttonRadar + " data__button--light"
+            }
           >
             Radar Graph
           </button>
           <button
             onClick={this.handleFinancialsButtonClick}
-            className={this.state.buttonFinancials}
+            className={
+              darkMode
+                ? this.state.buttonFinancials + " data__button--dark"
+                : this.state.buttonFinancials + " data__button--light"
+            }
           >
             Financial Statement
           </button>

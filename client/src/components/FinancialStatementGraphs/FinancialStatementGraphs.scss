@@ -30,6 +30,18 @@
     color: $light-mode-text-color;
     outline: none;
 
+    &--light {
+      background-color: $light-mode-background-color-card;
+      border: 1px solid $light-mode-text-color;
+      color: $light-mode-text-color;
+    }
+
+    &--dark {
+      border: 1px solid $dark-mode-text-color;
+      color: $dark-mode-text-color;
+      background-color: $dark-mode-background-color-card;
+    }
+
     &--selected {
       background-color: $light-mode-nav-background-color;
       color: $light-mode-background-color-card;
