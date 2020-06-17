@@ -73,7 +73,14 @@
 
   &__company-name-ctn {
     padding-bottom: 20px;
-    border-bottom: 1px solid $light-mode-text-color;
+
+    &--light {
+      border-bottom: 1px solid $light-mode-text-color;
+    }
+
+    &--dark {
+      border-bottom: 1px solid $dark-mode-text-color;
+    }
 
     @include tablet {
       font-size: 22px;
@@ -86,15 +93,41 @@
 
   &__logout-btn-ctn {
     margin-top: 10px;
+    margin-left: 10px;
   }
 
   &__logout-button {
     width: 120px;
     height: 40px;
     text-align: center;
-    // margin-top: 15px;
     border-radius: 10px;
+    cursor: pointer;
+    padding: 10px 15px;
     outline: none;
+
+    &--light {
+      border: 1px solid $light-mode-text-color;
+      color: $light-mode-text-color;
+      background-color: $light-mode-background-color-card;
+      transition: background-color 0.25s ease-out;
+    }
+
+    &--dark {
+      border: 1px solid $dark-mode-text-color;
+      color: $dark-mode-text-color;
+      background-color: $dark-mode-background-color-card;
+      transition: background-color 0.25s ease-out;
+    }
+  }
+
+  &__href {
+    &--light {
+      color: $light-mode-text-color;
+    }
+
+    &--dark {
+      color: $dark-mode-text-color;
+    }
   }
 }
 

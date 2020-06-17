@@ -21,8 +21,6 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
   };
 
   render() {
-    console.log(this.props.darkMode);
-
     const {
       companySymbol,
       companyName,
@@ -88,7 +86,16 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
                 className="company-info__icon"
               />
             </div>
-            <a href={companyWebsite}>{companyWebsite}</a>
+            <a
+              className={
+                darkMode
+                  ? "company-info__href company-info__href--dark"
+                  : "company-info__href company-info__href--light"
+              }
+              href={companyWebsite}
+            >
+              {companyWebsite}
+            </a>
           </div>
 
           <div className="company-info__logout-btn-ctn">
@@ -103,7 +110,13 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
         </Collapsible>
 
         <div className="company-info__tablet-mode">
-          <div className="company-info__company-name-ctn">
+          <div
+            className={
+              darkMode
+                ? "company-info__company-name-ctn company-info__company-name-ctn--dark"
+                : "company-info__company-name-ctn company-info__company-name-ctn--light"
+            }
+          >
             <h1 className="compamy-info__company-name">{companyName}</h1>
           </div>
 
@@ -155,17 +168,29 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
                 className="company-info__icon"
               />
             </div>
-            <a href={companyWebsite}>{companyWebsite}</a>
+            <a
+              className={
+                darkMode
+                  ? "company-info__href company-info__href--dark"
+                  : "company-info__href company-info__href--light"
+              }
+              href={companyWebsite}
+            >
+              {companyWebsite}
+            </a>
           </div>
 
           <div className="company-info__logout-btn-ctn">
-            <Button
-              variant="contained"
+            <button
               onClick={this.handleLogout}
-              className="company-info__logout-button"
+              className={
+                darkMode
+                  ? "company-info__logout-button company-info__logout-button--dark"
+                  : "company-info__logout-button company-info__logout-button--light"
+              }
             >
               Logout
-            </Button>
+            </button>
           </div>
         </div>
       </div>
