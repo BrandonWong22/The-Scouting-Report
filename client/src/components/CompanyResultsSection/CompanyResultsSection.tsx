@@ -5,6 +5,7 @@ import StockData from "../StocksData/StockData";
 import FinancialStatement from "../FinancialStatement/FinancialStatement";
 // import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
+import { dark } from "@material-ui/core/styles/createPalette";
 
 class CompanyResultsSection extends Component<
   CompanyResultsProps,
@@ -32,6 +33,7 @@ class CompanyResultsSection extends Component<
       stockDailyTimes,
       darkMode,
     } = this.props;
+    console.log(darkMode);
 
     if (currentStockPrice === "") {
       //&& stockData30.length === 0 check why this doesnt work
@@ -51,8 +53,25 @@ class CompanyResultsSection extends Component<
             className="react-tabs"
           >
             <TabList className="react-tabs__tab-list">
-              <Tab className="react-tabs__tab">Stocks</Tab>
-              <Tab>Financial Statement</Tab>
+              <Tab
+                // className="react-tabs__tab"
+                className={
+                  darkMode
+                    ? "react-tabs__tab--dark react-tabs__tab"
+                    : "react-tabs__tab--light react-tabs__tab"
+                }
+              >
+                Stocks
+              </Tab>
+              <Tab
+                className={
+                  darkMode
+                    ? "react-tabs__tab--dark react-tabs__tab"
+                    : "react-tabs__tab--light react-tabs__tab"
+                }
+              >
+                Financial Statement
+              </Tab>
             </TabList>
             <TabPanel className="react-tab__tab-panel">
               <StockData
