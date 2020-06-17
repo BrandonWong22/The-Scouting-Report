@@ -18,7 +18,6 @@ class Results extends Component<ResultsProps, ResultsState> {
     companyIndustry: "",
     companyWebsite: "",
     companyCEO: "",
-    companyDescription: "",
     loading: true,
     currentStockPrice: "",
     socket: connectSocket("http://localhost:8080"),
@@ -186,7 +185,6 @@ class Results extends Component<ResultsProps, ResultsState> {
         companyIndustry: data.profile.industry,
         companyWebsite: data.profile.website,
         companyCEO: data.profile.ceo,
-        companyDescription: data.profile.description,
       });
     });
   };

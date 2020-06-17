@@ -42,7 +42,6 @@ interface ResultsState {
   companyIndustry: String;
   companyWebsite: String;
   companyCEO: String;
-  companyDescription: String;
   loading: Boolean;
   currentStockPrice: String;
   socket: any;
@@ -66,7 +65,6 @@ interface CompanyInfoProps {
   companyIndustry: string;
   companyWebsite: string;
   companyCEO: string;
-  companyDescription?: string;
   history: any;
 }
 

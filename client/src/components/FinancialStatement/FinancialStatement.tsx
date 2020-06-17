@@ -75,7 +75,7 @@ class FinancialStatement extends Component<
           financialsQuarterlyGrossProfit: grossProfitArr.reverse(),
           financialsQuarterlyNetIncome: netIncomeArr.reverse(),
           financialsQuarterlyCostAndExpenses: costAndExpensesArr.reverse(),
-          financialsAnnualOperatingExpenses: operatingExpensesArr.reverse(),
+          financialsQuarterlyOperatingExpenses: operatingExpensesArr.reverse(),
         });
       });
   };
