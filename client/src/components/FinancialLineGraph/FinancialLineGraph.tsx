@@ -124,6 +124,7 @@ const FinancialLineGraph: React.FC<FinancialLineGraphProps> = (props) => {
           scaleLabel: {
             display: true,
             labelString: "Financial Quarter. Date in (YYYY-MM-DD)",
+            fontColor: color,
           },
           gridLines: {
             color: color,

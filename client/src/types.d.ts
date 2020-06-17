@@ -175,6 +175,7 @@ interface FinancialBarGraphProps {
   financialsCostAndExpenses: Array<number>;
   financialsOperatingExpenses: Array<number>;
   title: string;
+  color: string;
 }
 
 interface FinancialRadarGraphProps {

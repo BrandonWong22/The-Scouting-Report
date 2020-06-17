@@ -11,6 +11,7 @@ const FinancialBarGraph: React.FC<FinancialBarGraphProps> = (props) => {
     financialsOperatingExpenses,
     financialsDates,
     title,
+    color,
   } = props;
 
   const data = {
@@ -188,10 +189,17 @@ const FinancialBarGraph: React.FC<FinancialBarGraphProps> = (props) => {
     scales: Object;
     responsive: boolean;
     maintainAspectRatio: boolean;
+    legend: Object;
   } = {
+    legend: {
+      labels: {
+        fontColor: color,
+      },
+    },
     title: {
       display: true,
       text: title,
+      fontColor: color,
     },
     scales: {
       yAxes: [
@@ -200,14 +208,16 @@ const FinancialBarGraph: React.FC<FinancialBarGraphProps> = (props) => {
             min: minRange - range / 2,
             max: maxRange + range / 2,
             stepSize: range,
-            scaleLabel: {
-              display: true,
-              // labelString: "Price in USD",
-            },
+            fontColor: color,
           },
           scaleLabel: {
             display: true,
             labelString: "Price in Billions (USD)",
+            fontColor: color,
+          },
+          gridLines: {
+            color: color,
+            lineWidth: 0.45,
           },
         },
       ],
@@ -216,6 +226,14 @@ const FinancialBarGraph: React.FC<FinancialBarGraphProps> = (props) => {
           scaleLabel: {
             display: true,
             labelString: "Financial Quarter. Date in (YYYY-MM-DD)",
+            fontColor: color,
+          },
+          gridLines: {
+            color: color,
+            lineWidth: 0.45,
+          },
+          ticks: {
+            fontColor: color,
           },
         },
       ],

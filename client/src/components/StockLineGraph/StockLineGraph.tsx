@@ -56,7 +56,7 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
           },
           gridLines: {
             color: color,
-            lineWidth: 1,
+            lineWidth: 0.45,
           },
         },
       ],
@@ -69,7 +69,7 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
           },
           gridLines: {
             color: color,
-            lineWidth: 1,
+            lineWidth: 0.45,
           },
           ticks: {
             fontColor: color,
