@@ -37,8 +37,9 @@
     &--selected {
       border-color: #aaa;
       border-radius: 5px 5px 0 0;
-      background: $light-mode-background-color;
-      color: $light-mode-text-color;
+      // background: $light-mode-background-color;
+      // background: red;
+      // color: $light-mode-text-color;
 
       &--light {
         background: $light-mode-background-color;

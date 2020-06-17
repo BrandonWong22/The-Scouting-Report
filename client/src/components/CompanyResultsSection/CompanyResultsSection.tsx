@@ -12,7 +12,11 @@ class CompanyResultsSection extends Component<
 > {
   state = {
     tabIndex: 0,
+    stocksClassName: "react-tabs__tab",
+    statementClassName: "react-tabs__tab",
   };
+
+  // componentDidUpdate(_: any, prevState: { tabIndex: number }) {}
 
   render() {
     const {
@@ -52,21 +56,20 @@ class CompanyResultsSection extends Component<
           >
             <TabList className="react-tabs__tab-list">
               <Tab
-                className="react-tabs__tab"
-                // className={
-                //   darkMode
-                //     ? "react-tabs__tab--dark react-tabs__tab"
-                //     : "react-tabs__tab--light react-tabs__tab"
-                // }
+                className={
+                  darkMode
+                    ? "react-tabs__tab--dark react-tabs__tab"
+                    : "react-tabs__tab--light react-tabs__tab"
+                }
               >
                 Stocks
               </Tab>
               <Tab
-              // className={
-              //   darkMode
-              //     ? "react-tabs__tab--dark react-tabs__tab"
-              //     : "react-tabs__tab--light react-tabs__tab"
-              // }
+                className={
+                  darkMode
+                    ? "react-tabs__tab--dark react-tabs__tab"
+                    : "react-tabs__tab--light react-tabs__tab"
+                }
               >
                 Financial Statement
               </Tab>
