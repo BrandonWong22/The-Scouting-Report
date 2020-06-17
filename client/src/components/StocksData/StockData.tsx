@@ -176,7 +176,7 @@ class StockData extends Component<StockDataProps, StockDataStates> {
 
           <div className="stock-data__graph-ctn">
             {this.state.loading === "30day" && this.renderLineGraph30Day()}
-            {this.state.loading === "daily" && this.renderLineGraph30Day()}
+            {this.state.loading === "daily" && this.renderDailyStockPrice()}
           </div>
         </div>
       </div>

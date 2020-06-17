@@ -149,6 +149,13 @@ interface FinancialStatementState {
   annual: boolean;
   quarterlyClassName: string;
   annualClassName: string;
+  financialsAnnualDates: Array<string>;
+  financialsAnnualRevenue: Array<number>;
+  financialsAnnualCostOfRevenue: Array<number>;
+  financialsAnnualGrossProfit: Array<number>;
+  financialsAnnualNetIncome: Array<number>;
+  financialsAnnualCostAndExpenses: Array<number>;
+  financialsAnnualOperatingExpenses: Array<number>;
 }
 
 interface FinancialLineGraphProps {

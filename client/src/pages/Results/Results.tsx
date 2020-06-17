@@ -261,9 +261,6 @@ class Results extends Component<ResultsProps, ResultsState> {
   }
 
   render() {
-    // console.log(this.props);
-    console.log("id from props", this.props.match.params.id);
-
     return (
       <div className="results-page">
         <CompanyInfoSection
@@ -299,13 +296,6 @@ class Results extends Component<ResultsProps, ResultsState> {
           financialsCostAndExpenses={this.state.financialsCostAndExpenses}
           financialsOperatingExpenses={this.state.financialsOperatingExpenses}
         />
-        {/* {this.state.currentStockPrice} */}
-        {/* <ClipLoader
-            css={override}
-            size={150}
-            color={"#123abc"}
-            loading={this.state.loading}
-          /> */}
       </div>
     );
   }
