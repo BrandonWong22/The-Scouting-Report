@@ -179,6 +179,7 @@ class FinancialStatement extends Component<
             Annual
           </button>
         </div>
+
         {!this.state.annual && (
           <>
             <FinancialStatementGraphs

@@ -14,7 +14,6 @@
 }
 
 //styles for the tab bar
-//styles for the tab bar
 .react-tabs {
   -webkit-tap-highlight-color: transparent;
   padding-top: 20px;
@@ -38,6 +37,8 @@
     &--selected {
       border-color: #aaa;
       border-radius: 5px 5px 0 0;
+      background: $light-mode-background-color;
+      color: $light-mode-text-color;
 
       &--light {
         background: $light-mode-background-color;

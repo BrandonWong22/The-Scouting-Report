@@ -4,6 +4,7 @@ import CompanyDataCardList from "../ComapnyDataCardList/CompanyDataCardList";
 import FinancialLineGraph from "../FinancialLineGraph/FinancialLineGraph";
 import FinancialBarGraph from "../FinanacialBarGraph/FinancialBarGraph";
 import FinancialRadarGraph from "../FinancialRadarGraph/FinancialRadarGraph";
+import ClipLoader from "react-spinners/ClipLoader";
 
 interface FinancialStatementGraphsProps {
   financialsDates: Array<string>;
@@ -200,6 +201,11 @@ class FinancialStatementGraphs extends Component<
           </button>
         </div>
         <div className="data__graph-ctn">
+          {this.props.financialsRevenue.length === 0 && (
+            <div className="data__loader">
+              <ClipLoader size={100} color={"steelblue"} loading={true} />
+            </div>
+          )}
           {this.state.loadingState === "line" && this.renderLineGraph()}
           {this.state.loadingState === "bar" && this.renderBarGraph()}
           {this.state.loadingState === "radar" && this.renderRadarGraph()}
