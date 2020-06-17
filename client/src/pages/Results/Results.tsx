@@ -33,13 +33,6 @@ class Results extends Component<ResultsProps, ResultsState> {
     stockData30DateLabel: [],
     stockDailyPrices: [],
     stockDailyTimes: [],
-    financialsDates: [],
-    financialsRevenue: [],
-    financialsCostOfRevenue: [],
-    financialsGrossProfit: [],
-    financialsNetIncome: [],
-    financialsCostAndExpenses: [],
-    financialsOperatingExpenses: [],
   };
 
   componentDidMount() {
@@ -59,7 +52,6 @@ class Results extends Component<ResultsProps, ResultsState> {
           "?apikey=d084cd25905084810ee3429ed54c83d9";
 
         this.fetchDailyStockPrice(symbol);
-        this.fetchFinancials(symbol);
         this.fetchHistoricalStockData30Day(symbol);
         this.fetchCompanyData(symbol);
         this.fetchCompanyInformation(url);
@@ -79,47 +71,6 @@ class Results extends Component<ResultsProps, ResultsState> {
       }
     });
   }
-
-  //get quarterly financial data from the past 8 quarters
-  fetchFinancials = (symbol: string) => {
-    axios
-      .get(
-        `https://financialmodelingprep.com/api/v3/income-statement/${symbol}?period=quarter&apikey=d084cd25905084810ee3429ed54c83d9`
-      )
-      .then((response) => {
-        //filter response data to only get the last 8 quarters of data
-        let filteredFinancialData: Array<object> = response.data.splice(0, 8);
-
-        let datesArr: Array<string> = [];
-        let revenueArr: Array<number> = [];
-        let costOfRevenueArr: Array<number> = [];
-        let grossProfitArr: Array<number> = [];
-        let netIncomeArr: Array<number> = [];
-        let costAndExpensesArr: Array<number> = [];
-        let operatingExpensesArr: Array<number> = [];
-
-        //append data to respective dummy arrays
-        filteredFinancialData.forEach((element: any) => {
-          datesArr.push(element.date);
-          revenueArr.push(element.revenue / 1000000000);
-          costOfRevenueArr.push(element.costOfRevenue / 1000000000);
-          grossProfitArr.push(element.grossProfit / 1000000000);
-          netIncomeArr.push(element.netIncome / 1000000000);
-          costAndExpensesArr.push(element.costAndExpenses / 1000000000);
-          operatingExpensesArr.push(element.operatingExpenses / 1000000000);
-        });
-
-        this.setState({
-          financialsDates: datesArr.reverse(),
-          financialsRevenue: revenueArr.reverse(),
-          financialsCostOfRevenue: costOfRevenueArr.reverse(),
-          financialsGrossProfit: grossProfitArr.reverse(),
-          financialsNetIncome: netIncomeArr.reverse(),
-          financialsCostAndExpenses: costAndExpensesArr.reverse(),
-          financialsOperatingExpenses: operatingExpensesArr.reverse(),
-        });
-      });
-  };
 
   //generate date in format YYYY/MM/DD
   getDate = (date: any) => {
@@ -271,7 +222,6 @@ class Results extends Component<ResultsProps, ResultsState> {
           companyWebsite={this.state.companyWebsite}
           companyCEO={this.state.companyCEO}
           history={this.props.history}
-          // companyDescription={this.state.companyDescription}
         />
         <CompanyResultsSection
           companyName={this.state.companyName}
@@ -288,13 +238,6 @@ class Results extends Component<ResultsProps, ResultsState> {
           stockData30DateLabel={this.state.stockData30DateLabel}
           stockDailyPrices={this.state.stockDailyPrices}
           stockDailyTimes={this.state.stockDailyTimes}
-          financialsDates={this.state.financialsDates}
-          financialsRevenue={this.state.financialsRevenue}
-          financialsCostOfRevenue={this.state.financialsCostOfRevenue}
-          financialsGrossProfit={this.state.financialsGrossProfit}
-          financialsNetIncome={this.state.financialsNetIncome}
-          financialsCostAndExpenses={this.state.financialsCostAndExpenses}
-          financialsOperatingExpenses={this.state.financialsOperatingExpenses}
         />
       </div>
     );

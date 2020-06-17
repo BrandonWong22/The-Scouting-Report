@@ -57,13 +57,6 @@ interface ResultsState {
   stockData30DateLabel: Array<string>;
   stockDailyPrices: Array<number>;
   stockDailyTimes: Array<string>;
-  financialsDates: Array<string>;
-  financialsRevenue: Array<number>;
-  financialsCostOfRevenue: Array<number>;
-  financialsGrossProfit: Array<number>;
-  financialsNetIncome: Array<number>;
-  financialsCostAndExpenses: Array<number>;
-  financialsOperatingExpenses: Array<number>;
 }
 
 interface CompanyInfoProps {
@@ -92,13 +85,6 @@ interface CompanyResultsProps {
   stockData30DateLabel: Array<string>;
   stockDailyPrices: Array<number>;
   stockDailyTimes: Array<string>;
-  financialsDates: Array<string>;
-  financialsRevenue: Array<number>;
-  financialsCostOfRevenue: Array<number>;
-  financialsGrossProfit: Array<number>;
-  financialsNetIncome: Array<number>;
-  financialsCostAndExpenses: Array<number>;
-  financialsOperatingExpenses: Array<number>;
 }
 
 interface CompanyResultsState {
@@ -129,13 +115,6 @@ interface StockDataStates {
 }
 
 interface FinancialStatementProps {
-  financialsDates: Array<string>;
-  financialsRevenue: Array<number>;
-  financialsCostOfRevenue: Array<number>;
-  financialsGrossProfit: Array<number>;
-  financialsNetIncome: Array<number>;
-  financialsCostAndExpenses: Array<number>;
-  financialsOperatingExpenses: Array<number>;
   companySymbol: string;
 }
 

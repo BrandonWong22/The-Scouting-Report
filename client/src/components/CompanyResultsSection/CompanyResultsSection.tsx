@@ -30,13 +30,6 @@ class CompanyResultsSection extends Component<
       stockData30DateLabel,
       stockDailyPrices,
       stockDailyTimes,
-      financialsDates,
-      financialsRevenue,
-      financialsCostOfRevenue,
-      financialsGrossProfit,
-      financialsNetIncome,
-      financialsCostAndExpenses,
-      financialsOperatingExpenses,
     } = this.props;
 
     if (currentStockPrice === "" && stockData30.length === 0) {
@@ -84,16 +77,7 @@ class CompanyResultsSection extends Component<
                   />
                 </TabPanel>
                 <TabPanel className="react-tab__tab-panel">
-                  <FinancialStatement
-                    financialsDates={financialsDates}
-                    financialsRevenue={financialsRevenue}
-                    financialsCostOfRevenue={financialsCostOfRevenue}
-                    financialsGrossProfit={financialsGrossProfit}
-                    financialsNetIncome={financialsNetIncome}
-                    financialsCostAndExpenses={financialsCostAndExpenses}
-                    financialsOperatingExpenses={financialsOperatingExpenses}
-                    companySymbol={companySymbol}
-                  />
+                  <FinancialStatement companySymbol={companySymbol} />
                 </TabPanel>
               </Tabs>
             </div>
