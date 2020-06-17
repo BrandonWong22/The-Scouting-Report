@@ -187,4 +187,6 @@ interface FinancialRadarGraphProps {
   financialsCostAndExpenses: Array<number>;
   financialsOperatingExpenses: Array<number>;
   title: string;
+  color: string;
+  backDrop: string;
 }

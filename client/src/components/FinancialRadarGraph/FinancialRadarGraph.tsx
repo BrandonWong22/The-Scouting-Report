@@ -11,6 +11,8 @@ const FinancialRadarGraph: React.FC<FinancialRadarGraphProps> = (props) => {
     financialsOperatingExpenses,
     financialsDates,
     title,
+    color,
+    backDrop,
   } = props;
 
   const data = {
@@ -68,27 +70,27 @@ const FinancialRadarGraph: React.FC<FinancialRadarGraphProps> = (props) => {
   const options = {
     legend: {
       position: "top",
+      labels: {
+        fontColor: color,
+      },
     },
     title: {
       display: true,
       text: title,
+      fontColor: color,
     },
     scale: {
       reverse: false,
       gridLines: {
-        color: [
-          "black",
-          "red",
-          "orange",
-          "yellow",
-          "green",
-          "blue",
-          "indigo",
-          "violet",
-        ],
+        color: color,
       },
       ticks: {
         beginAtZero: true,
+        fontColor: color,
+        backdropColor: backDrop,
+      },
+      pointLabels: {
+        fontColor: color,
       },
     },
     responsive: true,

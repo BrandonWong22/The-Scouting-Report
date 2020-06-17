@@ -120,6 +120,8 @@ class FinancialStatementGraphs extends Component<
           financialsCostAndExpenses={this.props.financialsCostAndExpenses}
           financialsOperatingExpenses={this.props.financialsOperatingExpenses}
           title={"Financial Statement from the Past 5 Years"}
+          color={this.props.darkMode ? "#999" : "#C0C0C0"}
+          backDrop={this.props.darkMode ? "#1a1919" : "#fff"}
         />
       );
     }
