@@ -2,7 +2,7 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 
 const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
-  const { stockData, stockDataDateLabel, color, title } = props;
+  const { stockData, stockDataDateLabel, color, title, timeScaleTitle } = props;
 
   const data: { labels: Array<string>; datasets: Array<Object> } = {
     labels: stockDataDateLabel,
@@ -64,7 +64,7 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
         {
           scaleLabel: {
             display: true,
-            labelString: "Date in (YYYY-MM-DD)",
+            labelString: timeScaleTitle,
             fontColor: color,
           },
           gridLines: {

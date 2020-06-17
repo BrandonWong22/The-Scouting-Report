@@ -59,6 +59,7 @@ class StockData extends Component<StockDataProps, StockDataStates> {
           stockDataDateLabel={this.props.stockData30DateLabel}
           color={this.props.darkMode ? "#999" : "#C0C0C0"}
           title="Stock Prices for the Past 30 Days"
+          timeScaleTitle={"Date in (YYYY-MM-DD)"}
         />
       );
     }
@@ -72,6 +73,7 @@ class StockData extends Component<StockDataProps, StockDataStates> {
           stockDataDateLabel={this.props.stockDailyTimes}
           color={this.props.darkMode ? "#999" : "#C0C0C0"}
           title="Daily Stock Price Tracker"
+          timeScaleTitle="Time in Military Time"
         />
       );
     }
