@@ -154,6 +154,7 @@ class FinancialStatement extends Component<
   };
 
   render() {
+    const { darkMode } = this.props;
     return (
       <div className="financials__data-ctn">
         <div className="financials__button-ctn">
@@ -186,6 +187,7 @@ class FinancialStatement extends Component<
               financialsOperatingExpenses={
                 this.state.financialsQuarterlyOperatingExpenses
               }
+              darkMode={darkMode}
             />
           </>
         )}
@@ -202,6 +204,7 @@ class FinancialStatement extends Component<
             financialsOperatingExpenses={
               this.state.financialsAnnualOperatingExpenses
             }
+            darkMode={darkMode}
           />
         )}
       </div>

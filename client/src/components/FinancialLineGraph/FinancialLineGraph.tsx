@@ -11,6 +11,7 @@ const FinancialLineGraph: React.FC<FinancialLineGraphProps> = (props) => {
     financialsOperatingExpenses,
     financialsDates,
     title,
+    color,
   } = props;
 
   const data = {
@@ -88,9 +89,15 @@ const FinancialLineGraph: React.FC<FinancialLineGraphProps> = (props) => {
   let range: number = (maxRange - minRange) / 12;
 
   const options = {
+    legend: {
+      labels: {
+        fontColor: color,
+      },
+    },
     title: {
       display: true,
       text: title,
+      fontColor: color,
     },
     scales: {
       yAxes: [
@@ -99,14 +106,16 @@ const FinancialLineGraph: React.FC<FinancialLineGraphProps> = (props) => {
             min: minRange - range / 2,
             max: maxRange + range / 2,
             stepSize: range,
-            scaleLabel: {
-              display: true,
-              // labelString: "Price in USD",
-            },
+            fontColor: color,
           },
           scaleLabel: {
             display: true,
             labelString: "Price in Billions (USD)",
+            fontColor: color,
+          },
+          gridLines: {
+            color: color,
+            lineWidth: 0.3,
           },
         },
       ],
@@ -115,6 +124,13 @@ const FinancialLineGraph: React.FC<FinancialLineGraphProps> = (props) => {
           scaleLabel: {
             display: true,
             labelString: "Financial Quarter. Date in (YYYY-MM-DD)",
+          },
+          gridLines: {
+            color: color,
+            lineWidth: 0.3,
+          },
+          ticks: {
+            fontColor: color,
           },
         },
       ],

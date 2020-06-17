@@ -32,6 +32,10 @@
     padding-right: $margin-mobile;
     display: flex;
     flex-direction: column;
+
+    // @include tablet {
+    //   padding-right: $margin-tablet;
+    // }
   }
 
   &__top-ctn {

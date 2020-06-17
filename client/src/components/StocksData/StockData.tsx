@@ -55,8 +55,8 @@ class StockData extends Component<StockDataProps, StockDataStates> {
     if (this.props.stockData30.length !== 0) {
       return (
         <StockLineGraph
-          stockData30={this.props.stockData30}
-          stockData30DateLabel={this.props.stockData30DateLabel}
+          stockData={this.props.stockData30}
+          stockDataDateLabel={this.props.stockData30DateLabel}
           color={this.props.darkMode ? "#999" : "#C0C0C0"}
         />
       );
@@ -67,8 +67,8 @@ class StockData extends Component<StockDataProps, StockDataStates> {
     if (this.props.stockDailyPrices.length !== 0) {
       return (
         <StockLineGraph
-          stockData30={this.props.stockDailyPrices}
-          stockData30DateLabel={this.props.stockDailyTimes}
+          stockData={this.props.stockDailyPrices}
+          stockDataDateLabel={this.props.stockDailyTimes}
           color={this.props.darkMode ? "#999" : "#C0C0C0"}
         />
       );

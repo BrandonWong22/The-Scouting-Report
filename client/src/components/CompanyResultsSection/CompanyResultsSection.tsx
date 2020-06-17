@@ -11,7 +11,7 @@ class CompanyResultsSection extends Component<
   CompanyResultsState
 > {
   state = {
-    tabIndex: 0,
+    tabIndex: 1,
   };
 
   render() {
@@ -92,7 +92,10 @@ class CompanyResultsSection extends Component<
               />
             </TabPanel>
             <TabPanel className="react-tab__tab-panel">
-              <FinancialStatement companySymbol={companySymbol} />
+              <FinancialStatement
+                companySymbol={companySymbol}
+                darkMode={darkMode}
+              />
             </TabPanel>
           </Tabs>
         </div>

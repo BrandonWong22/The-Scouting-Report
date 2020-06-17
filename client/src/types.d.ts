@@ -91,6 +91,12 @@ interface CompanyResultsState {
   tabIndex: number;
 }
 
+interface StockLineGraphProps {
+  stockData: any;
+  stockDataDateLabel: Array<string>;
+  color: string;
+}
+
 interface StockDataProps {
   companyName: string;
   companySymbol: string;
@@ -117,6 +123,7 @@ interface StockDataStates {
 
 interface FinancialStatementProps {
   companySymbol: string;
+  darkMode: boolean;
 }
 
 interface FinancialStatementState {
@@ -154,6 +161,7 @@ interface FinancialLineGraphProps {
   financialsCostAndExpenses: Array<number>;
   financialsOperatingExpenses: Array<number>;
   title: string;
+  color: string;
 }
 
 interface FinancialBarGraphProps {

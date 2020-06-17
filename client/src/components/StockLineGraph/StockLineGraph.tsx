@@ -1,21 +1,15 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 
-interface StockLineGraphProps {
-  stockData30: any;
-  stockData30DateLabel: Array<string>;
-  color: string;
-}
-
 const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
-  const { stockData30, stockData30DateLabel, color } = props;
+  const { stockData, stockDataDateLabel, color } = props;
 
   const data: { labels: Array<string>; datasets: Array<Object> } = {
-    labels: stockData30DateLabel,
+    labels: stockDataDateLabel,
     datasets: [
       {
         label: "Stock Prices in USD",
-        data: stockData30,
+        data: stockData,
         borderColor: ["rgba(255, 206, 86, 0.2)"],
         backgroundColor: ["rgba(255, 206, 86, 0.2)"],
         pointBackgroundColor: "rgba(255, 206, 86, 0.2)",
@@ -24,8 +18,8 @@ const StockLineGraph: React.FC<StockLineGraphProps> = (props) => {
     ],
   };
 
-  let minRange: number = Math.min(...props.stockData30);
-  let maxRange: number = Math.max(...props.stockData30);
+  let minRange: number = Math.min(...props.stockData);
+  let maxRange: number = Math.max(...props.stockData);
   let range: number = (maxRange - minRange) / 5;
 
   const options: {
