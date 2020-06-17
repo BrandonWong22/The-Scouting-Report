@@ -156,6 +156,13 @@ interface FinancialStatementState {
   financialsAnnualNetIncome: Array<number>;
   financialsAnnualCostAndExpenses: Array<number>;
   financialsAnnualOperatingExpenses: Array<number>;
+  financialsQuarterlyDates: Array<string>;
+  financialsQuarterlyRevenue: Array<number>;
+  financialsQuarterlyCostOfRevenue: Array<number>;
+  financialsQuarterlyGrossProfit: Array<number>;
+  financialsQuarterlyNetIncome: Array<number>;
+  financialsQuarterlyCostAndExpenses: Array<number>;
+  financialsQuarterlyOperatingExpenses: Array<number>;
 }
 
 interface FinancialLineGraphProps {

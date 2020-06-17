@@ -1,12 +1,7 @@
 import React, { Component } from "react";
 import "./FinancialStatement.scss";
-// import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import FinancialLineGraph from "../FinancialLineGraph/FinancialLineGraph";
-import FinancialBarGraph from "../FinanacialBarGraph/FinancialBarGraph";
-import FinancialRadarGraph from "../FinancialRadarGraph/FinancialRadarGraph";
-import CompanyDataCardList from "../ComapnyDataCardList/CompanyDataCardList";
 import axios from "axios";
-import AnnualFinancialStatement from "../AnnualFinancialStatement/AnnualFinancialStatement";
+import FinancialStatementGraphs from "../FinancialStatementGraphs/FinancialStatementGraphs";
 
 class FinancialStatement extends Component<
   FinancialStatementProps,
@@ -31,13 +26,59 @@ class FinancialStatement extends Component<
     financialsAnnualNetIncome: [],
     financialsAnnualCostAndExpenses: [],
     financialsAnnualOperatingExpenses: [],
+    financialsQuarterlyDates: [],
+    financialsQuarterlyRevenue: [],
+    financialsQuarterlyCostOfRevenue: [],
+    financialsQuarterlyGrossProfit: [],
+    financialsQuarterlyNetIncome: [],
+    financialsQuarterlyCostAndExpenses: [],
+    financialsQuarterlyOperatingExpenses: [],
   };
 
   componentDidMount() {
-    console.log(this.props.companySymbol);
-
     this.fetchAnnualFinancials(this.props.companySymbol);
+    this.fetchQuarterlyFinancials(this.props.companySymbol);
   }
+
+  fetchQuarterlyFinancials = (symbol: string) => {
+    axios
+      .get(
+        `https://financialmodelingprep.com/api/v3/income-statement/${symbol}?period=quarter&apikey=d084cd25905084810ee3429ed54c83d9`
+      )
+      .then((response) => {
+        //filter response data to only get the last 8 quarters of data
+        let filteredFinancialData: Array<object> = response.data.splice(0, 8);
+
+        let datesArr: Array<string> = [];
+        let revenueArr: Array<number> = [];
+        let costOfRevenueArr: Array<number> = [];
+        let grossProfitArr: Array<number> = [];
+        let netIncomeArr: Array<number> = [];
+        let costAndExpensesArr: Array<number> = [];
+        let operatingExpensesArr: Array<number> = [];
+
+        //append data to respective dummy arrays
+        filteredFinancialData.forEach((element: any) => {
+          datesArr.push(element.date);
+          revenueArr.push(element.revenue / 1000000000);
+          costOfRevenueArr.push(element.costOfRevenue / 1000000000);
+          grossProfitArr.push(element.grossProfit / 1000000000);
+          netIncomeArr.push(element.netIncome / 1000000000);
+          costAndExpensesArr.push(element.costAndExpenses / 1000000000);
+          operatingExpensesArr.push(element.operatingExpenses / 1000000000);
+        });
+
+        this.setState({
+          financialsQuarterlyDates: datesArr.reverse(),
+          financialsQuarterlyRevenue: revenueArr.reverse(),
+          financialsQuarterlyCostOfRevenue: costOfRevenueArr.reverse(),
+          financialsQuarterlyGrossProfit: grossProfitArr.reverse(),
+          financialsQuarterlyNetIncome: netIncomeArr.reverse(),
+          financialsQuarterlyCostAndExpenses: costAndExpensesArr.reverse(),
+          financialsAnnualOperatingExpenses: operatingExpensesArr.reverse(),
+        });
+      });
+  };
 
   fetchAnnualFinancials = (symbol: string) => {
     axios
@@ -81,43 +122,7 @@ class FinancialStatement extends Component<
       });
   };
 
-  componentDidUpdate(_: any, prevState: { loading: string; annual: boolean }) {
-    if (this.state.loading !== prevState.loading) {
-      if (this.state.loading === "line") {
-        this.setState({
-          buttonLine:
-            "financials__button financials__button--line financials__button--selected",
-          buttonBar: "financials__button financials__button--bar",
-          buttonRadar: "financials__button financials__button--radar",
-          buttonFinancials: "financials__button financials__button--financials",
-        });
-      } else if (this.state.loading === "bar") {
-        this.setState({
-          buttonLine: "financials__button financials__button--line",
-          buttonBar:
-            "financials__button financials__button--bar financials__button--selected",
-          buttonRadar: "financials__button financials__button--radar",
-          buttonFinancials: "financials__button financials__button--financials",
-        });
-      } else if (this.state.loading === "radar") {
-        this.setState({
-          buttonLine: "financials__button financials__button--line",
-          buttonBar: "financials__button financials__button--bar",
-          buttonRadar:
-            "financials__button financials__button--radar financials__button--selected",
-          buttonFinancials: "financials__button financials__button--financials",
-        });
-      } else if (this.state.loading === "financials") {
-        this.setState({
-          buttonLine: "financials__button financials__button--line",
-          buttonBar: "financials__button financials__button--bar",
-          buttonRadar: "financials__button financials__button--radar",
-          buttonFinancials:
-            "financials__button financials__button--financials financials__button--selected",
-        });
-      }
-    }
-
+  componentDidUpdate(_: any, prevState: { annual: boolean }) {
     if (this.state.annual !== prevState.annual) {
       if (this.state.annual) {
         this.setState({
@@ -136,57 +141,6 @@ class FinancialStatement extends Component<
     }
   }
 
-  renderLineGraph = () => {
-    if (this.props.financialsRevenue.length !== 0) {
-      return (
-        <FinancialLineGraph
-          financialsDates={this.props.financialsDates}
-          financialsRevenue={this.props.financialsRevenue}
-          financialsCostOfRevenue={this.props.financialsCostOfRevenue}
-          financialsGrossProfit={this.props.financialsGrossProfit}
-          financialsNetIncome={this.props.financialsNetIncome}
-          financialsCostAndExpenses={this.props.financialsCostAndExpenses}
-          financialsOperatingExpenses={this.props.financialsOperatingExpenses}
-          title={"Financial Statement from the Past 8 Quarters"}
-        />
-      );
-    }
-  };
-
-  renderBarGraph = () => {
-    if (this.props.financialsRevenue.length !== 0) {
-      return (
-        <FinancialBarGraph
-          financialsDates={this.props.financialsDates}
-          financialsRevenue={this.props.financialsRevenue}
-          financialsCostOfRevenue={this.props.financialsCostOfRevenue}
-          financialsGrossProfit={this.props.financialsGrossProfit}
-          financialsNetIncome={this.props.financialsNetIncome}
-          financialsCostAndExpenses={this.props.financialsCostAndExpenses}
-          financialsOperatingExpenses={this.props.financialsOperatingExpenses}
-          title={"Financial Statement from the Past 8 Quarters"}
-        />
-      );
-    }
-  };
-
-  renderRadarGraph = () => {
-    if (this.props.financialsRevenue.length !== 0) {
-      return (
-        <FinancialRadarGraph
-          financialsDates={this.props.financialsDates}
-          financialsRevenue={this.props.financialsRevenue}
-          financialsCostOfRevenue={this.props.financialsCostOfRevenue}
-          financialsGrossProfit={this.props.financialsGrossProfit}
-          financialsNetIncome={this.props.financialsNetIncome}
-          financialsCostAndExpenses={this.props.financialsCostAndExpenses}
-          financialsOperatingExpenses={this.props.financialsOperatingExpenses}
-          title={"Financial Statement from the Past 8 Quarters"}
-        />
-      );
-    }
-  };
-
   handleQuarterlyButtonClick = () => {
     this.setState({
       annual: false,
@@ -196,30 +150,6 @@ class FinancialStatement extends Component<
   handleAnnualButtonClick = () => {
     this.setState({
       annual: true,
-    });
-  };
-
-  handleLineButtonClick = () => {
-    this.setState({
-      loading: "line",
-    });
-  };
-
-  handleBarButtonClick = () => {
-    this.setState({
-      loading: "bar",
-    });
-  };
-
-  handleRadarButtonClick = () => {
-    this.setState({
-      loading: "radar",
-    });
-  };
-
-  handleFinancialsButtonClick = () => {
-    this.setState({
-      loading: "financials",
     });
   };
 
@@ -242,158 +172,40 @@ class FinancialStatement extends Component<
         </div>
         {!this.state.annual && (
           <>
-            <div className="financials__button-ctn">
-              <button
-                onClick={this.handleLineButtonClick}
-                className={this.state.buttonLine}
-              >
-                Line Graph
-              </button>
-              <button
-                onClick={this.handleBarButtonClick}
-                className={this.state.buttonBar}
-              >
-                Bar Graph
-              </button>
-              <button
-                onClick={this.handleRadarButtonClick}
-                className={this.state.buttonRadar}
-              >
-                Radar Graph
-              </button>
-              <button
-                onClick={this.handleFinancialsButtonClick}
-                className={this.state.buttonFinancials}
-              >
-                Financial Statement
-              </button>
-            </div>
-            <div className="financials__graph-ctn">
-              {this.state.loading === "line" && this.renderLineGraph()}
-              {this.state.loading === "bar" && this.renderBarGraph()}
-              {this.state.loading === "radar" && this.renderRadarGraph()}
-              {this.state.loading === "financials" && (
-                <CompanyDataCardList
-                  financialsDates={this.props.financialsDates}
-                  financialsRevenue={this.props.financialsRevenue}
-                  financialsCostOfRevenue={this.props.financialsCostOfRevenue}
-                  financialsGrossProfit={this.props.financialsGrossProfit}
-                  financialsNetIncome={this.props.financialsNetIncome}
-                  financialsCostAndExpenses={
-                    this.props.financialsCostAndExpenses
-                  }
-                  financialsOperatingExpenses={
-                    this.props.financialsOperatingExpenses
-                  }
-                />
-              )}
-            </div>
+            <FinancialStatementGraphs
+              financialsDates={this.state.financialsQuarterlyDates}
+              financialsRevenue={this.state.financialsQuarterlyRevenue}
+              financialsCostOfRevenue={
+                this.state.financialsQuarterlyCostOfRevenue
+              }
+              financialsGrossProfit={this.state.financialsQuarterlyGrossProfit}
+              financialsNetIncome={this.state.financialsQuarterlyNetIncome}
+              financialsCostAndExpenses={
+                this.state.financialsQuarterlyCostAndExpenses
+              }
+              financialsOperatingExpenses={
+                this.state.financialsQuarterlyOperatingExpenses
+              }
+            />
           </>
         )}
         {this.state.annual && (
-          <AnnualFinancialStatement
-            financialsAnnualDates={this.state.financialsAnnualDates}
-            financialsAnnualRevenue={this.state.financialsAnnualRevenue}
-            financialsAnnualCostOfRevenue={
-              this.state.financialsAnnualCostOfRevenue
-            }
-            financialsAnnualGrossProfit={this.state.financialsAnnualGrossProfit}
-            financialsAnnualNetIncome={this.state.financialsAnnualNetIncome}
-            financialsAnnualCostAndExpenses={
+          <FinancialStatementGraphs
+            financialsDates={this.state.financialsAnnualDates}
+            financialsRevenue={this.state.financialsAnnualRevenue}
+            financialsCostOfRevenue={this.state.financialsAnnualCostOfRevenue}
+            financialsGrossProfit={this.state.financialsAnnualGrossProfit}
+            financialsNetIncome={this.state.financialsAnnualNetIncome}
+            financialsCostAndExpenses={
               this.state.financialsAnnualCostAndExpenses
             }
-            financialsAnnualOperatingExpenses={
+            financialsOperatingExpenses={
               this.state.financialsAnnualOperatingExpenses
             }
           />
         )}
       </div>
     );
-
-    //   if (!this.state.annual) {
-    //     return (
-    //       <div className="financials__data-ctn">
-    //         <div className="financials__button-ctn">
-    //           <button
-    //             onClick={this.handleQuarterlyButtonClick}
-    //             className={this.state.quarterlyClassName}
-    //           >
-    //             Quarterly
-    //           </button>
-    //           <button
-    //             onClick={this.handleAnnualButtonClick}
-    //             className={this.state.annualClassName}
-    //           >
-    //             Annual
-    //           </button>
-    //         </div>
-    //         <div className="financials__button-ctn">
-    //           <button
-    //             onClick={this.handleLineButtonClick}
-    //             className={this.state.buttonLine}
-    //           >
-    //             Line Graph
-    //           </button>
-    //           <button
-    //             onClick={this.handleBarButtonClick}
-    //             className={this.state.buttonBar}
-    //           >
-    //             Bar Graph
-    //           </button>
-    //           <button
-    //             onClick={this.handleRadarButtonClick}
-    //             className={this.state.buttonRadar}
-    //           >
-    //             Radar Graph
-    //           </button>
-    //           <button
-    //             onClick={this.handleFinancialsButtonClick}
-    //             className={this.state.buttonFinancials}
-    //           >
-    //             Financial Statement
-    //           </button>
-    //         </div>
-    //         <div className="financials__graph-ctn">
-    //           {this.state.loading === "line" && this.renderLineGraph()}
-    //           {this.state.loading === "bar" && this.renderBarGraph()}
-    //           {this.state.loading === "radar" && this.renderRadarGraph()}
-    //           {this.state.loading === "financials" && (
-    //             <CompanyDataCardList
-    //               financialsDates={this.props.financialsDates}
-    //               financialsRevenue={this.props.financialsRevenue}
-    //               financialsCostOfRevenue={this.props.financialsCostOfRevenue}
-    //               financialsGrossProfit={this.props.financialsGrossProfit}
-    //               financialsNetIncome={this.props.financialsNetIncome}
-    //               financialsCostAndExpenses={this.props.financialsCostAndExpenses}
-    //               financialsOperatingExpenses={
-    //                 this.props.financialsOperatingExpenses
-    //               }
-    //             />
-    //           )}
-    //         </div>
-    //       </div>
-    //     );
-    //   } else if (this.state.annual) {
-    //     return (
-    //       <div>
-    //         <AnnualFinancialStatement
-    //           financialsAnnualDates={this.state.financialsAnnualDates}
-    //           financialsAnnualRevenue={this.state.financialsAnnualRevenue}
-    //           financialsAnnualCostOfRevenue={
-    //             this.state.financialsAnnualCostOfRevenue
-    //           }
-    //           financialsAnnualGrossProfit={this.state.financialsAnnualGrossProfit}
-    //           financialsAnnualNetIncome={this.state.financialsAnnualNetIncome}
-    //           financialsAnnualCostAndExpenses={
-    //             this.state.financialsAnnualCostAndExpenses
-    //           }
-    //           financialsAnnualOperatingExpenses={
-    //             this.state.financialsAnnualOperatingExpenses
-    //           }
-    //         />
-    //       </div>
-    //     );
-    //   }
   }
 }
 
