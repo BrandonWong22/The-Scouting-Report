@@ -32,7 +32,7 @@ class Results extends Component<ResultsProps, ResultsState> {
     stockData30DateLabel: [],
     stockDailyPrices: [],
     stockDailyTimes: [],
-    darkMode: JSON.parse(localStorage.getItem("dark") || "{}"), //not sure why this works
+    darkMode: JSON.parse(localStorage.getItem("dark") || "{}"),
   };
 
   componentDidMount() {
@@ -79,10 +79,10 @@ class Results extends Component<ResultsProps, ResultsState> {
   }
 
   // ASK ABOUT THIS
-  // getInitialMode = () => {
-  //   const savedMode: any = JSON.parse(localStorage.getItem("dark") || "{}");
-  //   return savedMode || false;
-  // };
+  getInitialMode = () => {
+    const savedMode: any = JSON.parse(localStorage.getItem("dark") || "{}");
+    return savedMode || false;
+  };
 
   //generate date in format YYYY/MM/DD
   getDate = (date: any) => {

@@ -27,7 +27,8 @@
   }
 
   &__results-ctn {
-    padding-top: 20px;
+    // padding-top: 20px;
+    padding: 1rem;
     padding-left: $margin-mobile;
     padding-right: $margin-mobile;
     display: flex;
@@ -51,13 +52,14 @@
 
   &__results-header {
     // display: none;
+    font-size: 1.5rem;
     @include tablet {
-      font-size: 20px;
+      font-size: 1.75rem;
       align-self: center;
     }
 
     @include desktop {
-      font-size: 28px;
+      // font-size: 28px;
     }
   }
 
