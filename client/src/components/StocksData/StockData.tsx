@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./StockData.scss";
-// import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import Card from "@material-ui/core/Card";
-import { CardContent } from "@material-ui/core";
+
 import StockLineGraph from "../StockLineGraph/StockLineGraph";
 
 class StockData extends Component<StockDataProps, StockDataStates> {
@@ -94,7 +92,7 @@ class StockData extends Component<StockDataProps, StockDataStates> {
     return (
       <div className="stock-data">
         <div className="stock-data__top-data-ctn">
-          <Card
+          <div
             style={
               darkMode
                 ? { backgroundColor: "#525252" }
@@ -102,21 +100,19 @@ class StockData extends Component<StockDataProps, StockDataStates> {
             }
             className="stock-data__section-results"
           >
-            <CardContent>
-              <h2
-                className={
-                  darkMode
-                    ? "stock-data__data-label stock-data__data-label--dark"
-                    : "stock-data__data-label stock-data__data-label--light"
-                }
-              >
-                {companyName} {currentStockPrice}
-              </h2>
-            </CardContent>
-          </Card>
+            <h2
+              className={
+                darkMode
+                  ? "stock-data__data-label stock-data__data-label--dark"
+                  : "stock-data__data-label stock-data__data-label--light"
+              }
+            >
+              {companyName} {currentStockPrice}
+            </h2>
+          </div>
 
           <div className="stock-data__data-ctn">
-            <Card
+            <div
               className="stock-data__col stock-data__col--col1"
               style={
                 darkMode
@@ -124,94 +120,92 @@ class StockData extends Component<StockDataProps, StockDataStates> {
                   : { backgroundColor: "#e5e7f0" }
               }
             >
-              <CardContent>
-                <div className="stock-data__section-ctn">
-                  <h3
-                    className={
-                      darkMode
-                        ? "stock-data__data-label stock-data__data-label--dark"
-                        : "stock-data__data-label stock-data__data-label--light"
-                    }
-                  >
-                    Symbol
-                  </h3>
-                  <h3
-                    className={
-                      darkMode
-                        ? "stock-data__data-text stock-data__data-text--dark"
-                        : "stock-data__data-text stock-data__data-text--light"
-                    }
-                  >
-                    {companySymbol}
-                  </h3>
-                </div>
+              <div className="stock-data__section-ctn">
+                <h3
+                  className={
+                    darkMode
+                      ? "stock-data__data-label stock-data__data-label--dark"
+                      : "stock-data__data-label stock-data__data-label--light"
+                  }
+                >
+                  Symbol
+                </h3>
+                <h3
+                  className={
+                    darkMode
+                      ? "stock-data__data-text stock-data__data-text--dark"
+                      : "stock-data__data-text stock-data__data-text--light"
+                  }
+                >
+                  {companySymbol}
+                </h3>
+              </div>
 
-                <div className="stock-data__section-ctn">
-                  <h3
-                    className={
-                      darkMode
-                        ? "stock-data__data-label stock-data__data-label--dark"
-                        : "stock-data__data-label stock-data__data-label--light"
-                    }
-                  >
-                    Date
-                  </h3>
-                  <h3
-                    className={
-                      darkMode
-                        ? "stock-data__data-text stock-data__data-text--dark"
-                        : "stock-data__data-text stock-data__data-text--light"
-                    }
-                  >
-                    {stockDate}
-                  </h3>
-                </div>
+              <div className="stock-data__section-ctn">
+                <h3
+                  className={
+                    darkMode
+                      ? "stock-data__data-label stock-data__data-label--dark"
+                      : "stock-data__data-label stock-data__data-label--light"
+                  }
+                >
+                  Date
+                </h3>
+                <h3
+                  className={
+                    darkMode
+                      ? "stock-data__data-text stock-data__data-text--dark"
+                      : "stock-data__data-text stock-data__data-text--light"
+                  }
+                >
+                  {stockDate}
+                </h3>
+              </div>
 
-                <div className="stock-data__section-ctn">
-                  <h3
-                    className={
-                      darkMode
-                        ? "stock-data__data-label stock-data__data-label--dark"
-                        : "stock-data__data-label stock-data__data-label--light"
-                    }
-                  >
-                    Open
-                  </h3>
-                  <h3
-                    className={
-                      darkMode
-                        ? "stock-data__data-text stock-data__data-text--dark"
-                        : "stock-data__data-text stock-data__data-text--light"
-                    }
-                  >
-                    {stockOpenPrice}
-                  </h3>
-                </div>
+              <div className="stock-data__section-ctn">
+                <h3
+                  className={
+                    darkMode
+                      ? "stock-data__data-label stock-data__data-label--dark"
+                      : "stock-data__data-label stock-data__data-label--light"
+                  }
+                >
+                  Open
+                </h3>
+                <h3
+                  className={
+                    darkMode
+                      ? "stock-data__data-text stock-data__data-text--dark"
+                      : "stock-data__data-text stock-data__data-text--light"
+                  }
+                >
+                  {stockOpenPrice}
+                </h3>
+              </div>
 
-                <div className="stock-data__section-ctn">
-                  <h3
-                    className={
-                      darkMode
-                        ? "stock-data__data-label stock-data__data-label--dark"
-                        : "stock-data__data-label stock-data__data-label--light"
-                    }
-                  >
-                    Low
-                  </h3>
-                  <h3
-                    className={
-                      darkMode
-                        ? "stock-data__data-text stock-data__data-text--dark"
-                        : "stock-data__data-text stock-data__data-text--light"
-                    }
-                  >
-                    {stockLowPrice}
-                  </h3>
-                </div>
-              </CardContent>
-            </Card>
+              <div className="stock-data__section-ctn">
+                <h3
+                  className={
+                    darkMode
+                      ? "stock-data__data-label stock-data__data-label--dark"
+                      : "stock-data__data-label stock-data__data-label--light"
+                  }
+                >
+                  Low
+                </h3>
+                <h3
+                  className={
+                    darkMode
+                      ? "stock-data__data-text stock-data__data-text--dark"
+                      : "stock-data__data-text stock-data__data-text--light"
+                  }
+                >
+                  {stockLowPrice}
+                </h3>
+              </div>
+            </div>
 
-            <Card
+            <div
               className="stock-data__col stock-data__col--col2"
               style={
                 darkMode
@@ -219,92 +213,90 @@ class StockData extends Component<StockDataProps, StockDataStates> {
                   : { backgroundColor: "#e5e7f0" }
               }
             >
-              <CardContent>
-                <div className="stock-data__section-ctn">
-                  <h3
-                    className={
-                      darkMode
-                        ? "stock-data__data-label stock-data__data-label--dark"
-                        : "stock-data__data-label stock-data__data-label--light"
-                    }
-                  >
-                    High
-                  </h3>
-                  <h3
-                    className={
-                      darkMode
-                        ? "stock-data__data-text stock-data__data-text--dark"
-                        : "stock-data__data-text stock-data__data-text--light"
-                    }
-                  >
-                    {stockHighPrice}
-                  </h3>
-                </div>
+              <div className="stock-data__section-ctn">
+                <h3
+                  className={
+                    darkMode
+                      ? "stock-data__data-label stock-data__data-label--dark"
+                      : "stock-data__data-label stock-data__data-label--light"
+                  }
+                >
+                  High
+                </h3>
+                <h3
+                  className={
+                    darkMode
+                      ? "stock-data__data-text stock-data__data-text--dark"
+                      : "stock-data__data-text stock-data__data-text--light"
+                  }
+                >
+                  {stockHighPrice}
+                </h3>
+              </div>
 
-                <div className="stock-data__section-ctn">
-                  <h3
-                    className={
-                      darkMode
-                        ? "stock-data__data-label stock-data__data-label--dark"
-                        : "stock-data__data-label stock-data__data-label--light"
-                    }
-                  >
-                    Close
-                  </h3>
-                  <h3
-                    className={
-                      darkMode
-                        ? "stock-data__data-text stock-data__data-text--dark"
-                        : "stock-data__data-text stock-data__data-text--light"
-                    }
-                  >
-                    {stockClosingPrice}
-                  </h3>
-                </div>
+              <div className="stock-data__section-ctn">
+                <h3
+                  className={
+                    darkMode
+                      ? "stock-data__data-label stock-data__data-label--dark"
+                      : "stock-data__data-label stock-data__data-label--light"
+                  }
+                >
+                  Close
+                </h3>
+                <h3
+                  className={
+                    darkMode
+                      ? "stock-data__data-text stock-data__data-text--dark"
+                      : "stock-data__data-text stock-data__data-text--light"
+                  }
+                >
+                  {stockClosingPrice}
+                </h3>
+              </div>
 
-                <div className="stock-data__section-ctn">
-                  <h3
-                    className={
-                      darkMode
-                        ? "stock-data__data-label stock-data__data-label--dark"
-                        : "stock-data__data-label stock-data__data-label--light"
-                    }
-                  >
-                    Volume
-                  </h3>
-                  <h3
-                    className={
-                      darkMode
-                        ? "stock-data__data-text stock-data__data-text--dark"
-                        : "stock-data__data-text stock-data__data-text--light"
-                    }
-                  >
-                    {stockVolume}
-                  </h3>
-                </div>
+              <div className="stock-data__section-ctn">
+                <h3
+                  className={
+                    darkMode
+                      ? "stock-data__data-label stock-data__data-label--dark"
+                      : "stock-data__data-label stock-data__data-label--light"
+                  }
+                >
+                  Volume
+                </h3>
+                <h3
+                  className={
+                    darkMode
+                      ? "stock-data__data-text stock-data__data-text--dark"
+                      : "stock-data__data-text stock-data__data-text--light"
+                  }
+                >
+                  {stockVolume}
+                </h3>
+              </div>
 
-                <div className="stock-data__section-ctn">
-                  <h3
-                    className={
-                      darkMode
-                        ? "stock-data__data-label stock-data__data-label--dark"
-                        : "stock-data__data-label stock-data__data-label--light"
-                    }
-                  >
-                    Change
-                  </h3>
-                  <h3
-                    className={
-                      darkMode
-                        ? "stock-data__data-text stock-data__data-text--dark"
-                        : "stock-data__data-text stock-data__data-text--light"
-                    }
-                  >
-                    {stockChange}
-                  </h3>
-                </div>
-              </CardContent>
-            </Card>
+              <div className="stock-data__section-ctn">
+                <h3
+                  className={
+                    darkMode
+                      ? "stock-data__data-label stock-data__data-label--dark"
+                      : "stock-data__data-label stock-data__data-label--light"
+                  }
+                >
+                  Change
+                </h3>
+                <h3
+                  className={
+                    darkMode
+                      ? "stock-data__data-text stock-data__data-text--dark"
+                      : "stock-data__data-text stock-data__data-text--light"
+                  }
+                >
+                  {stockChange}
+                </h3>
+              </div>
+            </div>
           </div>
         </div>
 

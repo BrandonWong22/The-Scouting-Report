@@ -22,7 +22,10 @@
     }
   }
 
+  //card for stock tracker
   &__section-results {
+    padding: 0.7rem;
+    border-radius: 5px;
     margin-bottom: 15px;
     margin-top: 15px;
     background-color: $light-mode-background-color-card;
@@ -43,7 +46,10 @@
     }
   }
 
+  //card for stock data
   &__col {
+    padding: 0.7rem;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
