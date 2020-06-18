@@ -5,8 +5,8 @@
 .company-info {
   padding-left: $margin-mobile;
   padding-right: $margin-mobile;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
   display: flex;
   flex-direction: column;
 
@@ -24,43 +24,36 @@
 
   @include tablet {
     height: 100vh;
-    // width: 40%;
-    width: 290px;
+    width: 21rem;
   }
 
   @include desktop {
     height: 100vh;
-    width: 400px;
+    width: 25rem;
   }
 
   &__info-ctn {
     display: flex;
-    font-size: 15px;
+    font-size: 0.9rem;
     align-items: center;
-    // justify-content: space-between;
     @include tablet {
-      padding-top: 15px;
+      padding-top: 0.6rem;
     }
     @include desktop {
-      font-size: 19px;
+      font-size: 1.2rem;
     }
   }
 
   &__icon-ctn {
-    height: 40px;
-    width: 40px;
+    height: 2.2rem;
+    width: 2.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   &__icon {
-    font-size: 20px;
-  }
-
-  &__info-description {
-    margin-right: 15px;
-    margin-bottom: 10px;
+    font-size: 1.3rem;
   }
 
   &__tablet-mode {
@@ -72,7 +65,7 @@
   }
 
   &__company-name-ctn {
-    padding-bottom: 20px;
+    padding-bottom: 1.8rem;
 
     &--light {
       border-bottom: 1px solid $light-mode-text-color;
@@ -83,22 +76,23 @@
     }
 
     @include tablet {
-      font-size: 22px;
+      // font-size: 22px;
+      font-size: 1.4rem;
     }
 
     @include desktop {
-      font-size: 30px;
+      font-size: 1.8rem;
     }
   }
 
   &__logout-btn-ctn {
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-top: 1rem;
+    margin-left: 0.4rem;
   }
 
   &__logout-button {
-    width: 120px;
-    height: 40px;
+    width: 8rem;
+    height: 3rem;
     text-align: center;
     border-radius: 10px;
     cursor: pointer;
@@ -132,13 +126,13 @@
 }
 
 .Collapsible {
-  font-size: 50px;
+  font-size: 3.5rem;
 
   @include tablet {
     display: none;
   }
 
   &__contentInner {
-    margin-top: 20px;
+    margin-top: 1rem;
   }
 }
