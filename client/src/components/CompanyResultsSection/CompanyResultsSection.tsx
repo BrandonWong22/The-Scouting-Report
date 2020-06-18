@@ -55,8 +55,56 @@ class CompanyResultsSection extends Component<
             className="react-tabs"
           >
             <TabList className="react-tabs__tab-list">
-              <Tab className="react-tabs__tab">Stocks</Tab>
-              <Tab className="react-tabs__tab">Financial Statement</Tab>
+              {/* CONDITIONS TO RENDER THE STOCKS TAB WITH THE DARK MODE TAB */}
+              {darkMode && this.state.tabIndex === 0 && (
+                <Tab
+                  style={{ backgroundColor: "#1a1919" }}
+                  className="react-tabs__tab"
+                >
+                  Stocks
+                </Tab>
+              )}
+              {!darkMode && this.state.tabIndex === 0 && (
+                <Tab
+                  style={{ backgroundColor: "#fff" }}
+                  className="react-tabs__tab"
+                >
+                  Stocks
+                </Tab>
+              )}
+              {this.state.tabIndex === 1 && (
+                <Tab
+                  style={{ backgroundColor: "transparent" }}
+                  className="react-tabs__tab"
+                >
+                  Stocks
+                </Tab>
+              )}
+              {/* CONDITIONS TO RENDER THE STATEMENTS TAB WITH THE DARK MODE TAB */}
+              {darkMode && this.state.tabIndex === 1 && (
+                <Tab
+                  style={{ backgroundColor: "#1a1919" }}
+                  className="react-tabs__tab"
+                >
+                  Financial Statement
+                </Tab>
+              )}
+              {!darkMode && this.state.tabIndex === 1 && (
+                <Tab
+                  style={{ backgroundColor: "#fff" }}
+                  className="react-tabs__tab"
+                >
+                  Financial Statement
+                </Tab>
+              )}
+              {this.state.tabIndex === 0 && (
+                <Tab
+                  style={{ backgroundColor: "transparent" }}
+                  className="react-tabs__tab"
+                >
+                  Financial Statement
+                </Tab>
+              )}
             </TabList>
             <TabPanel className="react-tab__tab-panel">
               <StockData
