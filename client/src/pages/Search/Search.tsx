@@ -8,7 +8,8 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import axios from "axios";
 import firebase from "firebase";
 
-const API_URL: string = "http://localhost:8080/";
+const API_URL: string =
+  "https://scouting-report--api.herokuapp.com/" || "http://localhost:8080/";
 
 toast.configure();
 

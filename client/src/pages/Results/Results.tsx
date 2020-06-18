@@ -20,7 +20,7 @@ class Results extends Component<ResultsProps, ResultsState> {
     companyWebsite: "",
     companyCEO: "",
     currentStockPrice: "",
-    socket: connectSocket("http://localhost:8080"),
+    socket: connectSocket("https://scouting-report--api.herokuapp.com"),
     stockDate: "",
     stockOpenPrice: null,
     stockLowPrice: null,

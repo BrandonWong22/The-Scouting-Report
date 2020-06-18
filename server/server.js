@@ -1,3 +1,4 @@
+const PORT = process.env.PORT || 8080;
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -54,4 +55,4 @@ io.on("connection", function (socket) {
   });
 });
 
-server.listen(8080, () => console.log("Server started at 8080"));
+server.listen(PORT, () => console.log("Server started"));
