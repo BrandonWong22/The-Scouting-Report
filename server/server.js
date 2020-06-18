@@ -51,7 +51,7 @@ io.on("connection", function (socket) {
         console.log(data);
         socket.emit("stock_price", data);
       });
-    }, 10000);
+    }, 3000);
   });
 });
 

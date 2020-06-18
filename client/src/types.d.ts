@@ -37,13 +37,13 @@ interface ResultsProps {
 }
 
 interface ResultsState {
-  companySymbol: String;
-  companyName: String;
-  companyExchange: String;
-  companyIndustry: String;
-  companyWebsite: String;
-  companyCEO: String;
-  currentStockPrice: String;
+  companySymbol: string;
+  companyName: string;
+  companyExchange: string;
+  companyIndustry: string;
+  companyWebsite: string;
+  companyCEO: string;
+  currentStockPrice: string;
   socket: any;
   stockDate: string;
   stockOpenPrice: number | null;
