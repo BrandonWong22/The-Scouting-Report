@@ -37,7 +37,7 @@ class CompanyResultsSection extends Component<
       darkMode,
     } = this.props;
 
-    if (currentStockPrice === "") {
+    if (currentStockPrice === "" || stockData30.length === 0) {
       //&& stockData30.length === 0 check why this doesnt work
       return (
         <div className="company-results company-results--loading">
