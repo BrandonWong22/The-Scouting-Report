@@ -181,25 +181,23 @@ class FinancialStatement extends Component<
         </div>
 
         {!this.state.annual && (
-          <>
-            <FinancialStatementGraphs
-              financialsDates={this.state.financialsQuarterlyDates}
-              financialsRevenue={this.state.financialsQuarterlyRevenue}
-              financialsCostOfRevenue={
-                this.state.financialsQuarterlyCostOfRevenue
-              }
-              financialsGrossProfit={this.state.financialsQuarterlyGrossProfit}
-              financialsNetIncome={this.state.financialsQuarterlyNetIncome}
-              financialsCostAndExpenses={
-                this.state.financialsQuarterlyCostAndExpenses
-              }
-              financialsOperatingExpenses={
-                this.state.financialsQuarterlyOperatingExpenses
-              }
-              darkMode={darkMode}
-              title={"Financial Statement for the Past 5 Quarters"}
-            />
-          </>
+          <FinancialStatementGraphs
+            financialsDates={this.state.financialsQuarterlyDates}
+            financialsRevenue={this.state.financialsQuarterlyRevenue}
+            financialsCostOfRevenue={
+              this.state.financialsQuarterlyCostOfRevenue
+            }
+            financialsGrossProfit={this.state.financialsQuarterlyGrossProfit}
+            financialsNetIncome={this.state.financialsQuarterlyNetIncome}
+            financialsCostAndExpenses={
+              this.state.financialsQuarterlyCostAndExpenses
+            }
+            financialsOperatingExpenses={
+              this.state.financialsQuarterlyOperatingExpenses
+            }
+            darkMode={darkMode}
+            title={"Financial Statement for the Past 5 Quarters"}
+          />
         )}
         {this.state.annual && (
           <FinancialStatementGraphs

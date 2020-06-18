@@ -24,9 +24,10 @@
 
   //card for stock tracker
   &__section-results {
-    padding: 0.7rem;
+    font-size: 0.7rem;
+    padding: 0.5rem;
     border-radius: 5px;
-    margin-bottom: 15px;
+    // margin-bottom: 15px;
     margin-top: 15px;
     background-color: $light-mode-background-color-card;
   }
@@ -48,11 +49,13 @@
 
   //card for stock data
   &__col {
-    padding: 0.7rem;
+    padding: 0.5rem;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px;
+    // margin-bottom: 15px;
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
 
     @include tablet {
       width: 100%;
@@ -68,7 +71,6 @@
   &__section-ctn {
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
     @include tablet {
       margin-bottom: 5px;
     }
@@ -102,18 +104,19 @@
   }
 
   &__graph-ctn {
-    height: 600px;
+    height: 50rem;
     width: 100%;
     position: relative;
     align-self: center;
 
     @include tablet {
-      height: 400px;
+      // height: 400px;
+      height: 18rem;
     }
 
     @include desktop {
       // height: 425px;
-      height: 25rem;
+      height: 22rem;
       width: 100%;
     }
   }
@@ -125,11 +128,14 @@
 
   &__button-ctn {
     display: flex;
+    @include desktop {
+      margin-top: 0.5rem;
+    }
   }
 
   &__button {
     cursor: pointer;
-    padding: 10px 15px;
+    padding: 0.5rem;
     outline: none;
 
     &--light {

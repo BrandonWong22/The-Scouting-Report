@@ -8,10 +8,15 @@
     // width: 280px;
     margin-top: 20px;
     position: relative;
-    height: 500px;
+    height: 50rem;
+
+    @include tablet {
+      height: 23rem;
+    }
+
     @include desktop {
       // height: 650px;
-      height: 35rem;
+      height: 28rem;
     }
   }
 
@@ -23,7 +28,7 @@
   &__button {
     cursor: pointer;
     background-color: $light-mode-background-color-card;
-    padding: 10px 15px;
+    padding: 0.5rem;
     border: 1px solid $light-mode-text-color;
     // border: none;
     // border-radius: 5px;
