@@ -21,7 +21,8 @@ function getUpToDateStockPrice(symbol) {
   let url =
     "https://financialmodelingprep.com/api/v3/quote-short/" +
     symbol +
-    "?apikey=d084cd25905084810ee3429ed54c83d9";
+    "?apikey=" +
+    process.env.API_KEY;
   return axios.get(url).then((response) => {
     return response.data[0].price;
   });
