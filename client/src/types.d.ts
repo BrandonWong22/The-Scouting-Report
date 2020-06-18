@@ -4,6 +4,7 @@ interface LoginPageProps {
 
 interface LoginPageState {
   isSignedIn: Boolean;
+  initialized: Boolean;
 }
 
 interface SearchProps {

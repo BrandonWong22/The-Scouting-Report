@@ -4,6 +4,7 @@ import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { firebaseConfig } from "../../firebase/fire";
 import Logo from "../../assets/images/logo/logo.png";
+// import ClipLoader from "react-spinners/ClipLoader";
 
 firebase.initializeApp({
   apiKey: firebaseConfig.apiKey,
@@ -14,6 +15,7 @@ firebase.initializeApp({
 class Login extends Component<LoginPageProps, LoginPageState> {
   state = {
     isSignedIn: false,
+    initialized: false,
   };
 
   // Configure FirebaseUI.
@@ -34,10 +36,9 @@ class Login extends Component<LoginPageProps, LoginPageState> {
   };
 
   componentDidMount() {
-    // this.unregisterAuthObserver =
-    firebase
-      .auth()
-      .onAuthStateChanged((user) => this.setState({ isSignedIn: !!user }));
+    firebase.auth().onAuthStateChanged((user) => {
+      this.setState({ isSignedIn: !!user });
+    });
   }
 
   componentDidUpdate(_: any, prevState: { isSignedIn: Boolean }) {

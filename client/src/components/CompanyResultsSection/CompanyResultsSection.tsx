@@ -55,24 +55,8 @@ class CompanyResultsSection extends Component<
             className="react-tabs"
           >
             <TabList className="react-tabs__tab-list">
-              <Tab
-                className={
-                  darkMode
-                    ? "react-tabs__tab--dark react-tabs__tab"
-                    : "react-tabs__tab--light react-tabs__tab"
-                }
-              >
-                Stocks
-              </Tab>
-              <Tab
-                className={
-                  darkMode
-                    ? "react-tabs__tab--dark react-tabs__tab"
-                    : "react-tabs__tab--light react-tabs__tab"
-                }
-              >
-                Financial Statement
-              </Tab>
+              <Tab className="react-tabs__tab">Stocks</Tab>
+              <Tab className="react-tabs__tab">Financial Statement</Tab>
             </TabList>
             <TabPanel className="react-tab__tab-panel">
               <StockData
