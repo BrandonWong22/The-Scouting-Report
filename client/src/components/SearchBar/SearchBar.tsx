@@ -50,7 +50,7 @@ class SearchBar extends Component<SearchBarProps, ISearchBarState> {
               </div>
 
               <button className="search__button" type="submit">
-                submit
+                Submit
               </button>
             </form>
           </div>

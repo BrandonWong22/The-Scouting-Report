@@ -8,11 +8,62 @@
   color: red;
 
   @include tablet {
-    display: block;
-    width: 10rem;
+    // width: 10rem;
+    width: auto;
   }
 
   @include desktop {
-    width: 18rem;
+    display: block;
+
+    // width: 18rem;
+  }
+
+  &__input-ctn {
+    @include tablet {
+      width: 10rem;
+    }
+
+    @include desktop {
+      width: 15rem;
+    }
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+
+    @include desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+    width: 4rem;
+    height: 40px;
+    text-align: center;
+    outline: none;
+    border: none;
+    margin-bottom: 2px;
+    // box-shadow: 0px 0px px 0px rgba(0, 0, 0, 0.75);
+    // border-top-right-radius: 10px;
+    // border-bottom-right-radius: 10px;
+
+    &--light {
+      background-color: $light-mode-nav-background-color;
+      color: $light-mode-text-color;
+      border-left: 1px solid $light-mode-text-color;
+    }
+
+    &--dark {
+      background-color: $dark-mode-nav-background-color;
+      color: $dark-mode-text-color;
+      border-left: 1px solid $dark-mode-text-color;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }

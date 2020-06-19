@@ -55,14 +55,21 @@ class ResultsPageSearchBar extends Component<
     console.log("Focused");
   };
 
+  //conditional syling on the search bar
   darkModeStyle = {
     backgroundColor: "#525252",
     color: "#999",
+    borderRadius: "none",
+    border: "none",
+    height: "40px",
+    borderTopLeftRadius: "10px",
   };
 
   lightModeSytle = {
-    backgroundColor: "#fff",
+    height: "40px",
     color: "#333",
+    borderRadius: "none",
+    boxShadow: "none",
   };
 
   render() {
@@ -78,11 +85,23 @@ class ResultsPageSearchBar extends Component<
                 onFocus={this.handleOnFocus}
                 maxResults={5}
                 autoFocus
+                showIcon={false}
+                placeholder={"Search"}
                 styling={
                   this.props.darkMode ? this.darkModeStyle : this.lightModeSytle
                 }
               />
             </div>
+            <button
+              type="submit"
+              className={
+                this.props.darkMode
+                  ? "results-search__button results-search__button--dark"
+                  : "results-search__button results-search__button--light"
+              }
+            >
+              Search
+            </button>
           </form>
         </div>
       </div>
