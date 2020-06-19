@@ -5,6 +5,7 @@
 .results-search {
   margin-right: 0.5rem;
   display: none;
+  color: red;
 
   @include tablet {
     display: block;
@@ -12,6 +13,6 @@
   }
 
   @include desktop {
-    width: 15rem;
+    width: 18rem;
   }
 }

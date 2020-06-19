@@ -5,6 +5,7 @@ import "./ResultsPageSearchBar.scss";
 
 interface ResultsPageSearchBarProps {
   // handleNewSearch(search: string, event: React.FormEvent<HTMLInputElement>);
+  darkMode: boolean;
 }
 
 interface ResultsPageSearchBarState {
@@ -54,9 +55,17 @@ class ResultsPageSearchBar extends Component<
     console.log("Focused");
   };
 
-  render() {
-    console.log(this.state.searchValue);
+  darkModeStyle = {
+    backgroundColor: "#525252",
+    color: "#999",
+  };
 
+  lightModeSytle = {
+    backgroundColor: "#fff",
+    color: "#333",
+  };
+
+  render() {
     return (
       <div>
         <div className="results-search">
@@ -69,6 +78,9 @@ class ResultsPageSearchBar extends Component<
                 onFocus={this.handleOnFocus}
                 maxResults={5}
                 autoFocus
+                styling={
+                  this.props.darkMode ? this.darkModeStyle : this.lightModeSytle
+                }
               />
             </div>
           </form>

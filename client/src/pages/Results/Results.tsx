@@ -266,7 +266,7 @@ class Results extends Component<ResultsProps, ResultsState> {
               </div>
 
               <div className="results-page__switch-ctn">
-                <ResultsPageSearchBar />
+                <ResultsPageSearchBar darkMode={this.state.darkMode} />
                 <p
                   className="results-page__light-icon"
                   style={{
@@ -322,7 +322,6 @@ class Results extends Component<ResultsProps, ResultsState> {
         </div>
       </div>
     );
-    // }
   }
 }
 
