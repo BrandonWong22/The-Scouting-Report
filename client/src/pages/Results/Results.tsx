@@ -6,6 +6,8 @@ import CompanyResultsSection from "../../components/CompanyResultsSection/Compan
 import firebase from "firebase";
 import { toast } from "react-toastify";
 import Switch from "react-switch";
+import ResultsPageSearchBar from "../../components/ResultsPageSearchBar/ResultsPageSearchBar";
+// import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
 import connectSocket from "socket.io-client";
 
@@ -259,8 +261,12 @@ class Results extends Component<ResultsProps, ResultsState> {
         <div className="results-page__results">
           <div className="results-page__results-ctn">
             <div className="results-page__top-ctn">
-              <h1 className="results-page__results-header">Results</h1>
+              <div>
+                <h1 className="results-page__results-header">Results</h1>
+              </div>
+
               <div className="results-page__switch-ctn">
+                <ResultsPageSearchBar />
                 <p
                   className="results-page__light-icon"
                   style={{

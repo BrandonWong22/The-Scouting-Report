@@ -114,8 +114,6 @@ class Search extends Component<SearchProps, SearchState> {
   };
 
   render() {
-    console.log(this.props);
-
     return (
       <div className="search">
         <div className="search__component-container">

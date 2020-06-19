@@ -37,7 +37,7 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
             : "company-info company-info--light"
         }
       >
-        <Collapsible trigger={companyName}>
+        <Collapsible trigger={companyName} classParentString="collapse">
           <div className="company-info__info-ctn">
             <div className="company-info__icon-ctn">
               <FontAwesomeIcon
@@ -119,7 +119,12 @@ class CompanyInfoSection extends Component<CompanyInfoProps, {}> {
                 : "company-info__company-name-ctn company-info__company-name-ctn--light"
             }
           >
-            <h1 className="compamy-info__company-name">{companyName}</h1>
+            <h1
+              className="compamy-info__company-name"
+              style={{ fontSize: "3rem" }}
+            >
+              {companyName}
+            </h1>
           </div>
 
           <div className="company-info__info-ctn">

@@ -1,0 +1,17 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/mixins";
+
+.results-search {
+  margin-right: 0.5rem;
+  display: none;
+
+  @include tablet {
+    display: block;
+    width: 10rem;
+  }
+
+  @include desktop {
+    width: 15rem;
+  }
+}
