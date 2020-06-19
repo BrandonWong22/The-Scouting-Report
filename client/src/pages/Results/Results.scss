@@ -5,6 +5,7 @@
 .results-page {
   display: flex;
   flex-direction: column;
+  height: 85rem;
 
   &--light {
     background-color: $light-mode-background-color;

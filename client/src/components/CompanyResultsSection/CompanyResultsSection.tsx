@@ -11,7 +11,7 @@ class CompanyResultsSection extends Component<
   CompanyResultsState
 > {
   state = {
-    tabIndex: 1,
+    tabIndex: 0,
     stocksClassName: "react-tabs__tab",
     statementClassName: "react-tabs__tab",
   };
