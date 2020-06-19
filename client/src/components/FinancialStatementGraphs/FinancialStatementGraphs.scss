@@ -11,12 +11,12 @@
     height: 50rem;
 
     @include tablet {
-      height: 23rem;
+      // height: 23rem;
+      height: 80%;
     }
 
     @include desktop {
       // height: 650px;
-      height: 28rem;
     }
   }
 

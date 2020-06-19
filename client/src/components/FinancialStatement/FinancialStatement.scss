@@ -3,6 +3,14 @@
 @import "../../styles/partials/mixins";
 
 .financials {
+  &__data-ctn {
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+  }
+
   &__button-ctn {
     display: flex;
     margin-top: 20px;
