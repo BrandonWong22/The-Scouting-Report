@@ -2,16 +2,22 @@ import React, { Component } from "react";
 import firebase from "firebase";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import "./ResultsPageSearchBar.scss";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 interface ResultsPageSearchBarProps {
-  // handleNewSearch(search: string, event: React.FormEvent<HTMLInputElement>);
+  // handleCompanySearch(search: string, event: React.FormEvent<HTMLInputElement>);
   darkMode: boolean;
+  history: any;
 }
 
 interface ResultsPageSearchBarState {
   allCompaniesFireBase: Array<Object>;
   searchValue: string;
 }
+
+const API_URL: string =
+  "https://scouting-report--api.herokuapp.com/" || "http://localhost:8080/";
 
 class ResultsPageSearchBar extends Component<
   ResultsPageSearchBarProps,
@@ -55,6 +61,53 @@ class ResultsPageSearchBar extends Component<
     console.log("Focused");
   };
 
+  handleFormSubmit = (event: any) => {
+    event.preventDefault();
+    let newCompanySymbol: string = this.state.searchValue;
+
+    if (newCompanySymbol === "") {
+      toast.error("Text Field is Empty", {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        progress: undefined,
+      });
+    } else {
+      axios
+        .get(API_URL + "search/" + newCompanySymbol)
+        .then((response: any) => {
+          let resData: Object = response.data;
+
+          //Check if response data is {}
+          //This indicates that the searched company is not valid
+          if (Object.keys(resData).length === 0) {
+            //display toast notifcation for invalid company
+            toast.error("Company Not Found", {
+              position: "bottom-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              progress: undefined,
+            });
+          } else {
+            // console.log("ok");
+            // alert("ok");
+            this.props.history.push({
+              state: {
+                // redirect: this.state.redirect,
+                companySymbol: newCompanySymbol,
+                // signedIn: this.props.location.state,
+              },
+              pathname: "/results/" + newCompanySymbol,
+            });
+          }
+        });
+    }
+  };
+
   //conditional syling on the search bar
   darkModeStyle = {
     backgroundColor: "#525252",
@@ -76,7 +129,10 @@ class ResultsPageSearchBar extends Component<
     return (
       <div>
         <div className="results-search">
-          <form className="results-search__form">
+          <form
+            className="results-search__form"
+            onSubmit={this.handleFormSubmit}
+          >
             <div className="results-search__input-ctn">
               <ReactSearchAutocomplete
                 items={this.state.allCompaniesFireBase}

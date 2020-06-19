@@ -86,7 +86,6 @@ class FinancialStatement extends Component<
         `https://financialmodelingprep.com/api/v3/income-statement/${symbol}?apikey=d084cd25905084810ee3429ed54c83d9`
       )
       .then((response) => {
-        console.log(response.data);
         let filteredFinancialData: Array<object> = response.data.splice(0, 5);
 
         let annualDatesArr: Array<string> = [];

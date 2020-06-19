@@ -44,7 +44,6 @@
     height: 40px;
     text-align: center;
     outline: none;
-    border: none;
     margin-bottom: 2px;
     // box-shadow: 0px 0px px 0px rgba(0, 0, 0, 0.75);
     // border-top-right-radius: 10px;
@@ -53,13 +52,13 @@
     &--light {
       background-color: $light-mode-nav-background-color;
       color: $light-mode-text-color;
-      border-left: 1px solid $light-mode-text-color;
+      border: 1px solid $light-mode-text-color;
     }
 
     &--dark {
       background-color: $dark-mode-nav-background-color;
       color: $dark-mode-text-color;
-      border-left: 1px solid $dark-mode-text-color;
+      border: 1px solid $dark-mode-text-color;
     }
 
     &:hover {
