@@ -19,6 +19,7 @@
   }
   @include tablet {
     flex-direction: row;
+    height: 100%;
   }
 
   &__results {
@@ -33,10 +34,9 @@
     padding-right: $margin-mobile;
     display: flex;
     flex-direction: column;
-
-    // @include tablet {
-    //   padding-right: $margin-tablet;
-    // }
+    @include tablet {
+      height: 100%;
+    }
   }
 
   &__top-ctn {
