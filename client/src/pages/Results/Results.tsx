@@ -331,8 +331,6 @@ class Results extends Component<ResultsProps, ResultsState> {
   };
 
   render() {
-    console.log("daily", this.state.dailyStockPriceDate);
-
     return (
       <div
         className={
