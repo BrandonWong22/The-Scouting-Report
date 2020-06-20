@@ -103,18 +103,21 @@ class StockData extends Component<StockDataProps, StockDataStates> {
             }
             className="stock-data__section-results"
           >
-            <h2
-              className={
-                darkMode
-                  ? "stock-data__data-label stock-data__data-label--dark"
-                  : "stock-data__data-label stock-data__data-label--light"
-              }
-            >
-              {companyName} {currentStockPrice}
-              <span style={{ fontSize: "0.8rem" }}>
-                : Last Updated at {lastUpdatedDate}
-              </span>
-            </h2>
+            <div>
+              <h2 style={{ fontSize: "0.8rem", marginBottom: "5px" }}>
+                Last Updated at {lastUpdatedDate}
+              </h2>
+              <h2
+                style={{ fontSize: "2rem" }}
+                className={
+                  darkMode
+                    ? "stock-data__data-label stock-data__data-label--dark"
+                    : "stock-data__data-label stock-data__data-label--light"
+                }
+              >
+                {companyName} {currentStockPrice}
+              </h2>
+            </div>
           </div>
 
           <div className="stock-data__data-ctn">
