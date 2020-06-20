@@ -18,6 +18,23 @@ app.get("/testtest", (req, res) => {
   res.send("working");
 });
 
+function getCurrentDate(date) {
+  let dateStr =
+    ("00" + (date.getMonth() + 1)).slice(-2) +
+    "/" +
+    ("00" + date.getDate()).slice(-2) +
+    "/" +
+    date.getFullYear() +
+    " " +
+    ("00" + date.getHours()).slice(-2) +
+    ":" +
+    ("00" + date.getMinutes()).slice(-2) +
+    ":" +
+    ("00" + date.getSeconds()).slice(-2);
+
+  return dateStr;
+}
+
 function getUpToDateStockPrice(symbol) {
   let url =
     "https://financialmodelingprep.com/api/v3/quote-short/" +
@@ -25,7 +42,9 @@ function getUpToDateStockPrice(symbol) {
     "?apikey=" +
     process.env.API_KEY;
   return axios.get(url).then((response) => {
-    return response.data[0].price;
+    let updatedDate = getCurrentDate(new Date());
+
+    return [response.data[0].price, updatedDate];
   });
 }
 

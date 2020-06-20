@@ -22,8 +22,8 @@ class Results extends Component<ResultsProps, ResultsState> {
     companyWebsite: "",
     companyCEO: "",
     currentStockPrice: "",
-    socket: connectSocket("https://scouting-report--api.herokuapp.com"),
-    // socket: connectSocket("http://localhost:8080/"),
+    // socket: connectSocket("https://scouting-report--api.herokuapp.com"),
+    socket: connectSocket("http://localhost:8080/"),
     stockDate: "",
     stockOpenPrice: null,
     stockLowPrice: null,
@@ -37,6 +37,7 @@ class Results extends Component<ResultsProps, ResultsState> {
     stockDailyTimes: [],
     darkMode: JSON.parse(localStorage.getItem("dark") || "{}"),
     dailyStockPriceDate: "",
+    lastUpdatedDate: "",
   };
 
   componentDidMount() {
@@ -100,8 +101,8 @@ class Results extends Component<ResultsProps, ResultsState> {
 
       setTimeout(() => {
         this.setState({
-          // socket: connectSocket("http://localhost:8080/"),
-          socket: connectSocket("https://scouting-report--api.herokuapp.com"),
+          socket: connectSocket("http://localhost:8080/"),
+          // socket: connectSocket("https://scouting-report--api.herokuapp.com"),
 
           companySymbol: "",
           companyName: "",
@@ -299,10 +300,12 @@ class Results extends Component<ResultsProps, ResultsState> {
       console.log("connected");
 
       this.state.socket.emit("client-message", this.props.match.params.id);
-      this.state.socket.on("stock_price", (data: string) => {
-        // console.log("socket data", data);
+      this.state.socket.on("stock_price", (data: any) => {
+        console.log("socket data", data);
+
         this.setState({
-          currentStockPrice: data,
+          currentStockPrice: data[0],
+          lastUpdatedDate: data[1],
         });
       });
     });
@@ -409,6 +412,7 @@ class Results extends Component<ResultsProps, ResultsState> {
               stockDailyTimes={this.state.stockDailyTimes}
               darkMode={this.state.darkMode}
               dailyStockPriceDate={this.state.dailyStockPriceDate}
+              lastUpdatedDate={this.state.lastUpdatedDate}
             />
           </div>
         </div>

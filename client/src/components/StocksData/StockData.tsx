@@ -89,6 +89,7 @@ class StockData extends Component<StockDataProps, StockDataStates> {
       stockVolume,
       stockChange,
       darkMode,
+      lastUpdatedDate,
     } = this.props;
 
     return (
@@ -110,6 +111,9 @@ class StockData extends Component<StockDataProps, StockDataStates> {
               }
             >
               {companyName} {currentStockPrice}
+              <span style={{ fontSize: "0.8rem" }}>
+                : Last Updated at {lastUpdatedDate}
+              </span>
             </h2>
           </div>
 

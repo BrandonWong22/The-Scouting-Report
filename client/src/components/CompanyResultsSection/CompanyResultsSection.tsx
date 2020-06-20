@@ -36,6 +36,7 @@ class CompanyResultsSection extends Component<
       stockDailyTimes,
       darkMode,
       dailyStockPriceDate,
+      lastUpdatedDate,
     } = this.props;
 
     if (currentStockPrice === "" || stockData30.length === 0) {
@@ -125,6 +126,7 @@ class CompanyResultsSection extends Component<
                 stockDailyTimes={stockDailyTimes}
                 darkMode={darkMode}
                 dailyStockPriceDate={dailyStockPriceDate}
+                lastUpdatedDate={lastUpdatedDate}
               />
             </TabPanel>
             <TabPanel className="react-tab__tab-panel">
