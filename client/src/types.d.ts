@@ -13,7 +13,7 @@ interface SearchProps {
 }
 
 interface SearchState {
-  validateSearch: Boolean;
+  loading: Boolean;
   signedIn: Boolean;
   redirect: Boolean;
   companySymbol: String;

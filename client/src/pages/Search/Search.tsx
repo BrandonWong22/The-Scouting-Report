@@ -7,15 +7,16 @@ import SearchIntro from "../../components/SearchIntro/SearchIntro";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import axios from "axios";
 import firebase from "firebase";
+import ClipLoader from "react-spinners/ClipLoader";
 
-const API_URL: string =
-  "https://scouting-report--api.herokuapp.com/" || "http://localhost:8080/";
+const API_URL: string = "https://scouting-report--api.herokuapp.com/";
+// "http://localhost:8080/";
 
 toast.configure();
 
 class Search extends Component<SearchProps, SearchState> {
   state: SearchState = {
-    validateSearch: false,
+    loading: false,
     signedIn: false,
     redirect: false,
     companySymbol: "",
@@ -74,6 +75,10 @@ class Search extends Component<SearchProps, SearchState> {
 
   handleSearchSubmit = (search: string, event: any) => {
     event.preventDefault();
+    //turn on loading spinner when submit button is pressed
+    this.setState({
+      loading: true,
+    });
     this.validateSearchResult(search);
   };
 
@@ -87,29 +92,40 @@ class Search extends Component<SearchProps, SearchState> {
         pauseOnHover: true,
         progress: undefined,
       });
-    } else {
-      axios.get(API_URL + "search/" + searchResult).then((response: any) => {
-        let resData: Object = response.data;
-
-        //Check if response data is {}
-        //This indicates that the searched company is not valid
-        if (Object.keys(resData).length === 0) {
-          //display toast notifcation for invalid company
-          toast.error("Company Not Found", {
-            position: "bottom-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            progress: undefined,
-          });
-        } else {
-          this.setState({
-            redirect: true,
-            companySymbol: searchResult,
-          });
-        }
+      this.setState({
+        loading: false,
       });
+    } else {
+      axios
+        .get(API_URL + "search/" + searchResult)
+        .then((response: any) => {
+          let resData: Object = response.data;
+
+          //Check if response data is {}
+          //This indicates that the searched company is not valid
+          if (Object.keys(resData).length === 0) {
+            //display toast notifcation for invalid company
+            toast.error("Company Not Found", {
+              position: "bottom-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              progress: undefined,
+            });
+          } else {
+            this.setState({
+              redirect: true,
+              companySymbol: searchResult,
+            });
+          }
+        })
+        //turn off loading spinner after api call is done
+        .then((response: any) => {
+          this.setState({
+            loading: false,
+          });
+        });
     }
   };
 
@@ -123,6 +139,13 @@ class Search extends Component<SearchProps, SearchState> {
             allCompaniesFireBase={this.state.allCompaniesFireBase}
           />
         </div>
+        {this.state.loading ? (
+          <div className="sweet-loading">
+            <ClipLoader size={100} color={"white"} loading={true} />
+          </div>
+        ) : (
+          <div></div>
+        )}
       </div>
     );
   }
