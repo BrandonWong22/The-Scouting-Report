@@ -57,6 +57,7 @@ interface ResultsState {
   stockDailyPrices: Array<number>;
   stockDailyTimes: Array<string>;
   darkMode: boolean;
+  dailyStockPriceDate: string;
 }
 
 interface CompanyInfoProps {
@@ -86,6 +87,7 @@ interface CompanyResultsProps {
   stockDailyPrices: Array<number>;
   stockDailyTimes: Array<string>;
   darkMode: boolean;
+  dailyStockPriceDate: string;
 }
 
 interface CompanyResultsState {
@@ -118,6 +120,7 @@ interface StockDataProps {
   stockDailyPrices: Array<number>;
   stockDailyTimes: Array<string>;
   darkMode: boolean;
+  dailyStockPriceDate: string;
 }
 
 interface StockDataStates {

@@ -36,6 +36,7 @@ class Results extends Component<ResultsProps, ResultsState> {
     stockDailyPrices: [],
     stockDailyTimes: [],
     darkMode: JSON.parse(localStorage.getItem("dark") || "{}"),
+    dailyStockPriceDate: "",
   };
 
   componentDidMount() {
@@ -177,9 +178,13 @@ class Results extends Component<ResultsProps, ResultsState> {
   //get daily stock prices/trends
   fetchDailyStockPrice = (symbol: string) => {
     let today: string = this.getDate(Date.now());
+    let yesterday: string = this.getDate(Date.now() - 1 * 24 * 60 * 60 * 1000);
     let filteredDataArray: any = [];
     let dailyPrices: Array<number> = [];
     let dailyTimes: Array<string> = [];
+
+    console.log(today);
+    console.log(yesterday);
 
     axios
       .get(
@@ -189,6 +194,16 @@ class Results extends Component<ResultsProps, ResultsState> {
         response.data.forEach((item: any) => {
           if (item.date.includes(today)) {
             filteredDataArray.push(item);
+            this.setState({
+              dailyStockPriceDate: today,
+            });
+          } else {
+            if (item.date.includes(yesterday)) {
+              filteredDataArray.push(item);
+              this.setState({
+                dailyStockPriceDate: yesterday,
+              });
+            }
           }
         });
 
@@ -314,7 +329,7 @@ class Results extends Component<ResultsProps, ResultsState> {
   };
 
   render() {
-    // console.log(this.state.socket);
+    console.log("daily", this.state.dailyStockPriceDate);
 
     return (
       <div
@@ -396,6 +411,7 @@ class Results extends Component<ResultsProps, ResultsState> {
               stockDailyPrices={this.state.stockDailyPrices}
               stockDailyTimes={this.state.stockDailyTimes}
               darkMode={this.state.darkMode}
+              dailyStockPriceDate={this.state.dailyStockPriceDate}
             />
           </div>
         </div>

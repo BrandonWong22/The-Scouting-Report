@@ -67,7 +67,9 @@ class StockData extends Component<StockDataProps, StockDataStates> {
           stockData={this.props.stockDailyPrices}
           stockDataDateLabel={this.props.stockDailyTimes}
           color={this.props.darkMode ? "#999" : "#C0C0C0"}
-          title="Daily Stock Price Tracker"
+          title={
+            "Daily Stock Price Tracker as of " + this.props.dailyStockPriceDate
+          }
           timeScaleTitle="Time in Military Time"
         />
       );
@@ -149,7 +151,7 @@ class StockData extends Component<StockDataProps, StockDataStates> {
                       : "stock-data__data-label stock-data__data-label--light"
                   }
                 >
-                  Date
+                  Last Updated
                 </h3>
                 <h3
                   className={
