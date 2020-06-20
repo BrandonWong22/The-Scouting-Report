@@ -96,11 +96,6 @@ class ResultsPageSearchBar extends Component<
             // console.log("ok");
             // alert("ok");
             this.props.history.push({
-              state: {
-                // redirect: this.state.redirect,
-                companySymbol: newCompanySymbol,
-                // signedIn: this.props.location.state,
-              },
               pathname: "/results/" + newCompanySymbol,
             });
           }

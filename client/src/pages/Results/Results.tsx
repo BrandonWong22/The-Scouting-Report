@@ -22,8 +22,8 @@ class Results extends Component<ResultsProps, ResultsState> {
     companyWebsite: "",
     companyCEO: "",
     currentStockPrice: "",
-    socket: connectSocket("https://scouting-report--api.herokuapp.com"),
-    // socket: connectSocket("http://localhost:8080/"),
+    // socket: connectSocket("https://scouting-report--api.herokuapp.com"),
+    socket: connectSocket("http://localhost:8080/"),
     stockDate: "",
     stockOpenPrice: null,
     stockLowPrice: null,
@@ -75,6 +75,17 @@ class Results extends Component<ResultsProps, ResultsState> {
     });
   }
 
+  reconnectSocket = () => {
+    this.state.socket.disconnect();
+    console.log(this.state.socket);
+
+    setTimeout(() => {
+      this.setState({});
+      this.configureSocketConnection();
+      console.log("after", this.state.socket);
+    }, 2000);
+  };
+
   componentDidUpdate(
     prevProps: { match: any },
     prevState: { darkMode: boolean; companySymbol: string }
@@ -84,59 +95,63 @@ class Results extends Component<ResultsProps, ResultsState> {
     }
 
     if (this.props.match !== prevProps.match) {
-      this.configureSocketConnection();
-      this.setState({
-        companySymbol: "",
-        companyName: "",
-        companyExchange: "",
-        companyIndustry: "",
-        companyWebsite: "",
-        companyCEO: "",
-        currentStockPrice: "",
-        stockOpenPrice: null,
-        stockLowPrice: null,
-        stockHighPrice: null,
-        stockClosingPrice: null,
-        stockVolume: null,
-        stockChange: null,
-        stockData30: [],
-        stockData30DateLabel: [],
-        stockDailyPrices: [],
-        stockDailyTimes: [],
-      });
+      this.state.socket.disconnect();
 
-      firebase.auth().onAuthStateChanged((user: any) => {
-        if (user) {
-          // User is signed in.
-          //make get request using data from the search page to get
-          //company profile from API
+      setTimeout(() => {
+        this.setState({
+          socket: connectSocket("http://localhost:8080/"),
+          companySymbol: "",
+          companyName: "",
+          companyExchange: "",
+          companyIndustry: "",
+          companyWebsite: "",
+          companyCEO: "",
+          currentStockPrice: "",
+          stockOpenPrice: null,
+          stockLowPrice: null,
+          stockHighPrice: null,
+          stockClosingPrice: null,
+          stockVolume: null,
+          stockChange: null,
+          stockData30: [],
+          stockData30DateLabel: [],
+          stockDailyPrices: [],
+          stockDailyTimes: [],
+        });
+        this.configureSocketConnection();
+        firebase.auth().onAuthStateChanged((user: any) => {
+          if (user) {
+            // User is signed in.
+            //make get request using data from the search page to get
+            //company profile from API
 
-          let symbol: string = this.props.match.params.id;
+            let symbol: string = this.props.match.params.id;
 
-          let url: string =
-            "https://financialmodelingprep.com/api/v3/company/profile/" +
-            symbol +
-            "?apikey=d084cd25905084810ee3429ed54c83d9";
+            let url: string =
+              "https://financialmodelingprep.com/api/v3/company/profile/" +
+              symbol +
+              "?apikey=d084cd25905084810ee3429ed54c83d9";
 
-          this.fetchDailyStockPrice(symbol);
-          this.fetchHistoricalStockData30Day(symbol);
-          this.fetchCompanyData(symbol);
-          this.fetchCompanyInformation(url);
-        } else {
-          // No user is signed in.
-          this.props.history.push({
-            pathname: "/",
-          });
-          toast.error("Not Signed In", {
-            position: "bottom-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            progress: undefined,
-          });
-        }
-      });
+            this.fetchDailyStockPrice(symbol);
+            this.fetchHistoricalStockData30Day(symbol);
+            this.fetchCompanyData(symbol);
+            this.fetchCompanyInformation(url);
+          } else {
+            // No user is signed in.
+            this.props.history.push({
+              pathname: "/",
+            });
+            toast.error("Not Signed In", {
+              position: "bottom-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              progress: undefined,
+            });
+          }
+        });
+      }, 300);
     }
   }
 
@@ -299,6 +314,8 @@ class Results extends Component<ResultsProps, ResultsState> {
   };
 
   render() {
+    // console.log(this.state.socket);
+
     return (
       <div
         className={
