@@ -93,8 +93,6 @@ class ResultsPageSearchBar extends Component<
               progress: undefined,
             });
           } else {
-            // console.log("ok");
-            // alert("ok");
             this.props.history.push({
               pathname: "/results/" + newCompanySymbol,
             });
@@ -107,8 +105,7 @@ class ResultsPageSearchBar extends Component<
   darkModeStyle = {
     backgroundColor: "#525252",
     color: "#999",
-    borderRadius: "none",
-    border: "none",
+    borderRadius: "10px",
     height: "40px",
     borderTopLeftRadius: "10px",
   };
@@ -116,13 +113,13 @@ class ResultsPageSearchBar extends Component<
   lightModeSytle = {
     height: "40px",
     color: "#333",
-    borderRadius: "none",
+    borderRadius: "10px",
     boxShadow: "none",
   };
 
   render() {
     return (
-      <div>
+      <>
         <div className="results-search">
           <form
             className="results-search__form"
@@ -155,7 +152,7 @@ class ResultsPageSearchBar extends Component<
             </button>
           </form>
         </div>
-      </div>
+      </>
     );
   }
 }

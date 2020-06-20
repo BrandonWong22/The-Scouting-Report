@@ -3,7 +3,7 @@
 @import "../../styles/partials/mixins";
 
 .results-search {
-  margin-right: 0.5rem;
+  margin-right: 2.5rem;
   display: none;
   color: red;
 
@@ -24,7 +24,7 @@
     }
 
     @include desktop {
-      width: 15rem;
+      width: 20rem;
     }
   }
 
@@ -45,9 +45,11 @@
     text-align: center;
     outline: none;
     margin-bottom: 2px;
+    border-radius: 10px;
     // box-shadow: 0px 0px px 0px rgba(0, 0, 0, 0.75);
     // border-top-right-radius: 10px;
     // border-bottom-right-radius: 10px;
+    margin-left: 10px;
 
     &--light {
       background-color: $light-mode-nav-background-color;
