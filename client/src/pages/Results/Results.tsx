@@ -185,9 +185,6 @@ class Results extends Component<ResultsProps, ResultsState> {
     let dailyPrices: Array<number> = [];
     let dailyTimes: Array<string> = [];
 
-    console.log(today);
-    console.log(yesterday);
-
     axios
       .get(
         `https://financialmodelingprep.com/api/v3/historical-chart/15min/${symbol}?apikey=d084cd25905084810ee3429ed54c83d9`
