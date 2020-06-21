@@ -47,7 +47,8 @@ function getUpToDateStockPrice(symbol) {
 
     return [
       response.data[0].price,
-      getLocalDate.toLocaleString("en-US", { timeZone: "America/Toronto" }),
+      // getLocalDate.toLocaleString("en-US", { timeZone: "America/Toronto" }),
+      new Date(),
     ];
   });
 }

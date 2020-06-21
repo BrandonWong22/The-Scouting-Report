@@ -7,7 +7,8 @@ import firebase from "firebase";
 import { toast } from "react-toastify";
 import Switch from "react-switch";
 import ResultsPageSearchBar from "../../components/ResultsPageSearchBar/ResultsPageSearchBar";
-// import { ReactSearchAutocomplete } from "react-search-autocomplete";
+// import Moment from 'react-moment';
+import moment from "moment";
 
 import connectSocket from "socket.io-client";
 
@@ -300,9 +301,11 @@ class Results extends Component<ResultsProps, ResultsState> {
 
       this.state.socket.emit("client-message", this.props.match.params.id);
       this.state.socket.on("stock_price", (data: any) => {
+        let date: string = moment(data[1]).format("MM/DD/YYYY HH:mm:ss");
+
         this.setState({
           currentStockPrice: data[0],
-          lastUpdatedDate: data[1],
+          lastUpdatedDate: date,
         });
       });
     });
