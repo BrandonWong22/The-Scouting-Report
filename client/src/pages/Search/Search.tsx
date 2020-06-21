@@ -96,36 +96,32 @@ class Search extends Component<SearchProps, SearchState> {
         loading: false,
       });
     } else {
-      axios
-        .get(API_URL + "search/" + searchResult)
-        .then((response: any) => {
-          let resData: Object = response.data;
+      axios.get(API_URL + "search/" + searchResult).then((response: any) => {
+        let resData: Object = response.data;
 
-          //Check if response data is {}
-          //This indicates that the searched company is not valid
-          if (Object.keys(resData).length === 0) {
-            //display toast notifcation for invalid company
-            toast.error("Company Not Found", {
-              position: "bottom-center",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              progress: undefined,
-            });
-          } else {
-            this.setState({
-              redirect: true,
-              companySymbol: searchResult,
-            });
-          }
-        })
-        //turn off loading spinner after api call is done
-        .then((response: any) => {
+        //Check if response data is {}
+        //This indicates that the searched company is not valid
+        if (Object.keys(resData).length === 0) {
+          //display toast notifcation for invalid company
+          toast.error("Company Not Found", {
+            position: "bottom-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            progress: undefined,
+          });
           this.setState({
             loading: false,
           });
-        });
+        } else {
+          this.setState({
+            loading: false,
+            redirect: true,
+            companySymbol: searchResult,
+          });
+        }
+      });
     }
   };
 
