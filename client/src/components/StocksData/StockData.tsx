@@ -304,6 +304,8 @@ class StockData extends Component<StockDataProps, StockDataStates> {
                       : { color: "#DC143C" }
                   }
                 >
+                  {this.props.stockChange !== null &&
+                    this.props.stockChange >= 0 && <span>+</span>}
                   {stockChange}
                 </h3>
               </div>
