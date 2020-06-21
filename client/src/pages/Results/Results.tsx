@@ -181,7 +181,6 @@ class Results extends Component<ResultsProps, ResultsState> {
   //get daily stock prices/trends
   fetchDailyStockPrice = (symbol: string) => {
     let today: string = this.getDate(Date.now());
-    let yesterday: string = this.getDate(Date.now() - 1 * 24 * 60 * 60 * 1000);
     let filteredDataArray: any = [];
     let dailyPrices: Array<number> = [];
     let dailyTimes: Array<string> = [];
@@ -191,6 +190,9 @@ class Results extends Component<ResultsProps, ResultsState> {
         `https://financialmodelingprep.com/api/v3/historical-chart/15min/${symbol}?apikey=d084cd25905084810ee3429ed54c83d9`
       )
       .then((response: any) => {
+        //if the "today" string doesn't exist in the response data
+        //use the last date where the stock market was open
+        let lastStockDate: string = response.data[0].date.slice(0, 10);
         response.data.forEach((item: any) => {
           if (item.date.includes(today)) {
             filteredDataArray.push(item);
@@ -198,10 +200,10 @@ class Results extends Component<ResultsProps, ResultsState> {
               dailyStockPriceDate: today,
             });
           } else {
-            if (item.date.includes(yesterday)) {
+            if (item.date.includes(lastStockDate)) {
               filteredDataArray.push(item);
               this.setState({
-                dailyStockPriceDate: yesterday,
+                dailyStockPriceDate: lastStockDate,
               });
             }
           }
