@@ -43,8 +43,9 @@ function getUpToDateStockPrice(symbol) {
     process.env.API_KEY;
   return axios.get(url).then((response) => {
     let updatedDate = getCurrentDate(new Date());
+    let getLocalDate = new Date(`${updatedDate} UTC`);
 
-    return [response.data[0].price, updatedDate];
+    return [response.data[0].price, getLocalDate.toString()];
   });
 }
 

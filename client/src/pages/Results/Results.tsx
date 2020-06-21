@@ -22,8 +22,8 @@ class Results extends Component<ResultsProps, ResultsState> {
     companyWebsite: "",
     companyCEO: "",
     currentStockPrice: "",
-    socket: connectSocket("https://scouting-report--api.herokuapp.com"),
-    // socket: connectSocket("http://localhost:8080/"),
+    // socket: connectSocket("https://scouting-report--api.herokuapp.com"),
+    socket: connectSocket("http://localhost:8080/"),
     stockDate: "",
     stockOpenPrice: null,
     stockLowPrice: null,
@@ -101,9 +101,8 @@ class Results extends Component<ResultsProps, ResultsState> {
 
       setTimeout(() => {
         this.setState({
-          // socket: connectSocket("http://localhost:8080/"),
-          socket: connectSocket("https://scouting-report--api.herokuapp.com"),
-
+          socket: connectSocket("http://localhost:8080/"),
+          // socket: connectSocket("https://scouting-report--api.herokuapp.com"),
           companySymbol: "",
           companyName: "",
           companyExchange: "",

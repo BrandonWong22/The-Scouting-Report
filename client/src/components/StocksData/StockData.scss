@@ -103,6 +103,14 @@
     &--dark {
       color: $dark-mode-text-color;
     }
+
+    &--green {
+      color: green;
+    }
+
+    &--red {
+      color: red;
+    }
   }
 
   &__graph-ctn {
