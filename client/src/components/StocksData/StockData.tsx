@@ -296,10 +296,12 @@ class StockData extends Component<StockDataProps, StockDataStates> {
                   Change
                 </h3>
                 <h3
-                  className={
-                    darkMode
-                      ? "stock-data__data-text stock-data__data-text--dark"
-                      : "stock-data__data-text stock-data__data-text--light"
+                  className="stock-data__data-text"
+                  style={
+                    this.props.stockChange !== null &&
+                    this.props.stockChange >= 0
+                      ? { color: "green" }
+                      : { color: "#DC143C" }
                   }
                 >
                   {stockChange}

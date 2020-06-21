@@ -301,8 +301,6 @@ class Results extends Component<ResultsProps, ResultsState> {
 
       this.state.socket.emit("client-message", this.props.match.params.id);
       this.state.socket.on("stock_price", (data: any) => {
-        console.log("socket data", data);
-
         this.setState({
           currentStockPrice: data[0],
           lastUpdatedDate: data[1],
