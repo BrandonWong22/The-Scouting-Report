@@ -10,7 +10,6 @@ import ResultsPageSearchBar from "../../components/ResultsPageSearchBar/ResultsP
 import moment from "moment";
 import connectSocket from "socket.io-client";
 
-// const API_KEY: any = "d084cd25905084810ee3429ed54c83d9";
 const API_KEY: any = process.env.REACT_APP_API_KEY;
 
 class Results extends Component<ResultsProps, ResultsState> {
