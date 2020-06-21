@@ -3,6 +3,8 @@ import "./FinancialStatement.scss";
 import axios from "axios";
 import FinancialStatementGraphs from "../FinancialStatementGraphs/FinancialStatementGraphs";
 
+const API_KEY: any = process.env.REACT_APP_API_KEY;
+
 class FinancialStatement extends Component<
   FinancialStatementProps,
   FinancialStatementState
@@ -43,7 +45,7 @@ class FinancialStatement extends Component<
   fetchQuarterlyFinancials = (symbol: string) => {
     axios
       .get(
-        `https://financialmodelingprep.com/api/v3/income-statement/${symbol}?period=quarter&apikey=d084cd25905084810ee3429ed54c83d9`
+        `https://financialmodelingprep.com/api/v3/income-statement/${symbol}?period=quarter&apikey=${API_KEY}`
       )
       .then((response) => {
         //filter response data to only get the last 8 quarters of data
@@ -83,7 +85,7 @@ class FinancialStatement extends Component<
   fetchAnnualFinancials = (symbol: string) => {
     axios
       .get(
-        `https://financialmodelingprep.com/api/v3/income-statement/${symbol}?apikey=d084cd25905084810ee3429ed54c83d9`
+        `https://financialmodelingprep.com/api/v3/income-statement/${symbol}?apikey=${API_KEY}`
       )
       .then((response) => {
         let filteredFinancialData: Array<object> = response.data.splice(0, 5);

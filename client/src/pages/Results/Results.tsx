@@ -7,12 +7,10 @@ import firebase from "firebase";
 import { toast } from "react-toastify";
 import Switch from "react-switch";
 import ResultsPageSearchBar from "../../components/ResultsPageSearchBar/ResultsPageSearchBar";
-// import Moment from 'react-moment';
 import moment from "moment";
-
 import connectSocket from "socket.io-client";
 
-// const API_URL: string = "http://localhost:8080/";
+const API_KEY: any = process.env.REACT_APP_API_KEY;
 
 class Results extends Component<ResultsProps, ResultsState> {
   state = {
@@ -55,7 +53,8 @@ class Results extends Component<ResultsProps, ResultsState> {
         let url: string =
           "https://financialmodelingprep.com/api/v3/company/profile/" +
           symbol +
-          "?apikey=d084cd25905084810ee3429ed54c83d9";
+          "?apikey=" +
+          API_KEY;
 
         this.fetchDailyStockPrice(symbol);
         this.fetchHistoricalStockData30Day(symbol);
@@ -134,7 +133,8 @@ class Results extends Component<ResultsProps, ResultsState> {
             let url: string =
               "https://financialmodelingprep.com/api/v3/company/profile/" +
               symbol +
-              "?apikey=d084cd25905084810ee3429ed54c83d9";
+              "?apikey=" +
+              API_KEY;
 
             this.fetchDailyStockPrice(symbol);
             this.fetchHistoricalStockData30Day(symbol);
@@ -187,7 +187,7 @@ class Results extends Component<ResultsProps, ResultsState> {
 
     axios
       .get(
-        `https://financialmodelingprep.com/api/v3/historical-chart/15min/${symbol}?apikey=d084cd25905084810ee3429ed54c83d9`
+        `https://financialmodelingprep.com/api/v3/historical-chart/15min/${symbol}?apikey=${API_KEY}`
       )
       .then((response: any) => {
         //if the "today" string doesn't exist in the response data
@@ -232,7 +232,7 @@ class Results extends Component<ResultsProps, ResultsState> {
 
     axios
       .get(
-        `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${day30}&to=${yesterday}&apikey=d084cd25905084810ee3429ed54c83d9`
+        `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${day30}&to=${yesterday}&apikey=${API_KEY}`
       )
       .then((response) => {
         let filteredData: Array<number> = [];
@@ -255,29 +255,31 @@ class Results extends Component<ResultsProps, ResultsState> {
     const API_URL_NUMERICAL_DATA: string =
       "https://financialmodelingprep.com/api/v3/historical-price-full/";
 
-    const API_KEY = "?apikey=d084cd25905084810ee3429ed54c83d9";
+    const API_KEY_URL = "?apikey=" + API_KEY;
 
-    axios.get(API_URL_NUMERICAL_DATA + symbol + API_KEY).then((response) => {
-      let resData: {
-        date: string;
-        open: number;
-        low: number;
-        high: number;
-        close: number;
-        volume: number;
-        change: number;
-      } = response.data.historical[0];
+    axios
+      .get(API_URL_NUMERICAL_DATA + symbol + API_KEY_URL)
+      .then((response) => {
+        let resData: {
+          date: string;
+          open: number;
+          low: number;
+          high: number;
+          close: number;
+          volume: number;
+          change: number;
+        } = response.data.historical[0];
 
-      this.setState({
-        stockDate: resData.date,
-        stockOpenPrice: resData.open,
-        stockLowPrice: resData.low,
-        stockHighPrice: resData.high,
-        stockClosingPrice: resData.close,
-        stockVolume: resData.volume,
-        stockChange: resData.change,
+        this.setState({
+          stockDate: resData.date,
+          stockOpenPrice: resData.open,
+          stockLowPrice: resData.low,
+          stockHighPrice: resData.high,
+          stockClosingPrice: resData.close,
+          stockVolume: resData.volume,
+          stockChange: resData.change,
+        });
       });
-    });
   };
 
   //get company information for the nav bar
