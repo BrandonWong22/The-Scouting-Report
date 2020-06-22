@@ -12,11 +12,7 @@ class CompanyResultsSection extends Component<
 > {
   state = {
     tabIndex: 0,
-    stocksClassName: "react-tabs__tab",
-    statementClassName: "react-tabs__tab",
   };
-
-  // componentDidUpdate(_: any, prevState: { tabIndex: number }) {}
 
   render() {
     const {

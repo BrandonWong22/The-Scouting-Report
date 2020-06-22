@@ -94,8 +94,6 @@ interface CompanyResultsProps {
 
 interface CompanyResultsState {
   tabIndex: number;
-  stocksClassName: string;
-  statementClassName: string;
 }
 
 interface StockLineGraphProps {

@@ -23,7 +23,6 @@ class Login extends Component<LoginPageProps, LoginPageState> {
     // Popup signin flow rather than redirect flow.
     signInFlow: "popup",
     // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-    // signInSuccessUrl: '/signedIn',
     callbacks: {
       signInSuccess: () => false,
     },
@@ -54,6 +53,7 @@ class Login extends Component<LoginPageProps, LoginPageState> {
   render() {
     return (
       <div className="login-page">
+        {/* check if firebase is initialized */}
         {this.state.initialized ? (
           <div className="login-page__container">
             <img src={Logo} alt="logo" className="login-page__logo" />

@@ -135,12 +135,10 @@ class Search extends Component<SearchProps, SearchState> {
             allCompaniesFireBase={this.state.allCompaniesFireBase}
           />
         </div>
-        {this.state.loading ? (
+        {this.state.loading && (
           <div className="sweet-loading">
             <ClipLoader size={100} color={"white"} loading={true} />
           </div>
-        ) : (
-          <div></div>
         )}
       </div>
     );
