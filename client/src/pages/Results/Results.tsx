@@ -77,17 +77,6 @@ class Results extends Component<ResultsProps, ResultsState> {
     });
   }
 
-  reconnectSocket = () => {
-    this.state.socket.disconnect();
-    console.log(this.state.socket);
-
-    setTimeout(() => {
-      this.setState({});
-      this.configureSocketConnection();
-      console.log("after", this.state.socket);
-    }, 2000);
-  };
-
   componentDidUpdate(
     prevProps: { match: any },
     prevState: { darkMode: boolean; companySymbol: string }
