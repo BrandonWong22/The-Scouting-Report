@@ -4,7 +4,7 @@ import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { firebaseConfig } from "../../firebase/fire";
 import Logo from "../../assets/images/logo/logo.png";
-// import ClipLoader from "react-spinners/ClipLoader";
+import ClipLoader from "react-spinners/ClipLoader";
 
 firebase.initializeApp({
   apiKey: firebaseConfig.apiKey,
@@ -36,8 +36,8 @@ class Login extends Component<LoginPageProps, LoginPageState> {
   };
 
   componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
-      this.setState({ isSignedIn: !!user });
+    firebase.auth().onAuthStateChanged((user: any) => {
+      this.setState({ isSignedIn: !!user, initialized: true });
     });
   }
 
@@ -54,16 +54,22 @@ class Login extends Component<LoginPageProps, LoginPageState> {
   render() {
     return (
       <div className="login-page">
-        <div className="login-page__container">
-          <img src={Logo} alt="logo" className="login-page__logo" />
-          <div className="login-page__login-btn-ctn">
-            <h1>Log In</h1>
-            <StyledFirebaseAuth
-              uiConfig={this.uiConfig}
-              firebaseAuth={firebase.auth()}
-            />
+        {this.state.initialized ? (
+          <div className="login-page__container">
+            <img src={Logo} alt="logo" className="login-page__logo" />
+            <div className="login-page__login-btn-ctn">
+              <h1>Log In</h1>
+              <StyledFirebaseAuth
+                uiConfig={this.uiConfig}
+                firebaseAuth={firebase.auth()}
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="sweet-loading">
+            <ClipLoader size={100} color={"steelblue"} loading={true} />
+          </div>
+        )}
       </div>
     );
   }

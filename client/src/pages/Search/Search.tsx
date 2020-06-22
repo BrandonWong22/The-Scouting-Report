@@ -58,7 +58,7 @@ class Search extends Component<SearchProps, SearchState> {
           companySymbol: this.state.companySymbol,
           signedIn: this.props.location.state,
         },
-        pathname: "/results/" + this.state.companySymbol,
+        pathname: "/results/" + this.state.companySymbol.toUpperCase(),
       });
     }
   }
