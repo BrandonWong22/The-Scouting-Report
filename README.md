@@ -16,10 +16,12 @@ Application built using React, TypeScript, Chart.js, Socket.io, Node, and Fireba
 
 <!-- ![Searching for a company ticker ('GOOGL') through a search bar](./extras/search.png) -->
 
-#### 2. Then compare and analyze its financial performance in recent years
+#### 2. View live stock prices that change in real time
+
+#### 3. Then compare and analyze its financial performance in recent years
 
 <!-- ![A graph comparing three financial statement line items of GOOGL from 2014 to 2018](./extras/results.png) -->
 
-#### 3. Toggle between light and dark mode
+#### 4. Toggle between light and dark mode
 
 <!-- ![Alert modal displays share link to see current snapshot](./extras/share.png) -->
