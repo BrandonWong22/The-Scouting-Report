@@ -3,7 +3,7 @@ import "./Login.scss";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { firebaseConfig } from "../../firebase/fire";
-import Logo from "../../assets/images/logo/logo.png";
+import Logo from "../../assets/images/logo/logo3.png";
 import ClipLoader from "react-spinners/ClipLoader";
 
 firebase.initializeApp({
