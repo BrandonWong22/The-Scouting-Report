@@ -22,7 +22,7 @@ Application built using React, TypeScript, Chart.js, Socket.io, Node, and Fireba
 
 #### 3. View live stock prices that change in real time
 
-![View up to date stock prices for the searched company](./extras/stock.png)
+![View up to date stock prices for the searched company](./extras/stocks.png)
 
 #### 4. Then compare and analyze its financial performance in recent years
 
