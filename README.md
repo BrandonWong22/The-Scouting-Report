@@ -12,6 +12,10 @@ Application built using React, TypeScript, Chart.js, Socket.io, Node, and Fireba
 
 ## Features:
 
+#### 1. Login and get authenticated with either Google, Facebook, or GitHub
+
+![Login with either Google, Facebook, or Github](./extras/login.png)
+
 #### 1. Look up a publically-traded US company
 
 <!-- ![Searching for a company ticker ('GOOGL') through a search bar](./extras/search.png) -->
