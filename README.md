@@ -16,16 +16,18 @@ Application built using React, TypeScript, Chart.js, Socket.io, Node, and Fireba
 
 ![Login with either Google, Facebook, or Github](./extras/login.png)
 
-#### 1. Look up a publically-traded US company
+#### 2. Look up a publically-traded US company
 
-<!-- ![Searching for a company ticker ('GOOGL') through a search bar](./extras/search.png) -->
+![Searching for a company ticker ('FB') through a search bar](./extras/search.png)
 
-#### 2. View live stock prices that change in real time
+#### 3. View live stock prices that change in real time
 
-#### 3. Then compare and analyze its financial performance in recent years
+![View up to date stock prices for the searched company](./extras/stock.png)
 
-<!-- ![A graph comparing three financial statement line items of GOOGL from 2014 to 2018](./extras/results.png) -->
+#### 4. Then compare and analyze its financial performance in recent years
 
-#### 4. Toggle between light and dark mode
+![A graph comparing financial data for the past 5 quarters for Facebook](./extras/financials.png)
 
-<!-- ![Alert modal displays share link to see current snapshot](./extras/share.png) -->
+#### 5. Toggle between light and dark mode
+
+![Toggle between light mode and dark mode](./extras/light-mode.png)
