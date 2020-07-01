@@ -23,7 +23,7 @@ class Search extends Component<SearchProps, SearchState> {
     allCompaniesFireBase: [],
   };
 
-  // connect to firebase db which has a json file of every
+  //connect to firebase db which has a json file of every
   //publicly traded US company
   database: any = firebase.database().ref().child("companylist");
 

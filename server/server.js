@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const searchCompany = require("./routes/searchCompany");
-// const http = require("http").Server(app);
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
 const axios = require("axios");
@@ -18,23 +17,6 @@ app.get("/testtest", (req, res) => {
   res.send("working");
 });
 
-// function getCurrentDate(date) {
-//   let dateStr =
-//     ("00" + (date.getMonth() + 1)).slice(-2) +
-//     "/" +
-//     ("00" + date.getDate()).slice(-2) +
-//     "/" +
-//     date.getFullYear() +
-//     " " +
-//     ("00" + date.getHours()).slice(-2) +
-//     ":" +
-//     ("00" + date.getMinutes()).slice(-2) +
-//     ":" +
-//     ("00" + date.getSeconds()).slice(-2);
-
-//   return dateStr;
-// }
-
 function getUpToDateStockPrice(symbol) {
   let url =
     "https://financialmodelingprep.com/api/v3/quote-short/" +
@@ -42,14 +24,7 @@ function getUpToDateStockPrice(symbol) {
     "?apikey=" +
     process.env.API_KEY;
   return axios.get(url).then((response) => {
-    // let updatedDate = getCurrentDate(new Date());
-    // let getLocalDate = new Date(`${updatedDate} UTC`); //NEED TO USE THIS FOR PRODUCTION
-
-    return [
-      response.data[0].price,
-      // getLocalDate.toLocaleString("en-US", { timeZone: "America/Toronto" }),
-      new Date(),
-    ];
+    return [response.data[0].price, new Date()];
   });
 }
 

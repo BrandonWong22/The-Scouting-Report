@@ -4,7 +4,6 @@ import Search from "./pages/Search/Search";
 import Results from "./pages/Results/Results";
 import Login from "./pages/Login/Login";
 
-//CHANGE ROUTES WHEN OTHER PAGES ARE READY
 const App: React.FC = () => {
   return (
     <>
