@@ -4,7 +4,7 @@ _The Scouting Report_ offers a quick lookup of the live stock prices and past fi
 
 The stock data is presented in a line graph or in tabular form while the financial statement data can be viewed in a line graph, bar graph, radar graph, or in tabular form.
 
-Application built using React, TypeScript, Chart.js, Socket.io, Node, Express, and Firebase.
+Application built using React, TypeScript, Chart.js, Socket.io, Node, Express, Firebase, and Redux.
 
 ## Live Link
 
