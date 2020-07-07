@@ -11,7 +11,9 @@ const Error: React.FC = () => {
       <div className="error">
         <div className="error__content-block">
           <h1>Sorry... This page does not exist!!!</h1>
-          <button onClick={() => setRedirect(true)}>Return Home</button>
+          <button className="error__button" onClick={() => setRedirect(true)}>
+            Return Home
+          </button>
         </div>
       </div>
     );
