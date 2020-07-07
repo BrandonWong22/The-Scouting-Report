@@ -1,0 +1,12 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/mixins";
+
+.error {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $dark-mode-background-color-card;
+  color: $dark-mode-text-color;
+}
