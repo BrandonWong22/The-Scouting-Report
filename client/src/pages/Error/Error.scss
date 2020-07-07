@@ -9,4 +9,9 @@
   justify-content: center;
   background-color: $dark-mode-background-color-card;
   color: $dark-mode-text-color;
+
+  &__content-block {
+    display: flex;
+    flex-direction: column;
+  }
 }
