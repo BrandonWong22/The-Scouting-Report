@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import "./SearchBar.scss";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
-const SearchBar: React.FC<SearchBarProps> = (props) => {
+const SearchBar: React.FC<SearchBarProps> = ({
+  //destructure incoming props
+  handleSearchSubmit,
+  allCompaniesFireBase,
+}) => {
   const [searchValue, setSearchValue] = useState<string>("");
 
   const handleOnSearch = (company: string) => {
@@ -22,7 +26,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
   const handleFormSubmit = (event: any) => {
     event.preventDefault();
     let value: string = searchValue;
-    props.handleSearchSubmit(value, event);
+    handleSearchSubmit(value, event);
   };
 
   const handleOnFocus = () => {
@@ -36,7 +40,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
           <form className="search__form" onSubmit={handleFormSubmit}>
             <div className="search__input-ctn">
               <ReactSearchAutocomplete
-                items={props.allCompaniesFireBase}
+                items={allCompaniesFireBase}
                 onSearch={handleOnSearch}
                 onSelect={handleOnSelect}
                 onFocus={handleOnFocus}
