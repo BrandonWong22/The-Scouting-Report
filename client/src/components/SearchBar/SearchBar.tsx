@@ -1,62 +1,58 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./SearchBar.scss";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
-class SearchBar extends Component<SearchBarProps, ISearchBarState> {
-  state = {
-    searchValue: "",
+const SearchBar: React.FC<SearchBarProps> = (props) => {
+  const [searchValue, setSearchValue] = useState<string>("");
+
+  const handleOnSearch = (company: string) => {
+    // use setSearchValue method to update the searchValue state
+    // to be the company value in the search field
+    setSearchValue(company);
   };
 
-  handleOnSearch = (company: string) => {
-    this.setState({
-      searchValue: company,
-    });
-  };
-
-  handleOnSelect = (company: any) => {
+  const handleOnSelect = (company: any) => {
     let companyArr: Array<string> = Object.values(company);
 
-    this.setState({
-      searchValue: companyArr[1],
-    });
+    // when a company is selected from the auto suggest
+    // set the search value to state to the company selected
+    setSearchValue(companyArr[1]);
   };
 
-  handleOnFocus = () => {
-    console.log("Focused");
-  };
-
-  handleFormSubmit = (event: any) => {
+  const handleFormSubmit = (event: any) => {
     event.preventDefault();
-    let value: string = this.state.searchValue;
-    this.props.handleSearchSubmit(value, event);
+    let value: string = searchValue;
+    props.handleSearchSubmit(value, event);
   };
 
-  render() {
-    return (
-      <div className="search__searchbar-contents">
-        <div className="search__searchbar-div">
-          <div className="search__autocomplete-container">
-            <form className="search__form" onSubmit={this.handleFormSubmit}>
-              <div className="search__input-ctn">
-                <ReactSearchAutocomplete
-                  items={this.props.allCompaniesFireBase}
-                  onSearch={this.handleOnSearch}
-                  onSelect={this.handleOnSelect}
-                  onFocus={this.handleOnFocus}
-                  maxResults={5}
-                  autoFocus
-                />
-              </div>
+  const handleOnFocus = () => {
+    console.log("focused");
+  };
 
-              <button className="search__button" type="submit">
-                Submit
-              </button>
-            </form>
-          </div>
+  return (
+    <div className="search__searchbar-contents">
+      <div className="search__searchbar-div">
+        <div className="search__autocomplete-container">
+          <form className="search__form" onSubmit={handleFormSubmit}>
+            <div className="search__input-ctn">
+              <ReactSearchAutocomplete
+                items={props.allCompaniesFireBase}
+                onSearch={handleOnSearch}
+                onSelect={handleOnSelect}
+                onFocus={handleOnFocus}
+                maxResults={5}
+                autoFocus
+              />
+            </div>
+
+            <button className="search__button" type="submit">
+              Submit
+            </button>
+          </form>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default SearchBar;
