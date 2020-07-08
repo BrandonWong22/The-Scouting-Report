@@ -8,7 +8,6 @@ class SearchBar extends Component<SearchBarProps, ISearchBarState> {
   };
 
   handleOnSearch = (company: string) => {
-    console.log("search", company);
     this.setState({
       searchValue: company,
     });
