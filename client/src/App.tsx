@@ -4,6 +4,7 @@ import Search from "./pages/Search/Search";
 import Results from "./pages/Results/Results";
 import Login from "./pages/Login/Login";
 import Error from "./pages/Error/Error";
+import { Provider } from "react-redux";
 
 const App: React.FC = () => {
   return (
