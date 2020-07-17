@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component } from "react";
 import "./Login.scss";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
@@ -12,11 +12,14 @@ firebase.initializeApp({
   databaseURL: firebaseConfig.databaseURL,
 });
 
-const Login: React.FC<LoginPageProps> = (props) => {
-  const [isSignedIn, setIsSignedIn] = useState<Boolean>(false);
-  const [initialized, setInintialized] = useState<Boolean>(false);
+class Login extends Component<LoginPageProps, LoginPageState> {
+  state = {
+    isSignedIn: false,
+    initialized: false,
+  };
 
-  const uiConfig: any = {
+  // Configure FirebaseUI.
+  uiConfig: any = {
     // Popup signin flow rather than redirect flow.
     signInFlow: "popup",
     // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
@@ -31,108 +34,45 @@ const Login: React.FC<LoginPageProps> = (props) => {
     ],
   };
 
-  useEffect(() => {
+  componentDidMount() {
     firebase.auth().onAuthStateChanged((user: any) => {
-      setIsSignedIn(!!user);
-      setInintialized(true);
+      this.setState({ isSignedIn: !!user, initialized: true });
     });
-  }, []);
+  }
 
-  useEffect(() => {
-    if (isSignedIn) {
-      props.history.push({
+  componentDidUpdate(_: any, prevState: { isSignedIn: Boolean }) {
+    if (prevState.isSignedIn !== this.state.isSignedIn && !prevState.isSignedIn)
+      this.props.history.push({
         pathname: "/search",
         state: {
-          isSignedIn: isSignedIn,
+          isSignedIn: this.state.isSignedIn,
         },
       });
-    }
-  }, [isSignedIn, props.history]);
+  }
 
-  return (
-    <div className="login-page">
-      {/* check if firebase is initialized */}
-      {initialized ? (
-        <div className="login-page__container">
-          <img src={Logo} alt="logo" className="login-page__logo" />
-          <div className="login-page__login-btn-ctn">
-            <h1>Log In</h1>
-            <StyledFirebaseAuth
-              uiConfig={uiConfig}
-              firebaseAuth={firebase.auth()}
-            />
+  render() {
+    return (
+      <div className="login-page">
+        {/* check if firebase is initialized */}
+        {this.state.initialized ? (
+          <div className="login-page__container">
+            <img src={Logo} alt="logo" className="login-page__logo" />
+            <div className="login-page__login-btn-ctn">
+              <h1>Log In</h1>
+              <StyledFirebaseAuth
+                uiConfig={this.uiConfig}
+                firebaseAuth={firebase.auth()}
+              />
+            </div>
           </div>
-        </div>
-      ) : (
-        <div className="sweet-loading">
-          <ClipLoader size={100} color={"steelblue"} loading={true} />
-        </div>
-      )}
-    </div>
-  );
-};
-
-// class Login extends Component<LoginPageProps, LoginPageState> {
-//   state = {
-//     isSignedIn: false,
-//     initialized: false,
-//   };
-
-//   // Configure FirebaseUI.
-//   uiConfig: any = {
-//     // Popup signin flow rather than redirect flow.
-//     signInFlow: "popup",
-//     // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-//     callbacks: {
-//       signInSuccess: () => false,
-//     },
-//     // We will display Google and Facebook as auth providers.
-//     signInOptions: [
-//       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-//       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-//       firebase.auth.GithubAuthProvider.PROVIDER_ID,
-//     ],
-//   };
-
-//   componentDidMount() {
-//     firebase.auth().onAuthStateChanged((user: any) => {
-//       this.setState({ isSignedIn: !!user, initialized: true });
-//     });
-//   }
-
-//   componentDidUpdate(_: any, prevState: { isSignedIn: Boolean }) {
-//     if (prevState.isSignedIn !== this.state.isSignedIn && !prevState.isSignedIn)
-//       this.props.history.push({
-//         pathname: "/search",
-//         state: {
-//           isSignedIn: this.state.isSignedIn,
-//         },
-//       });
-//   }
-
-//   render() {
-//     return (
-//       <div className="login-page">
-//         {/* check if firebase is initialized */}
-//         {this.state.initialized ? (
-//           <div className="login-page__container">
-//             <img src={Logo} alt="logo" className="login-page__logo" />
-//             <div className="login-page__login-btn-ctn">
-//               <h1>Log In</h1>
-//               <StyledFirebaseAuth
-//                 uiConfig={this.uiConfig}
-//                 firebaseAuth={firebase.auth()}
-//               />
-//             </div>
-//           </div>
-//         ) : (
-//           <div className="sweet-loading">
-//             <ClipLoader size={100} color={"steelblue"} loading={true} />
-//           </div>
-//         )}
-//       </div>
-//     );
-//   }
-// }
+        ) : (
+          <div className="sweet-loading">
+            <ClipLoader size={100} color={"steelblue"} loading={true} />
+          </div>
+        )}
+      </div>
+    );
+  }
+}
 
 export default Login;
